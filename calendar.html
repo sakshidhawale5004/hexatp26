@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance & Calendar Desk | HexaTP</title>
+<meta name="description" content="Internal transfer pricing and income tax compliance calendar covering deadlines, national holidays, and events across HexaTP's jurisdictions.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  html, body {
+    margin:0;
+    padding:0;
+    background: url('bgforcalendarpage.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height:100vh;
+  }
+  body {
+    padding:28px 16px;
+    box-sizing:border-box;
+  }
+  .tpc-page-wrap {
+    max-width:900px;
+    margin:0 auto;
+    background:#F5F2EA;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(11,31,58,.12);
+  }
+  @media (max-width:640px){
+    body { padding:0; }
+    .tpc-page-wrap { border-radius:0; box-shadow:none; }
+  }
+</style>
+
+<style>
+.mobile-submenu { padding-left: 20px; margin-top: 10px; display: none; border-left: 2px solid rgba(245,196,0,0.3); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.mobile-submenu.active { display: block; max-height: 2000px; animation: slideDown 0.3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-submenu li a { font-size: 16px; padding: 10px 15px; }
+.mobile-dropdown-toggle { color: var(--text-main); font-size: 18px; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; transition: all 0.3s ease; user-select: none; }
+.mobile-dropdown-toggle:hover { background: rgba(245,196,0,0.1); color: #f5c400; }
+.mobile-dropdown-toggle::after { content: '\25BC'; font-size: 12px; transition: transform 0.3s ease; }
+.mobile-dropdown-toggle.active { color: #f5c400; }
+.mobile-dropdown-toggle.active::after { transform: rotate(180deg); }
+</style>
+
+</head>
+<body>
+<div class="tpc-page-wrap">
+<style>
+  :root{
+    --navy-deep:#0B1F3A;
+    --navy-mid:#14335C;
+    --navy-line:#26456F;
+    --paper:#F5F2EA;
+    --paper-panel:#FFFFFF;
+    --ink:#1B2430;
+    --ink-soft:#5C6577;
+    --gold:#C89B3C;
+    --gold-soft:#E9D8AE;
+    --c-tp:#C89B3C;
+    --c-tax:#2F6F76;
+    --c-fest:#7A6FB0;
+    --c-event:#3E7C59;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  .tpc-root{
+    background-color:var(--paper);
+    color:var(--ink);
+    padding:0;
+    min-height:100%;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    position:relative;
+  }
+  .tpc-hero-wrapper {
+    background: linear-gradient(rgba(11, 31, 58, 0.85), rgba(11, 31, 58, 0.85)), url('bgforcalendarparticularsection.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius:var(--radius) var(--radius) 0 0;
+  }
+  .tpc-hero{
+    position:relative;
+    background: transparent;
+    border-bottom: 1px solid var(--navy-mid);
+  }
+  .tpc-top-strip{
+    background: transparent;
+    padding:16px 26px 0;
+  }
+  .tpc-header{
+    color: #ffffff;
+    padding:18px 26px;
+  }
+  .tpc-brand{display:flex;align-items:center;margin-bottom:14px;}
+  .tpc-brand-logo{height:26px;width:auto;display:block;}
+  .tpc-eyebrow{
+    font-family:'SFMono-Regular',Menlo,Consolas,monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--gold);
+    margin:0 0 6px;
+  }
+  .tpc-title-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .tpc-title{
+    font-family:Georgia,'Iowan Old Style',serif;
+    font-size:26px;
+    font-weight:700;
+    margin:0;
+    letter-spacing:.01em;
+    color: #ffffff;
+  }
+  .tpc-sub{color:#cbd5e1;font-size:12.5px;margin:4px 0 0;}
+  .tpc-addbtn{
+    background:var(--gold);
+    color:var(--navy-deep);
+    border:none;
+    padding:9px 16px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .tpc-addbtn:hover{background:#dcae4c;}
+
+  .tpc-upcoming{
+    background: transparent;
+    padding:12px 26px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    border-top: 1px solid var(--navy-mid);
+  }
+  .tpc-upcoming-row{display:flex;align-items:center;gap:10px;}
+  .tpc-upcoming-label{
+    flex:0 0 auto;
+    width:82px;
+    font-size:9.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color: #cbd5e1;
+    line-height:1.25;
+  }
+  .tpc-upcoming-track{display:flex;gap:10px;overflow-x:auto;scrollbar-width:thin;flex:1;}
+  .tpc-chip{
+    flex:0 0 auto;
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:8px;
+    padding:8px 12px;
+    min-width:160px;
+    color: #fff;
+  }
+  .tpc-chip.tp{border-color:rgba(220,174,76,0.5);}
+  .tpc-chip.ct{border-color:rgba(47,111,118,0.8);}
+  .tpc-chip .days{
+    font-family:'SFMono-Regular',Menlo,monospace;
+    font-size:16px;
+    font-weight:700;
+    color: var(--gold);
+    white-space:nowrap;
+  }
+  .tpc-chip.ct .days{color: #48b8c4;}
+  .tpc-chip .label{font-size:11.5px;color: #cbd5e1;margin-top:2px;line-height:1.3;}
+  .tpc-chip .country{font-size:10.5px;color: #94a3b8;margin-top:3px;text-transform:uppercase;letter-spacing:.05em;}
+  .tpc-upcoming-empty{color: #cbd5e1;font-size:11.5px;padding:4px 0;}
+
+  /* Filters */
+  .tpc-filters{
+    background:var(--paper-panel);
+    padding:14px 26px;
+    border-bottom:1px solid #E4DFD1;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    align-items:center;
+    position:relative;
+  }
+  .tpc-filter-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:relative;}
+  .tpc-filter-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-right:4px;font-weight:600;}
+  .tpc-pill{
+    border:1px solid #D8D2C0;
+    background:#fff;
+    padding:5px 11px;
+    border-radius:999px;
+    font-size:12.5px;
+    cursor:pointer;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:5px;
+    transition:.12s;
+  }
+  .tpc-pill:hover{border-color:var(--gold);}
+  .tpc-pill.active{background:var(--navy-deep);color:#fff;border-color:var(--navy-deep);}
+  .tpc-pill .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .tpc-countrybtn{
+    border:1px solid #D8D2C0;background:#fff;padding:6px 12px;border-radius:8px;
+    font-size:12.5px;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px;font-weight:600;
+  }
+  .tpc-countrybtn:hover{border-color:var(--gold);}
+  .tpc-countrybtn .caret{font-size:9px;color:var(--ink-soft);}
+  .tpc-search{
+    border:1px solid #D8D2C0;
+    border-radius:8px;
+    padding:6px 10px;
+    font-size:12.5px;
+    min-width:180px;
+    background:#fff;
+  }
+  .tpc-clear{background:none;border:none;color:var(--ink-soft);font-size:12px;text-decoration:underline;cursor:pointer;}
+
+  /* Country checkbox panel */
+  .tpc-country-panel{
+    display:none;
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    z-index:200;
+    background:#fff;
+    border:1px solid #D8D2C0;
+    border-radius:10px;
+    box-shadow:0 12px 28px rgba(11,31,58,.18);
+    width:340px;
+    max-height:420px;
+    overflow-y:auto;
+    padding:12px;
+  }
+  .tpc-country-panel.open{display:block;}
+  .tpc-country-panel-head{display:flex;gap:8px;margin-bottom:8px;}
+  .tpc-country-search{flex:1;border:1px solid #D8D2C0;border-radius:7px;padding:6px 9px;font-size:12.5px;}
+  .tpc-country-actions{display:flex;gap:10px;margin-bottom:10px;font-size:11px;}
+  .tpc-country-actions button{background:none;border:none;color:var(--navy-mid);text-decoration:underline;cursor:pointer;font-weight:600;}
+  .tpc-region-block{margin-bottom:10px;}
+  .tpc-region-title{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);font-weight:700;
+    padding:4px 2px;border-bottom:1px solid #F0EDE3;margin-bottom:4px;
+  }
+  .tpc-region-title button{background:none;border:none;color:var(--gold);font-size:10.5px;cursor:pointer;font-weight:700;text-transform:none;letter-spacing:0;}
+  .tpc-country-row{display:flex;align-items:center;gap:7px;padding:3px 2px;font-size:12.5px;cursor:pointer;border-radius:5px;}
+  .tpc-country-row:hover{background:#FBF9F3;}
+  .tpc-country-row input{margin:0;}
+
+  /* Nav */
+  .tpc-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 26px;}
+  .tpc-nav-left{display:flex;align-items:center;gap:10px;}
+  .tpc-navbtn{
+    background:#fff;border:1px solid #D8D2C0;width:32px;height:32px;border-radius:8px;
+    cursor:pointer;font-size:15px;color:var(--navy-deep);font-weight:700;
+  }
+  .tpc-navbtn:hover{border-color:var(--gold);}
+  .tpc-month-label{font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--navy-deep);min-width:170px;}
+  .tpc-today{
+    background:none;border:1px solid var(--navy-mid);color:var(--navy-mid);
+    padding:6px 12px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:600;
+  }
+
+  /* Grid */
+  .tpc-grid-wrap{padding:0 26px 8px;}
+  .tpc-dow{
+    display:grid;grid-template-columns:repeat(7,1fr);
+    font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);
+    padding:6px 4px;border-bottom:1px solid #E4DFD1;
+  }
+  .tpc-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:#E4DFD1;border:1px solid #E4DFD1;}
+  .tpc-cell{background:#fff;min-height:86px;padding:6px;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:3px;}
+  .tpc-cell:hover{background:#FBF9F3;}
+  .tpc-cell.muted{background:#FAF8F2;color:#B7B0A0;}
+  .tpc-cell.today{outline:2px solid var(--gold);outline-offset:-2px;}
+  .tpc-daynum{font-family:'SFMono-Regular',Menlo,monospace;font-size:12px;font-weight:700;color:var(--navy-deep);}
+  .tpc-cell.muted .tpc-daynum{color:#C7C0AF;}
+  .tpc-tag{font-size:9.5px;padding:2px 5px;border-radius:4px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .tpc-more{font-size:9.5px;color:var(--ink-soft);}
+
+  .tpc-legend{display:flex;gap:16px;flex-wrap:wrap;padding:12px 26px 20px;font-size:11.5px;color:var(--ink-soft);}
+  .tpc-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .tpc-legend .dot{width:9px;height:9px;border-radius:50%;}
+
+  .tpc-note{
+    padding:10px 26px 18px;font-size:11px;color:var(--ink-soft);
+    border-top:1px solid #E4DFD1;background:#FBF9F3;line-height:1.5;
+  }
+  .tpc-footer{
+    padding:10px 26px 16px;font-size:10.5px;color:#A7A092;background:#FBF9F3;
+    text-align:center;letter-spacing:.02em;
+  }
+
+  /* Modal */
+  .tpc-overlay{position:fixed;inset:0;background:rgba(11,31,58,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+  .tpc-overlay.open{display:flex;}
+  .tpc-modal{background:#fff;border-radius:12px;max-width:460px;width:100%;max-height:86vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+  .tpc-modal-head{background:var(--navy-deep);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:12px 12px 0 0;}
+  .tpc-modal-head h3{margin:0;font-family:Georgia,serif;font-size:17px;}
+  .tpc-modal-close{background:none;border:none;color:#C9D3E4;font-size:20px;cursor:pointer;line-height:1;}
+  .tpc-modal-body{padding:16px 20px;}
+  .tpc-event-item{border:1px solid #E4DFD1;border-radius:8px;padding:10px 12px;margin-bottom:8px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+  .tpc-event-item .evtitle{font-weight:700;font-size:13.5px;color:var(--ink);}
+  .tpc-event-item .evmeta{font-size:11px;color:var(--ink-soft);margin-top:3px;}
+  .tpc-event-item .evnote{font-size:11px;color:var(--ink-soft);margin-top:4px;font-style:italic;}
+  .tpc-recur-badge{font-size:9px;background:#F0EDE3;color:var(--ink-soft);border-radius:4px;padding:1px 5px;margin-left:6px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+  .tpc-del{background:none;border:none;color:#B8543F;font-size:11px;cursor:pointer;text-decoration:underline;flex:0 0 auto;}
+  .tpc-form label{display:block;font-size:11px;font-weight:700;color:var(--ink-soft);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.05em;}
+  .tpc-form input, .tpc-form select, .tpc-form textarea{width:100%;border:1px solid #D8D2C0;border-radius:7px;padding:8px 10px;font-size:13px;font-family:inherit;}
+  .tpc-form textarea{resize:vertical;min-height:50px;}
+  .tpc-checkrow{display:flex;align-items:center;gap:7px;margin-top:12px;font-size:12.5px;color:var(--ink);}
+  .tpc-savebtn{margin-top:16px;width:100%;background:var(--gold);color:var(--navy-deep);border:none;padding:11px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13.5px;}
+  .tpc-addday{margin-top:4px;background:none;border:1px dashed #C7C0AF;color:var(--ink-soft);padding:8px;border-radius:8px;width:100%;cursor:pointer;font-size:12px;}
+
+  .tpc-iconbtn{
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    padding:7px 11px;
+    border-radius:999px;
+    font-size:12px;
+    cursor:pointer;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  .tpc-iconbtn:hover{background:rgba(255,255,255,0.1); border-color:var(--gold); color:#ffffff;}
+
+  @media (max-width:640px){
+    .tpc-cell{min-height:64px;font-size:11px;}
+    .tpc-title{font-size:21px;}
+    .tpc-header,.tpc-filters,.tpc-nav,.tpc-grid-wrap,.tpc-legend,.tpc-note{padding-left:14px;padding-right:14px;}
+    .tpc-upcoming{padding-left:14px;padding-right:14px;}
+    .tpc-country-panel{width:280px;}
+  }
+</style>
+
+<div class="tpc-root" id="tpcRoot">
+  <div class="tpc-hero-wrapper">
+  <div class="tpc-top-strip">
+    <div class="tpc-brand" style="margin:0;">
+      <img class="tpc-brand-logo" src="hexatpwhitelogo.png" style="height:32px;" alt="HexaTP - Transfer Pricing Simplified" />
+    </div>
+  </div>
+  <div class="tpc-hero">
+    <div class="tpc-header">
+      <p class="tpc-eyebrow">Internal — Team Compliance Tracker</p>
+      <div class="tpc-title-row">
+        <div>
+          <h1 class="tpc-title">Compliance &amp; Calendar Desk</h1>
+          <p class="tpc-sub">Transfer pricing deadlines, income tax deadlines, and local holidays — across every jurisdiction we cover.</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="tpc-iconbtn" id="tpcExportBtn" title="Download all entries as a JSON file">⇩ Export</button>
+          <button class="tpc-iconbtn" id="tpcImportBtn" title="Load a JSON file exported from this tool">⇪ Import</button>
+          <input type="file" id="tpcImportFile" accept="application/json" style="display:none;" />
+          <button class="tpc-addbtn" id="tpcAddBtn">+ Add Entry</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tpc-upcoming">
+      <div class="tpc-upcoming-row">
+        <div class="tpc-upcoming-label">TP Deadline In</div>
+        <div class="tpc-upcoming-track" id="tpcUpcomingTP"></div>
+      </div>
+      <div class="tpc-upcoming-row">
+        <div class="tpc-upcoming-label">CT Deadline In</div>
+        <div class="tpc-upcoming-track" id="tpcUpcomingCT"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="tpc-filters">
+    <div class="tpc-filter-group">
+      <span class="tpc-filter-label">Type</span>
+      <div id="tpcTypeFilters" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+    </div>
+    <div class="tpc-filter-group">
+      <button class="tpc-countrybtn" id="tpcCountryBtn">🌍 Countries <span id="tpcCountryCount"></span><span class="caret">▾</span></button>
+      <div class="tpc-country-panel" id="tpcCountryPanel"></div>
+    </div>
+    <div class="tpc-filter-group">
+      <input class="tpc-search" id="tpcSearch" placeholder="Search entries…" />
+      <button class="tpc-clear" id="tpcClearFilters">clear filters</button>
+    </div>
+  </div>
+
+  <div class="tpc-nav">
+    <div class="tpc-nav-left">
+      <button class="tpc-navbtn" id="tpcPrev">‹</button>
+      <div class="tpc-month-label" id="tpcMonthLabel"></div>
+      <button class="tpc-navbtn" id="tpcNext">›</button>
+    </div>
+    <button class="tpc-today" id="tpcToday">Today</button>
+  </div>
+
+  <div class="tpc-grid-wrap">
+    <div class="tpc-dow" id="tpcDow"></div>
+    <div class="tpc-grid" id="tpcGrid"></div>
+  </div>
+
+  <div class="tpc-legend">
+    <span><span class="dot" style="background:var(--c-tp)"></span>TP deadline</span>
+    <span><span class="dot" style="background:var(--c-tax)"></span>Income tax deadline (non-TP)</span>
+    <span><span class="dot" style="background:var(--c-fest)"></span>Festival / public holiday</span>
+    <span><span class="dot" style="background:var(--c-event)"></span>Internal event</span>
+  </div>
+
+  <div class="tpc-note">
+    Deadlines were cross-checked against the HexaTP countrywise-deadlines and potential-markets sheets, but many statutory
+    dates shift year to year, depend on fiscal year-end, or are triggered by an authority request rather than fixed —
+    treat these as a planning starting point and confirm against the local gazette/tax authority before relying on them.
+    National/independence days were verified against current sources for all 57 countries (a few required correction —
+    e.g. South Korea's Liberation Day is 15 Aug not 14 Aug, Taiwan's National Day is 10 Oct not 9 Oct, and Thailand's
+    National Day has been the King's Birthday on 28 Jul since 2017, not 5/7 Dec as older listings show). The UK has no
+    official national day and isn't shown. Eid al-Fitr, Eid al-Adha and Diwali are lunar/moon-sighting-dependent — the
+    dates shown are estimates only and shift each year; confirm locally closer to the time. Recurring deadlines and
+    national days repeat every year on the same month/day; lunar festivals and one-off events use a specific date.
+    Entries you add or remove are saved in this browser only (not synced across teammates or devices) — use the
+    <strong>Export</strong> button to download a JSON file of the current list and <strong>Import</strong> to load one,
+    which is the way to share updates or refresh everyone onto the same data after this page is re-uploaded.
+  </div>
+  <div class="tpc-footer">
+    <img src="final-header-logo1.jpeg" alt="HexaTP" style="height:16px;width:auto;vertical-align:middle;margin-right:6px;opacity:.8; mix-blend-mode: darken;" />
+    © 2026 HexaTP — Internal compliance tool. Not for external sharing.
+  </div>
+</div>
+
+<div class="tpc-overlay" id="tpcOverlay">
+  <div class="tpc-modal" id="tpcModal"></div>
+</div>
+
+<script>
+(function(){
+  const COUNTRIES = [{"code": "BH", "name": "Bahrain", "flag": "🇧🇭", "region": "GCC"}, {"code": "KW", "name": "Kuwait", "flag": "🇰🇼", "region": "GCC"}, {"code": "OM", "name": "Oman", "flag": "🇴🇲", "region": "GCC"}, {"code": "QA", "name": "Qatar", "flag": "🇶🇦", "region": "GCC"}, {"code": "SA", "name": "Saudi Arabia", "flag": "🇸🇦", "region": "GCC"}, {"code": "AE", "name": "UAE", "flag": "🇦🇪", "region": "GCC"}, {"code": "BE", "name": "Belgium", "flag": "🇧🇪", "region": "Europe"}, {"code": "BG", "name": "Bulgaria", "flag": "🇧🇬", "region": "Europe"}, {"code": "CY", "name": "Cyprus", "flag": "🇨🇾", "region": "Europe"}, {"code": "CZ", "name": "Czech Republic", "flag": "🇨🇿", "region": "Europe"}, {"code": "DK", "name": "Denmark", "flag": "🇩🇰", "region": "Europe"}, {"code": "FR", "name": "France", "flag": "🇫🇷", "region": "Europe"}, {"code": "DE", "name": "Germany", "flag": "🇩🇪", "region": "Europe"}, {"code": "GR", "name": "Greece", "flag": "🇬🇷", "region": "Europe"}, {"code": "HU", "name": "Hungary", "flag": "🇭🇺", "region": "Europe"}, {"code": "IE", "name": "Ireland", "flag": "🇮🇪", "region": "Europe"}, {"code": "IT", "name": "Italy", "flag": "🇮🇹", "region": "Europe"}, {"code": "LU", "name": "Luxembourg", "flag": "🇱🇺", "region": "Europe"}, {"code": "MT", "name": "Malta", "flag": "🇲🇹", "region": "Europe"}, {"code": "NL", "name": "Netherlands", "flag": "🇳🇱", "region": "Europe"}, {"code": "PL", "name": "Poland", "flag": "🇵🇱", "region": "Europe"}, {"code": "PT", "name": "Portugal", "flag": "🇵🇹", "region": "Europe"}, {"code": "RO", "name": "Romania", "flag": "🇷🇴", "region": "Europe"}, {"code": "ES", "name": "Spain", "flag": "🇪🇸", "region": "Europe"}, {"code": "SE", "name": "Sweden", "flag": "🇸🇪", "region": "Europe"}, {"code": "CH", "name": "Switzerland", "flag": "🇨🇭", "region": "Europe"}, {"code": "GB", "name": "United Kingdom", "flag": "🇬🇧", "region": "Europe"}, {"code": "TR", "name": "Turkey", "flag": "🇹🇷", "region": "Europe/APAC"}, {"code": "CA", "name": "Canada", "flag": "🇨🇦", "region": "North America"}, {"code": "AU", "name": "Australia", "flag": "🇦🇺", "region": "APAC"}, {"code": "CN", "name": "China", "flag": "🇨🇳", "region": "APAC"}, {"code": "HK", "name": "Hong Kong SAR", "flag": "🇭🇰", "region": "APAC"}, {"code": "IN", "name": "India", "flag": "🇮🇳", "region": "APAC"}, {"code": "ID", "name": "Indonesia", "flag": "🇮🇩", "region": "APAC"}, {"code": "JP", "name": "Japan", "flag": "🇯🇵", "region": "APAC"}, {"code": "MY", "name": "Malaysia", "flag": "🇲🇾", "region": "APAC"}, {"code": "NZ", "name": "New Zealand", "flag": "🇳🇿", "region": "APAC"}, {"code": "PH", "name": "Philippines", "flag": "🇵🇭", "region": "APAC"}, {"code": "SG", "name": "Singapore", "flag": "🇸🇬", "region": "APAC"}, {"code": "KR", "name": "South Korea", "flag": "🇰🇷", "region": "APAC"}, {"code": "TW", "name": "Taiwan", "flag": "🇹🇼", "region": "APAC"}, {"code": "TH", "name": "Thailand", "flag": "🇹🇭", "region": "APAC"}, {"code": "VN", "name": "Vietnam", "flag": "🇻🇳", "region": "APAC"}, {"code": "DZ", "name": "Algeria", "flag": "🇩🇿", "region": "Africa"}, {"code": "CI", "name": "Côte d'Ivoire", "flag": "🇨🇮", "region": "Africa"}, {"code": "EG", "name": "Egypt", "flag": "🇪🇬", "region": "Africa"}, {"code": "GH", "name": "Ghana", "flag": "🇬🇭", "region": "Africa"}, {"code": "KE", "name": "Kenya", "flag": "🇰🇪", "region": "Africa"}, {"code": "MU", "name": "Mauritius", "flag": "🇲🇺", "region": "Africa"}, {"code": "MA", "name": "Morocco", "flag": "🇲🇦", "region": "Africa"}, {"code": "NG", "name": "Nigeria", "flag": "🇳🇬", "region": "Africa"}, {"code": "SN", "name": "Senegal", "flag": "🇸🇳", "region": "Africa"}, {"code": "ZA", "name": "South Africa", "flag": "🇿🇦", "region": "Africa"}, {"code": "TZ", "name": "Tanzania", "flag": "🇹🇿", "region": "Africa"}, {"code": "TN", "name": "Tunisia", "flag": "🇹🇳", "region": "Africa"}, {"code": "UG", "name": "Uganda", "flag": "🇺🇬", "region": "Africa"}, {"code": "ZM", "name": "Zambia", "flag": "🇿🇲", "region": "Africa"}];
+  const REGION_ORDER = ['GCC','Europe','Europe/APAC','North America','APAC','Africa'];
+  const TYPES = [
+    {key:'tp-deadline', label:'TP deadline', color:'var(--c-tp)'},
+    {key:'tax-deadline', label:'Income tax deadline', color:'var(--c-tax)'},
+    {key:'festival', label:'Festival / holiday', color:'var(--c-fest)'},
+    {key:'event', label:'Internal event', color:'var(--c-event)'}
+  ];
+  const COLOR_MAP = {'--c-tp':'#C89B3C','--c-tax':'#2F6F76','--c-fest':'#7A6FB0','--c-event':'#3E7C59'};
+  const TYPE_COLOR = Object.fromEntries(TYPES.map(t=>[t.key,t.color.replace('var(','').replace(')','')]));
+  function typeColor(key){ return COLOR_MAP[TYPE_COLOR[key]] || '#999'; }
+
+  const RECURRING_SEED = [{"id": "d1000", "recurring": true, "mmdd": "09-30", "country": "AE", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "9 months after tax period-end; for 31 Dec year-end: 30 September TP disclosure filed with same return: TP Disclosure with CT Return Source: OECD / KPMG UAE"}, {"id": "d1001", "recurring": true, "mmdd": "04-30", "country": "SA", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "120 days after year-end; for 31 Dec: approx. 30 April TP disclosure filed with same return: CTDF / affidavit with annual tax or zakat return Source: EY TP Guide / PwC"}, {"id": "d1002", "recurring": true, "mmdd": "04-15", "country": "KW", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "Generally 15 April for 31 Dec year-end TP disclosure filed with same return: Disclosure with tax return for in-scope DMTT entities Source: EY TP Guide / PwC / KPMG"}, {"id": "d1003", "recurring": true, "mmdd": "04-30", "country": "QA", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "Generally 30 April for 31 Dec year-end TP disclosure filed with same return: TP declaration with tax return Source: KPMG Qatar / EY"}, {"id": "d1004", "recurring": true, "mmdd": "04-30", "country": "OM", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Generally 30 April for 31 Dec year-end Source: EY TP Guide"}, {"id": "d1005", "recurring": true, "mmdd": "12-31", "country": "GB", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "12 months after year-end; for 31 Dec: 31 December Source: OECD / KPMG"}, {"id": "d1006", "recurring": true, "mmdd": "09-23", "country": "IE", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Around 23 September for 31 Dec year-end (e-filing) Source: EY TP Guide / OECD"}, {"id": "d1007", "recurring": true, "mmdd": "07-31", "country": "DE", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Standard 31 July; often extended through tax adviser Source: KPMG / EY TP Guide"}, {"id": "d1008", "recurring": true, "mmdd": "05-31", "country": "NL", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "31 May for 31 Dec year-end unless extension Source: EY TP Guide / OECD"}, {"id": "d1009", "recurring": true, "mmdd": "12-31", "country": "BE", "type": "tp-deadline", "title": "TP disclosure / annual filing due", "notes": "Form 275 LF linked to CIT return; Form 275 MF by 31 December"}, {"id": "d1010", "recurring": true, "mmdd": "07-25", "country": "ES", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "1–25 July for 31 Dec year-end Source: EY TP Guide"}, {"id": "d1011", "recurring": true, "mmdd": "11-30", "country": "IT", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 November for 31 Dec year-end Source: EY TP Guide"}, {"id": "d1012", "recurring": true, "mmdd": "03-31", "country": "PL", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "CIT return generally 31 March; TP has separate deadlines Source: EY TP Guide / Taxand"}, {"id": "d1013", "recurring": true, "mmdd": "11-30", "country": "PL", "type": "tp-deadline", "title": "TP disclosure / annual filing due", "notes": "TPR by 30 November"}, {"id": "d1014", "recurring": true, "mmdd": "10-31", "country": "PL", "type": "tp-deadline", "title": "Local File deadline", "notes": "31 October"}, {"id": "d1015", "recurring": true, "mmdd": "12-31", "country": "PL", "type": "tp-deadline", "title": "Master File deadline", "notes": "31 December"}, {"id": "d1016", "recurring": true, "mmdd": "05-31", "country": "PT", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "CIT return usually around 31 May Source: EY TP Guide"}, {"id": "d1017", "recurring": true, "mmdd": "07-15", "country": "PT", "type": "tp-deadline", "title": "Local File deadline", "notes": "15 July"}, {"id": "d1018", "recurring": true, "mmdd": "06-30", "country": "DK", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "CT return generally 30 June Source: KPMG Denmark"}, {"id": "d1019", "recurring": true, "mmdd": "07-01", "country": "SE", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Around 1 July for many 31 Dec companies Source: OECD / EY TP Guide"}, {"id": "d1020", "recurring": true, "mmdd": "07-01", "country": "CZ", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "1 April, or 1 July if audited/tax adviser Source: Taxand / EY"}, {"id": "d1021", "recurring": true, "mmdd": "05-31", "country": "HU", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "31 May Source: EY TP Guide / Taxand"}, {"id": "d1022", "recurring": true, "mmdd": "12-31", "country": "HU", "type": "tp-deadline", "title": "Master File deadline", "notes": "Usually 31 December"}, {"id": "d1023", "recurring": true, "mmdd": "03-31", "country": "CY", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "Generally 31 March of second year following tax year TP disclosure filed with same return: Summary Information Table with tax return Source: EY TP Guide"}, {"id": "d1024", "recurring": true, "mmdd": "04-30", "country": "TR", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 April Source: EY TP Guide"}, {"id": "d1025", "recurring": true, "mmdd": "12-31", "country": "LU", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Generally 31 December following tax year Source: EY TP Guide"}, {"id": "d1026", "recurring": true, "mmdd": "09-30", "country": "MT", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Often around 30 September for 31 Dec year-end Source: EY TP Guide"}, {"id": "d1027", "recurring": true, "mmdd": "06-30", "country": "GR", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Around 30 June Source: EY TP Guide"}, {"id": "d1028", "recurring": true, "mmdd": "03-25", "country": "RO", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "25 March Source: EY TP Guide"}, {"id": "d1029", "recurring": true, "mmdd": "06-30", "country": "BG", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: EY TP Guide"}, {"id": "d1030", "recurring": true, "mmdd": "06-30", "country": "CA", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June for 31 Dec year-end Source: Weaver / BDO Canada"}, {"id": "d1031", "recurring": true, "mmdd": "11-30", "country": "IN", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "ITR for TP cases generally 30 November Source: EY TP Guide"}, {"id": "d1032", "recurring": true, "mmdd": "10-31", "country": "IN", "type": "tp-deadline", "title": "TP disclosure / annual filing due", "notes": "Form 3CEB generally 31 October"}, {"id": "d1033", "recurring": true, "mmdd": "05-15", "country": "AU", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Varies; often 15 Jan / 28 Feb / 15 May Source: OECD Australia"}, {"id": "d1034", "recurring": true, "mmdd": "11-30", "country": "SG", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 November Source: OECD / EY TP Guide"}, {"id": "d1035", "recurring": true, "mmdd": "07-31", "country": "MY", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "31 July for 31 Dec year-end Source: EY TP Guide / Grant Thornton"}, {"id": "d1036", "recurring": true, "mmdd": "04-30", "country": "ID", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "30 April for 31 Dec year-end TP disclosure filed with same return: Summary/RPT disclosure with tax return Source: OECD / EY TP Guide"}, {"id": "d1037", "recurring": true, "mmdd": "05-30", "country": "TH", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "Around 30 May TP disclosure filed with same return: TP Disclosure Form with annual CIT return Source: EY TP Guide"}, {"id": "d1038", "recurring": true, "mmdd": "03-31", "country": "VN", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "31 March Source: EY TP Guide"}, {"id": "d1039", "recurring": true, "mmdd": "05-31", "country": "CN", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "CIT return 31 May; TP docs separate TP disclosure filed with same return: RPT forms with annual CIT filing Source: OECD China / EY"}, {"id": "d1040", "recurring": true, "mmdd": "06-30", "country": "CN", "type": "tp-deadline", "title": "Local File deadline", "notes": "30 June"}, {"id": "d1041", "recurring": true, "mmdd": "09-30", "country": "HK", "type": "tp-deadline", "title": "Local File deadline", "notes": "Within 9 months after accounting year-end; for 31 Dec: 30 September"}, {"id": "d1042", "recurring": true, "mmdd": "05-31", "country": "JP", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Generally 2 months after FY-end; for 31 Mar: 31 May Source: OECD Japan / EY"}, {"id": "d1043", "recurring": true, "mmdd": "12-31", "country": "KR", "type": "tp-deadline", "title": "Local File deadline", "notes": "Consolidated TP report by 31 December for 31 Dec year-end"}, {"id": "d1044", "recurring": true, "mmdd": "04-15", "country": "PH", "type": "tp-deadline", "title": "CT/income tax return due (incl. TP disclosure)", "notes": "15 April TP disclosure filed with same return: BIR Form 1709 with annual return Source: EY TP Guide"}, {"id": "d1045", "recurring": true, "mmdd": "05-31", "country": "TW", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "1–31 May Source: EY TP Guide"}, {"id": "d1046", "recurring": true, "mmdd": "03-31", "country": "NZ", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "7 July, or 31 March if tax agent Source: EY TP Guide"}, {"id": "d1047", "recurring": true, "mmdd": "12-31", "country": "ZA", "type": "tp-deadline", "title": "Local File deadline", "notes": "12 months after year-end; for 31 Dec: 31 December"}, {"id": "d1048", "recurring": true, "mmdd": "06-30", "country": "NG", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: OECD / EY TP Guide"}, {"id": "d1049", "recurring": true, "mmdd": "06-30", "country": "KE", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: EY TP Guide"}, {"id": "d1050", "recurring": true, "mmdd": "04-30", "country": "EG", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 April Source: EY TP Guide"}, {"id": "d1051", "recurring": true, "mmdd": "06-30", "country": "EG", "type": "tp-deadline", "title": "Local File deadline", "notes": "Generally 30 June, 2 months after CIT return"}, {"id": "d1052", "recurring": true, "mmdd": "03-31", "country": "MA", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "31 March Source: EY TP Guide"}, {"id": "d1053", "recurring": true, "mmdd": "04-30", "country": "GH", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 April Source: EY TP Guide"}, {"id": "d1054", "recurring": true, "mmdd": "06-30", "country": "TZ", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: EY TP Guide"}, {"id": "d1055", "recurring": true, "mmdd": "06-30", "country": "UG", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: EY TP Guide"}, {"id": "d1056", "recurring": true, "mmdd": "06-21", "country": "ZM", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Around 21 June Source: EY TP Guide"}, {"id": "d1057", "recurring": true, "mmdd": "03-25", "country": "TN", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "Often around 25 March, depending on taxpayer type Source: EY TP Guide"}, {"id": "d1058", "recurring": true, "mmdd": "04-30", "country": "DZ", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 April Source: EY TP Guide"}, {"id": "d1059", "recurring": true, "mmdd": "04-30", "country": "SN", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 April Source: EY TP Guide"}, {"id": "d1060", "recurring": true, "mmdd": "06-30", "country": "MU", "type": "tax-deadline", "title": "CT/income tax return due", "notes": "30 June Source: EY TP Guide"}];
+
+  const NATIONAL_DAYS_SEED = [{"id": "n2000", "recurring": true, "mmdd": "12-02", "country": "AE", "type": "festival", "title": "UAE National Day", "notes": "Commemorates the formation of the United Arab Emirates in 1971."}, {"id": "n2001", "recurring": true, "mmdd": "09-23", "country": "SA", "type": "festival", "title": "Saudi National Day", "notes": "Marks the unification of the Kingdom in 1932."}, {"id": "n2002", "recurring": true, "mmdd": "02-25", "country": "KW", "type": "festival", "title": "Kuwait National Day", "notes": "Marks Sheikh Abdullah Al-Salem Al-Sabah's accession in 1950."}, {"id": "n2003", "recurring": true, "mmdd": "12-18", "country": "QA", "type": "festival", "title": "Qatar National Day", "notes": "Commemorates the unification of Qatar under Sheikh Jassim bin Mohammed Al Thani in 1878."}, {"id": "n2004", "recurring": true, "mmdd": "12-16", "country": "BH", "type": "festival", "title": "Bahrain National Day", "notes": "Marks Sheikh Isa bin Salman Al Khalifa's accession as Emir in 1961."}, {"id": "n2005", "recurring": true, "mmdd": "11-18", "country": "OM", "type": "festival", "title": "Oman National Day", "notes": "Marks the birthday of the late Sultan Qaboos and Oman's renaissance."}, {"id": "n2006", "recurring": true, "mmdd": "07-21", "country": "BE", "type": "festival", "title": "Belgian National Day", "notes": "Marks King Leopold I's accession to the throne in 1831."}, {"id": "n2007", "recurring": true, "mmdd": "03-03", "country": "BG", "type": "festival", "title": "Bulgaria Liberation Day", "notes": "National Day, commemorating liberation after the Russo-Turkish War of 1877-78."}, {"id": "n2008", "recurring": true, "mmdd": "04-01", "country": "CY", "type": "festival", "title": "Cyprus National Day", "notes": "Commemorates the start of the 1955 EOKA campaign."}, {"id": "n2009", "recurring": true, "mmdd": "10-28", "country": "CZ", "type": "festival", "title": "Czech Statehood Day", "notes": "Marks the creation of independent Czechoslovakia in 1918."}, {"id": "n2010", "recurring": true, "mmdd": "06-05", "country": "DK", "type": "festival", "title": "Danish Constitution Day", "notes": "Marks the 1849 constitution. Note: Denmark has no official public national holiday; this is a widely observed half-day, not a bank holiday."}, {"id": "n2011", "recurring": true, "mmdd": "07-14", "country": "FR", "type": "festival", "title": "Bastille Day", "notes": "Commemorates the storming of the Bastille in 1789."}, {"id": "n2012", "recurring": true, "mmdd": "10-03", "country": "DE", "type": "festival", "title": "German Unity Day", "notes": "Marks German reunification in 1990."}, {"id": "n2013", "recurring": true, "mmdd": "03-25", "country": "GR", "type": "festival", "title": "Greek Independence Day", "notes": "Marks the start of the war of independence in 1821."}, {"id": "n2014", "recurring": true, "mmdd": "03-15", "country": "HU", "type": "festival", "title": "Hungary's National Day", "notes": "Marks the start of the 1848 revolution."}, {"id": "n2015", "recurring": true, "mmdd": "03-17", "country": "IE", "type": "festival", "title": "St. Patrick's Day", "notes": "Ireland's national day, honoring the patron saint."}, {"id": "n2016", "recurring": true, "mmdd": "06-02", "country": "IT", "type": "festival", "title": "Italian Republic Day", "notes": "Marks the 1946 referendum that created the Italian Republic."}, {"id": "n2017", "recurring": true, "mmdd": "06-23", "country": "LU", "type": "festival", "title": "Luxembourg National Day", "notes": "Official celebration of the Grand Duke's birthday."}, {"id": "n2018", "recurring": true, "mmdd": "09-21", "country": "MT", "type": "festival", "title": "Malta Independence Day", "notes": "Marks independence from the UK in 1964."}, {"id": "n2019", "recurring": true, "mmdd": "04-27", "country": "NL", "type": "festival", "title": "King's Day", "notes": "Celebrates the King's birthday; observed 26 April if the 27th falls on a Sunday."}, {"id": "n2020", "recurring": true, "mmdd": "11-11", "country": "PL", "type": "festival", "title": "Poland Independence Day", "notes": "Marks Poland's restoration of statehood in 1918."}, {"id": "n2021", "recurring": true, "mmdd": "06-10", "country": "PT", "type": "festival", "title": "Portugal Day", "notes": "National Day, commemorating the death of poet Luís de Camões."}, {"id": "n2022", "recurring": true, "mmdd": "12-01", "country": "RO", "type": "festival", "title": "Romania National Day", "notes": "Marks the Union of Transylvania with Romania in 1918."}, {"id": "n2023", "recurring": true, "mmdd": "10-12", "country": "ES", "type": "festival", "title": "Spain National Day", "notes": "Fiesta Nacional de España, marking Columbus's 1492 landing."}, {"id": "n2024", "recurring": true, "mmdd": "06-06", "country": "SE", "type": "festival", "title": "Sweden National Day", "notes": "Marks the election of King Gustav Vasa in 1523."}, {"id": "n2025", "recurring": true, "mmdd": "08-01", "country": "CH", "type": "festival", "title": "Swiss National Day", "notes": "Marks the 1291 signing of the Federal Charter."}, {"id": "n2026", "recurring": true, "mmdd": "10-29", "country": "TR", "type": "festival", "title": "Turkey Republic Day", "notes": "Marks the proclamation of the Turkish Republic in 1923."}, {"id": "n2027", "recurring": true, "mmdd": "07-01", "country": "CA", "type": "festival", "title": "Canada Day", "notes": "Marks the 1867 Confederation."}, {"id": "n2028", "recurring": true, "mmdd": "01-26", "country": "AU", "type": "festival", "title": "Australia Day", "notes": "Marks the 1788 arrival of the First Fleet at Sydney Cove; the date is contested by some."}, {"id": "n2029", "recurring": true, "mmdd": "10-01", "country": "CN", "type": "festival", "title": "China National Day", "notes": "Marks the founding of the People's Republic of China in 1949."}, {"id": "n2030", "recurring": true, "mmdd": "07-01", "country": "HK", "type": "festival", "title": "Hong Kong SAR Establishment Day", "notes": "Marks the end of British colonial rule in 1997."}, {"id": "n2031", "recurring": true, "mmdd": "08-15", "country": "IN", "type": "festival", "title": "India Independence Day", "notes": "Marks independence from British rule in 1947."}, {"id": "n2032", "recurring": true, "mmdd": "08-17", "country": "ID", "type": "festival", "title": "Indonesia Independence Day", "notes": "Marks the declaration of independence from the Netherlands in 1945."}, {"id": "n2033", "recurring": true, "mmdd": "02-11", "country": "JP", "type": "festival", "title": "Japan National Foundation Day", "notes": "Traditional date of Japan's founding."}, {"id": "n2034", "recurring": true, "mmdd": "08-31", "country": "MY", "type": "festival", "title": "Merdeka (National) Day", "notes": "Marks Malaysia's independence from the UK in 1957."}, {"id": "n2035", "recurring": true, "mmdd": "02-06", "country": "NZ", "type": "festival", "title": "Waitangi Day", "notes": "Commemorates the 1840 signing of the Treaty of Waitangi."}, {"id": "n2036", "recurring": true, "mmdd": "06-12", "country": "PH", "type": "festival", "title": "Philippines Independence Day", "notes": "Marks the 1898 declaration of independence."}, {"id": "n2037", "recurring": true, "mmdd": "08-09", "country": "SG", "type": "festival", "title": "Singapore National Day", "notes": "Marks Singapore's separation from Malaysia in 1965."}, {"id": "n2038", "recurring": true, "mmdd": "08-15", "country": "KR", "type": "festival", "title": "South Korea Liberation Day (Gwangbokjeol)", "notes": "Marks liberation from Japanese colonial rule in 1945."}, {"id": "n2039", "recurring": true, "mmdd": "10-10", "country": "TW", "type": "festival", "title": "Taiwan National Day (Double Ten Day)", "notes": "Marks the start of the Wuchang Uprising in 1911."}, {"id": "n2040", "recurring": true, "mmdd": "07-28", "country": "TH", "type": "festival", "title": "H.M. King's Birthday / National Day", "notes": "King Vajiralongkorn's birthday; has been Thailand's National Day since 2017 (previously 5 Dec under King Bhumibol)."}, {"id": "n2041", "recurring": true, "mmdd": "09-02", "country": "VN", "type": "festival", "title": "Vietnam National Day", "notes": "Marks the 1945 declaration of independence."}, {"id": "n2042", "recurring": true, "mmdd": "07-05", "country": "DZ", "type": "festival", "title": "Algeria Independence Day", "notes": "Marks independence from France in 1962."}, {"id": "n2043", "recurring": true, "mmdd": "08-07", "country": "CI", "type": "festival", "title": "Côte d'Ivoire Independence Day", "notes": "Marks independence from France in 1960."}, {"id": "n2044", "recurring": true, "mmdd": "07-23", "country": "EG", "type": "festival", "title": "Egypt Revolution Day", "notes": "Egypt's national day, marking the 1952 revolution."}, {"id": "n2045", "recurring": true, "mmdd": "03-06", "country": "GH", "type": "festival", "title": "Ghana Independence Day", "notes": "Marks independence from the UK in 1957."}, {"id": "n2046", "recurring": true, "mmdd": "12-12", "country": "KE", "type": "festival", "title": "Jamhuri Day", "notes": "Marks Kenya's establishment as a republic in 1964."}, {"id": "n2047", "recurring": true, "mmdd": "03-12", "country": "MU", "type": "festival", "title": "Mauritius Independence and Republic Day", "notes": "Marks independence in 1968 and republic status in 1992."}, {"id": "n2048", "recurring": true, "mmdd": "11-18", "country": "MA", "type": "festival", "title": "Morocco Independence Day", "notes": "Marks independence from France in 1956."}, {"id": "n2049", "recurring": true, "mmdd": "10-01", "country": "NG", "type": "festival", "title": "Nigeria Independence Day", "notes": "Marks independence from the UK in 1960."}, {"id": "n2050", "recurring": true, "mmdd": "04-04", "country": "SN", "type": "festival", "title": "Senegal Independence Day", "notes": "Marks independence from France in 1960."}, {"id": "n2051", "recurring": true, "mmdd": "04-27", "country": "ZA", "type": "festival", "title": "South Africa Freedom Day", "notes": "Marks the first democratic post-apartheid elections in 1994."}, {"id": "n2052", "recurring": true, "mmdd": "12-09", "country": "TZ", "type": "festival", "title": "Tanzania Independence Day", "notes": "Marks independence (Tanganyika) from the UK in 1961."}, {"id": "n2053", "recurring": true, "mmdd": "03-20", "country": "TN", "type": "festival", "title": "Tunisia Independence Day", "notes": "Marks independence from France in 1956."}, {"id": "n2054", "recurring": true, "mmdd": "10-09", "country": "UG", "type": "festival", "title": "Uganda Independence Day", "notes": "Marks independence from the UK in 1962."}, {"id": "n2055", "recurring": true, "mmdd": "10-24", "country": "ZM", "type": "festival", "title": "Zambia Independence Day", "notes": "Marks independence from the UK in 1964."}, {"id": "n2999", "recurring": true, "mmdd": "01-26", "country": "IN", "type": "festival", "title": "Republic Day", "notes": "Marks the adoption of the Indian Constitution in 1950."}];
+
+  const ONEOFF_SEED = [
+    {id:'f3',recurring:false,date:'2026-03-20',country:'AE',type:'festival',title:'Eid al-Fitr (approx.)',notes:'Moon-sighting dependent — confirm exact date closer to the time. Observed across GCC, Egypt, Morocco, Tunisia, Algeria, Malaysia, Indonesia and other Muslim-majority markets we cover.'},
+    {id:'f4',recurring:false,date:'2026-05-27',country:'SA',type:'festival',title:'Eid al-Adha (approx.)',notes:'Moon-sighting dependent — confirm exact date closer to the time. Observed across GCC, Egypt, Morocco, Tunisia, Algeria, Malaysia, Indonesia and other Muslim-majority markets we cover.'},
+    {id:'f7',recurring:false,date:'2026-11-08',country:'IN',type:'festival',title:'Diwali (approx.)',notes:'Lunar calendar dependent — confirm exact date closer to the time.'},
+    {id:'f10',recurring:false,date:'2026-07-15',country:'AE',type:'event',title:'Team quarterly benchmarking review',notes:'Sample internal event — edit or remove.'}
+  ];
+
+  const STORAGE_KEY = 'tp-compliance-events-v3';
+  let events = [];
+  let current = new Date();
+  current.setDate(1);
+  let activeTypes = new Set(TYPES.map(t=>t.key));
+  let activeCountries = new Set(COUNTRIES.map(c=>c.code));
+  let searchTerm = '';
+  let countrySearch = '';
+
+  const pad2 = n => String(n).padStart(2,'0');
+  const fmtDate = d => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+  const todayStr = fmtDate(new Date());
+
+  // Storage shim: uses the platform's window.storage when available (e.g. inside Claude),
+  // otherwise falls back to browser localStorage for standalone hosting. localStorage is
+  // per-browser/per-device only — it does NOT sync across teammates. Use Export/Import to share.
+  if(!window.storage){
+    window.storage = {
+      async get(key){
+        try{
+          const raw = localStorage.getItem(key);
+          return raw===null ? null : {key, value: raw};
+        }catch(e){ return null; }
+      },
+      async set(key, value){
+        try{ localStorage.setItem(key, value); return {key, value}; }catch(e){ return null; }
+      }
+    };
+  }
+
+  async function loadEvents(){
+    try{
+      const res = await window.storage.get(STORAGE_KEY, true);
+      events = res && res.value ? JSON.parse(res.value) : RECURRING_SEED.concat(NATIONAL_DAYS_SEED).concat(ONEOFF_SEED);
+      if(!res){ await window.storage.set(STORAGE_KEY, JSON.stringify(events), true); }
+    }catch(e){
+      events = RECURRING_SEED.concat(NATIONAL_DAYS_SEED).concat(ONEOFF_SEED);
+      try{ await window.storage.set(STORAGE_KEY, JSON.stringify(events), true); }catch(e2){}
+    }
+    renderAll();
+  }
+  async function persist(){
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(events), true); }catch(e){}
+  }
+
+  function exportEvents(){
+    const blob = new Blob([JSON.stringify(events, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `hexatp-compliance-calendar-${todayStr}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function importEvents(file){
+    const reader = new FileReader();
+    reader.onload = async (e)=>{
+      try{
+        const parsed = JSON.parse(e.target.result);
+        if(!Array.isArray(parsed)) throw new Error('not an array');
+        events = parsed;
+        await persist();
+        renderAll();
+        alert(`Imported ${parsed.length} entries.`);
+      }catch(err){
+        alert('Could not read that file — make sure it is a JSON export from this tool.');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+
+  function countryMeta(code){ return COUNTRIES.find(c=>c.code===code) || {code,name:code,flag:'🏳️'}; }
+  function eventMMDD(e){ return e.recurring ? e.mmdd : e.date.slice(5); }
+
+  function filteredEvents(){
+    return events.filter(e=>{
+      if(!activeTypes.has(e.type)) return false;
+      if(!activeCountries.has(e.country)) return false;
+      if(searchTerm){
+        const hay = (e.title+' '+(e.notes||'')+' '+countryMeta(e.country).name).toLowerCase();
+        if(!hay.includes(searchTerm.toLowerCase())) return false;
+      }
+      return true;
+    });
+  }
+
+  function renderTypeFilters(){
+    const typeWrap = document.getElementById('tpcTypeFilters');
+    typeWrap.innerHTML = TYPES.map(t=>`
+      <button class="tpc-pill ${activeTypes.has(t.key)?'active':''}" data-type="${t.key}">
+        <span class="dot" style="background:${typeColor(t.key)}"></span>${t.label}
+      </button>`).join('');
+    typeWrap.querySelectorAll('.tpc-pill').forEach(btn=>{
+      btn.onclick = ()=>{
+        const k = btn.dataset.type;
+        activeTypes.has(k) ? activeTypes.delete(k) : activeTypes.add(k);
+        renderAll();
+      };
+    });
+  }
+
+  function renderCountryPanel(){
+    const btn = document.getElementById('tpcCountryCount');
+    btn.textContent = activeCountries.size===COUNTRIES.length ? '(all)' : `(${activeCountries.size})`;
+
+    const panel = document.getElementById('tpcCountryPanel');
+    const q = countrySearch.toLowerCase();
+    const byRegion = {};
+    COUNTRIES.forEach(c=>{
+      if(q && !c.name.toLowerCase().includes(q)) return;
+      (byRegion[c.region] = byRegion[c.region]||[]).push(c);
+    });
+    const regions = Object.keys(byRegion).sort((a,b)=> REGION_ORDER.indexOf(a)-REGION_ORDER.indexOf(b));
+
+    panel.innerHTML = `
+      <div class="tpc-country-panel-head">
+        <input class="tpc-country-search" id="tpcCountrySearchInput" placeholder="Search countries…" value="${countrySearch}"/>
+      </div>
+      <div class="tpc-country-actions">
+        <button id="tpcSelAll">Select all</button>
+        <button id="tpcSelNone">Clear all</button>
+      </div>
+      ${regions.map(region=>`
+        <div class="tpc-region-block">
+          <div class="tpc-region-title">${region} <button data-region="${region}" class="tpc-region-toggle">toggle</button></div>
+          ${byRegion[region].map(c=>`
+            <label class="tpc-country-row">
+              <input type="checkbox" data-country="${c.code}" ${activeCountries.has(c.code)?'checked':''}/>
+              ${c.flag} ${c.name}
+            </label>`).join('')}
+        </div>`).join('') || '<p style="font-size:12px;color:var(--ink-soft);">No countries match.</p>'}
+    `;
+
+    document.getElementById('tpcCountrySearchInput').oninput = (e)=>{
+      countrySearch = e.target.value; renderCountryPanel();
+      document.getElementById('tpcCountrySearchInput').focus();
+      document.getElementById('tpcCountrySearchInput').setSelectionRange(countrySearch.length,countrySearch.length);
+    };
+    document.getElementById('tpcSelAll').onclick = ()=>{ activeCountries = new Set(COUNTRIES.map(c=>c.code)); renderAll(); };
+    document.getElementById('tpcSelNone').onclick = ()=>{ activeCountries = new Set(); renderAll(); };
+    panel.querySelectorAll('.tpc-region-toggle').forEach(b=>{
+      b.onclick = ()=>{
+        const region = b.dataset.region;
+        const codes = COUNTRIES.filter(c=>c.region===region).map(c=>c.code);
+        const allOn = codes.every(c=>activeCountries.has(c));
+        codes.forEach(c=> allOn ? activeCountries.delete(c) : activeCountries.add(c));
+        renderAll();
+      };
+    });
+    panel.querySelectorAll('input[data-country]').forEach(cb=>{
+      cb.onchange = ()=>{
+        const k = cb.dataset.country;
+        cb.checked ? activeCountries.add(k) : activeCountries.delete(k);
+        renderAll();
+      };
+    });
+  }
+
+  function renderUpcoming(){
+    const now = new Date(todayStr+'T00:00:00');
+    const thisYear = now.getFullYear();
+
+    function nextOccurrence(e){
+      if(!e.recurring) return new Date(e.date+'T00:00:00');
+      const [mm,dd] = e.mmdd.split('-').map(Number);
+      let d = new Date(thisYear, mm-1, dd);
+      if(d < now) d = new Date(thisYear+1, mm-1, dd);
+      return d;
+    }
+
+    function buildRow(elId, typeKey, cssClass){
+      const wrap = document.getElementById(elId);
+      const upcoming = filteredEvents()
+        .filter(e => e.type===typeKey)
+        .map(e=>{ const nd = nextOccurrence(e); return {...e, diff: Math.ceil((nd-now)/86400000)}; })
+        .filter(e=>e.diff>=0)
+        .sort((a,b)=>a.diff-b.diff)
+        .slice(0,10);
+
+      if(upcoming.length===0){
+        wrap.innerHTML = `<div class="tpc-upcoming-empty">No upcoming entries match the current filters.</div>`;
+        return;
+      }
+      wrap.innerHTML = upcoming.map(e=>`
+        <div class="tpc-chip ${cssClass}">
+          <div class="days">${e.diff===0?'Today':e.diff+' days'}</div>
+          <div class="label">${e.title}</div>
+          <div class="country">${countryMeta(e.country).flag} ${countryMeta(e.country).name}</div>
+        </div>`).join('');
+    }
+
+    buildRow('tpcUpcomingTP', 'tp-deadline', 'tp');
+    buildRow('tpcUpcomingCT', 'tax-deadline', 'ct');
+  }
+
+  function renderCalendar(){
+    document.getElementById('tpcMonthLabel').textContent =
+      current.toLocaleDateString('en-US',{month:'long', year:'numeric'});
+
+    const dow = document.getElementById('tpcDow');
+    dow.innerHTML = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div>${d}</div>`).join('');
+
+    const grid = document.getElementById('tpcGrid');
+    const year = current.getFullYear(), month = current.getMonth();
+    const firstDay = new Date(year, month, 1);
+    let startOffset = firstDay.getDay() - 1; if(startOffset<0) startOffset=6;
+    const daysInMonth = new Date(year, month+1, 0).getDate();
+    const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+    const cells = [];
+    for(let i=startOffset;i>0;i--){ cells.push({day: daysInPrevMonth-i+1, muted:true, dateStr:null}); }
+    for(let d=1; d<=daysInMonth; d++){ cells.push({day:d, muted:false, dateStr: `${year}-${pad2(month+1)}-${pad2(d)}`}); }
+    while(cells.length % 7 !== 0){ cells.push({day: 0, muted:true, dateStr:null}); }
+
+    const fe = filteredEvents();
+    const evByMMDD = {};
+    fe.forEach(e=>{ const k = eventMMDD(e); (evByMMDD[k]=evByMMDD[k]||[]).push(e); });
+
+    grid.innerHTML = cells.map(c=>{
+      if(c.muted){
+        return `<div class="tpc-cell muted"><div class="tpc-daynum">${c.day||''}</div></div>`;
+      }
+      const isToday = c.dateStr === todayStr;
+      const mmdd = c.dateStr.slice(5);
+      const dayEvents = evByMMDD[mmdd] || [];
+      const shown = dayEvents.slice(0,3);
+      const extra = dayEvents.length - shown.length;
+      return `<div class="tpc-cell ${isToday?'today':''}" data-date="${c.dateStr}">
+        <div class="tpc-daynum">${c.day}</div>
+        ${shown.map(e=>`<div class="tpc-tag" style="background:${typeColor(e.type)}" title="${countryMeta(e.country).name} — ${e.title}">${countryMeta(e.country).flag} ${countryMeta(e.country).name} — ${e.title}</div>`).join('')}
+        ${extra>0?`<div class="tpc-more">+${extra} more</div>`:''}
+      </div>`;
+    }).join('');
+
+    grid.querySelectorAll('.tpc-cell[data-date]').forEach(cell=>{
+      cell.onclick = ()=> openDayModal(cell.dataset.date);
+    });
+  }
+
+  function renderAll(){
+    renderTypeFilters();
+    renderCountryPanel();
+    renderUpcoming();
+    renderCalendar();
+  }
+
+  function openDayModal(dateStr){
+    const mmdd = dateStr.slice(5);
+    const dayEvents = events.filter(e=> eventMMDD(e)===mmdd);
+    const nice = new Date(dateStr+'T00:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    const modal = document.getElementById('tpcModal');
+    modal.innerHTML = `
+      <div class="tpc-modal-head">
+        <h3>${nice}</h3>
+        <button class="tpc-modal-close" id="tpcCloseX">&times;</button>
+      </div>
+      <div class="tpc-modal-body">
+        ${dayEvents.length===0 ? `<p style="color:var(--ink-soft);font-size:13px;">Nothing logged for this day yet.</p>` : dayEvents.map(e=>`
+          <div class="tpc-event-item">
+            <div>
+              <div class="evtitle">${countryMeta(e.country).flag} ${e.title}${e.recurring?'<span class="tpc-recur-badge">yearly</span>':''}</div>
+              <div class="evmeta">${countryMeta(e.country).name} · ${TYPES.find(t=>t.key===e.type).label}</div>
+              ${e.notes? `<div class="evnote">${e.notes}</div>`:''}
+            </div>
+            <button class="tpc-del" data-id="${e.id}">Remove</button>
+          </div>`).join('')}
+        <button class="tpc-addday" id="tpcAddDay">+ Add entry for this day</button>
+      </div>`;
+    document.getElementById('tpcCloseX').onclick = closeModal;
+    modal.querySelectorAll('.tpc-del').forEach(btn=>{
+      btn.onclick = async ()=>{
+        events = events.filter(e=>e.id!==btn.dataset.id);
+        await persist();
+        renderAll();
+        openDayModal(dateStr);
+      };
+    });
+    document.getElementById('tpcAddDay').onclick = ()=> openForm(dateStr);
+    document.getElementById('tpcOverlay').classList.add('open');
+  }
+
+  function openForm(prefillDate){
+    const modal = document.getElementById('tpcModal');
+    modal.innerHTML = `
+      <div class="tpc-modal-head">
+        <h3>Add entry</h3>
+        <button class="tpc-modal-close" id="tpcCloseX">&times;</button>
+      </div>
+      <div class="tpc-modal-body tpc-form">
+        <label>Date</label>
+        <input type="date" id="fDate" value="${prefillDate||todayStr}" />
+        <label>Country</label>
+        <select id="fCountry">${COUNTRIES.map(c=>`<option value="${c.code}">${c.flag} ${c.name}</option>`).join('')}</select>
+        <label>Type</label>
+        <select id="fType">${TYPES.map(t=>`<option value="${t.key}">${t.label}</option>`).join('')}</select>
+        <label>Title</label>
+        <input type="text" id="fTitle" placeholder="e.g. TP documentation due" />
+        <label>Notes (optional)</label>
+        <textarea id="fNotes" placeholder="Source, confidence, links…"></textarea>
+        <div class="tpc-checkrow">
+          <input type="checkbox" id="fRecurring" checked/>
+          <label style="margin:0;text-transform:none;font-weight:400;font-size:12.5px;color:var(--ink);">Repeats every year on this month/day (recommended for statutory deadlines)</label>
+        </div>
+        <button class="tpc-savebtn" id="fSave">Save entry</button>
+      </div>`;
+    document.getElementById('tpcCloseX').onclick = closeModal;
+    document.getElementById('fType').onchange = (e)=>{
+      document.getElementById('fRecurring').checked = (e.target.value==='tp-deadline'||e.target.value==='tax-deadline');
+    };
+    document.getElementById('fSave').onclick = async ()=>{
+      const title = document.getElementById('fTitle').value.trim();
+      if(!title){ document.getElementById('fTitle').focus(); return; }
+      const dateVal = document.getElementById('fDate').value;
+      const recurring = document.getElementById('fRecurring').checked;
+      const entry = {
+        id: 'e'+Date.now(),
+        recurring,
+        country: document.getElementById('fCountry').value,
+        type: document.getElementById('fType').value,
+        title,
+        notes: document.getElementById('fNotes').value.trim()
+      };
+      if(recurring){ entry.mmdd = dateVal.slice(5); } else { entry.date = dateVal; }
+      events.push(entry);
+      await persist();
+      renderAll();
+      closeModal();
+    };
+    document.getElementById('tpcOverlay').classList.add('open');
+  }
+
+  function closeModal(){ document.getElementById('tpcOverlay').classList.remove('open'); }
+
+  document.getElementById('tpcOverlay').addEventListener('click', (e)=>{
+    if(e.target.id==='tpcOverlay') closeModal();
+  });
+  document.getElementById('tpcAddBtn').onclick = ()=> openForm(null);
+  document.getElementById('tpcExportBtn').onclick = exportEvents;
+  document.getElementById('tpcImportBtn').onclick = ()=> document.getElementById('tpcImportFile').click();
+  document.getElementById('tpcImportFile').onchange = (e)=>{
+    if(e.target.files && e.target.files[0]){ importEvents(e.target.files[0]); }
+    e.target.value = '';
+  };
+  document.getElementById('tpcPrev').onclick = ()=>{ current.setMonth(current.getMonth()-1); renderCalendar(); renderUpcoming(); };
+  document.getElementById('tpcNext').onclick = ()=>{ current.setMonth(current.getMonth()+1); renderCalendar(); renderUpcoming(); };
+  document.getElementById('tpcToday').onclick = ()=>{ current = new Date(); current.setDate(1); renderCalendar(); renderUpcoming(); };
+  document.getElementById('tpcSearch').oninput = (e)=>{ searchTerm = e.target.value; renderAll(); };
+  document.getElementById('tpcClearFilters').onclick = ()=>{
+    activeTypes = new Set(TYPES.map(t=>t.key));
+    activeCountries = new Set(COUNTRIES.map(c=>c.code));
+    searchTerm = ''; countrySearch = '';
+    document.getElementById('tpcSearch').value='';
+    renderAll();
+  };
+  document.getElementById('tpcCountryBtn').onclick = (e)=>{
+    e.stopPropagation();
+    document.getElementById('tpcCountryPanel').classList.toggle('open');
+  };
+  document.addEventListener('click', (e)=>{
+    const panel = document.getElementById('tpcCountryPanel');
+    const btn = document.getElementById('tpcCountryBtn');
+    if(panel.classList.contains('open') && !panel.contains(e.target) && e.target!==btn){
+      panel.classList.remove('open');
+    }
+  });
+
+  loadEvents();
+})();
+</script>
+
+</div>
+
+<script>
+function toggleSubmenu(submenuId, toggleElement) {
+    const submenu = document.getElementById(submenuId);
+    if (submenu) {
+        submenu.classList.toggle('active');
+        toggleElement.classList.toggle('active');
+    }
+}
+</script>
+
+    <script src="scripts/hexagon-bg.js"></script>
+</body>
+</html>
+
+
+
+
+

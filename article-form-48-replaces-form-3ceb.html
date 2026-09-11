@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form 48 Replaces Form 3CEB: What Indian Entities Need to Know | HexaTP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --bg-subtle: #f9fafb;
+            --accent: #f5c400;
+            --accent-glow: rgba(245, 196, 0, 0.2);
+            --card-bg: #ffffff;
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-slate: #64748b;
+        }
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            background: #ffffff;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-weight: 800; font-size: 20px; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+        .logo-img { height: 60px !important; padding: 4px 0; width: auto !important; display: block; object-fit: contain; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+        .btn-main { background: var(--accent); color: #000; padding: 12px 30px; border-radius: 100px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 20px var(--accent-glow); transition: 0.3s; display: inline-block; }
+        .btn-main:hover { transform: translateY(-3px); background: #fff; }
+        .article-hero { padding: 160px 5% 60px; background: linear-gradient(135deg, rgba(245, 196, 0, 0.1) 0%, var(--bg-light) 100%); text-align: center; }
+        .article-hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .article-hero p { font-size: 18px; color: var(--text-slate); margin-bottom: 15px; }
+        .article-meta { display: flex; justify-content: center; gap: 20px; font-size: 14px; color: var(--text-slate); flex-wrap: wrap; }
+        .article-container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .article-badge { display: inline-block; background: rgba(245, 196, 0, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        .article-content { line-height: 1.8; color: var(--text-main); }
+        .article-content h2 { font-size: 28px; font-weight: 700; margin-top: 40px; margin-bottom: 20px; color: var(--text-main); border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        .article-content h3 { font-size: 22px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; color: var(--text-main); }
+        .article-content p { font-size: 16px; margin-bottom: 20px; }
+        .article-content ul, .article-content ol { margin-left: 30px; margin-bottom: 20px; }
+        .article-content li { margin-bottom: 10px; font-size: 16px; }
+        .highlight-box { background: rgba(245, 196, 0, 0.05); border-left: 4px solid var(--accent); padding: 20px; border-radius: 8px; margin: 30px 0; }
+        .highlight-box strong { color: var(--accent); }
+        .cta-section { background: linear-gradient(135deg, var(--text-main) 0%, #1a2a4a 100%); color: #ffffff; padding: 60px 40px; border-radius: 20px; text-align: center; margin-top: 0; margin-bottom: 0; box-shadow: 0 10px 40px rgba(245, 196, 0, 0.15); width: 100%; box-sizing: border-box; }
+        .cta-section h3 { font-size: 28px; font-weight: 800; margin-bottom: 15px; color: #ffffff; }
+        .cta-section p { font-size: 16px; margin-bottom: 30px; opacity: 0.9; color: #ffffff; }
+        .cta-btn { background: var(--accent); color: #000; padding: 14px 32px; border-radius: 100px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(245, 196, 0, 0.3); }
+        @media (max-width: 768px) {
+            .cta-section { padding: 40px 20px !important; margin-top: 40px; margin-bottom: 40px; }
+            .cta-section h3 { font-size: 22px; }
+            .cta-section p { font-size: 14px; margin-bottom: 25px; }
+            .cta-btn { padding: 12px 24px; font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .cta-section { padding: 30px 15px !important; margin: 30px 0; }
+            .cta-section h3 { font-size: 20px; margin-bottom: 12px; }
+            .cta-section p { font-size: 13px; margin-bottom: 20px; }
+            .cta-btn { padding: 10px 20px; font-size: 13px; }
+        }
+        footer { padding: 40px 20px; text-align: center; color: var(--text-slate); font-size: 14px; border-top: 1px solid var(--glass-border); }
+        @media (max-width: 768px) {
+            header { top: 10px; width: 95%; padding: 8px 15px; }
+            .logo { font-size: 16px; }
+            .article-hero { padding: 100px 20px 40px; }
+            .article-hero h1 { font-size: 28px; }
+            .article-container { margin: 40px auto; }
+            .article-content h2 { font-size: 24px; }
+            .article-content h3 { font-size: 20px; }
+            nav.d-none.d-md-block { display: none !important; }
+            .btn-main { padding: 10px 20px; font-size: 12px; }
+        }
+        .dropdown-menu { border: 1px solid var(--glass-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 10px; background: #ffffff !important; min-width: 200px; z-index: 9999; }
+        .dropdown-item { padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--text-main); border-radius: 8px; transition: 0.2s; }
+        .dropdown-item:hover { background-color: var(--accent); color: #000 !important; }
+        .mobile-nav-toggle { display: none; position: fixed; right: 15px; top: 15px; background: #f5c400; border: none; color: #000; font-size: 24px; cursor: pointer; z-index: 1001; padding: 10px 12px; line-height: 1; border-radius: 6px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-left: 1px solid rgba(0,0,0,0.1); padding: 80px 20px 20px; transition: right 0.3s ease; z-index: 10001; overflow-y: auto; }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu ul li { margin-bottom: 15px; }
+        .mobile-menu ul li a { color: var(--text-main); text-decoration: none; font-size: 18px; display: block; padding: 12px 15px; border-radius: 8px; transition: 0.3s; }
+        .mobile-menu ul li a:hover { background: rgba(245,196,0,0.1); color: #f5c400; }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; backdrop-filter: blur(2px); }
+        .mobile-overlay.active { display: block; }
+        .close-menu { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #f5c400; font-size: 32px; cursor: pointer; padding: 5px; line-height: 1; }
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: block; }
+            header nav.d-none.d-md-block { display: none !important; }
+            header { width: 100% !important; padding: 12px 15px !important; top: 0 !important; left: 0 !important; transform: none !important; border-radius: 0 !important; justify-content: space-between !important; align-items: center !important; max-width: 100% !important; }
+            header > a.btn-main { display: none !important; }
+            header > a { order: 1; margin: 0 !important; }
+            .mobile-nav-toggle { order: 2; position: static !important; right: auto !important; top: auto !important; }
+            .logo-img { height: 32px; width: auto; }
+        }
+        @media (min-width: 769px) { 
+            .mobile-menu, .mobile-overlay, .mobile-nav-toggle { display: none !important; } 
+        }
+    </style>
+
+    <link rel="icon" type="image/png" href="favicon.png?v=3">
+
+<style>
+.mobile-submenu { padding-left: 20px; margin-top: 10px; display: none; border-left: 2px solid rgba(245,196,0,0.3); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.mobile-submenu.active { display: block; max-height: 2000px; animation: slideDown 0.3s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-submenu li a { font-size: 16px; padding: 10px 15px; }
+.mobile-dropdown-toggle { color: var(--text-main); font-size: 18px; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; transition: all 0.3s ease; user-select: none; }
+.mobile-dropdown-toggle:hover { background: rgba(245,196,0,0.1); color: #f5c400; }
+.mobile-dropdown-toggle::after { content: '\25BC'; font-size: 12px; transition: transform 0.3s ease; }
+.mobile-dropdown-toggle.active { color: #f5c400; }
+.mobile-dropdown-toggle.active::after { transform: rotate(180deg); }
+</style>
+
+</head>
+<body>
+    <header>
+        <!-- Mobile Navigation -->
+        <button class="mobile-nav-toggle" onclick="openMobileMenu()" aria-label="Open menu"><i class="bi bi-list"></i></button>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+<ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li>
+                    <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('countriesMenu', this)">
+                        <span>Countries</span>
+                    </div>
+                    <ul class="mobile-submenu" id="countriesMenu">
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('gulfMenu', this)">
+                                <span>Gulf Region</span>
+                            </div>
+                            <ul class="mobile-submenu" id="gulfMenu">
+                                <li><a href="unitedarabemirates.html">UAE</a></li>
+                                <li><a href="KingdomofSaudiArabia.html">Kingdom of Saudi Arabia</a></li>
+                                <li><a href="Qatar.html">Qatar</a></li>
+                                <li><a href="oman.html">Oman</a></li>
+                                <li><a href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('asiaMenu', this)">
+                                <span>Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="asiaMenu">
+                                <li><a href="India.html">India</a></li>
+                                <li><a href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('seaMenu', this)">
+                                <span>South East Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="seaMenu">
+                                <li><a href="singapore.html">Singapore</a></li>
+                                <li><a href="thailand.html">Thailand</a></li>
+                                <li><a href="malaysia.html">Malaysia</a></li>
+                                <li><a href="australia.html">Australia</a></li>
+                                <li><a href="indonesia.html">Indonesia</a></li>
+                                <li><a href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('africaMenu', this)">
+                                <span>Africa</span>
+                            </div>
+                            <ul class="mobile-submenu" id="africaMenu">
+                                <li><a href="kenya.html">Kenya</a></li>
+                                <li><a href="ghana.html">Ghana</a></li>
+                                <li><a href="botswana.html">Botswana</a></li>
+                                <li><a href="egypt.html">Egypt</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('americaMenu', this)">
+                                <span>America</span>
+                            </div>
+                            <ul class="mobile-submenu" id="americaMenu">
+                                <li><a href="canada.html">Canada</a></li>
+                                <li><a href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="oecd.html">OECD</a></li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px; margin-bottom: 30px;">
+                <a href="contact.html" class="btn-main" style="display: block; width: 100%; text-align: center; padding: 12px 16px !important; font-size: 14px !important;">Get Started</a>
+                <a href="login.html" class="btn-main" style="display: block; width: 100%; text-align: center; padding: 12px 16px !important; font-size: 14px !important; background: transparent; border: 2px solid var(--accent); color: var(--text-main);">Login</a>
+            </div>
+            </div>
+        <a href="index.html">
+            <img src="final-header-logo1.jpeg" alt="HexaTP - Transfer Pricing Simplified" class="logo-img" />
+        </a>
+        <nav class="d-none d-md-block">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Countries</a>
+                    <ul class="dropdown-menu">
+                        <!-- Gulf Region -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Gulf Region</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="unitedarabemirates.html">UAE</a></li>
+                                <li><a class="dropdown-item" href="KingdomofSaudiArabia.html">Kingdom of Saudi Arabia</a></li>
+                                <li><a class="dropdown-item" href="Qatar.html">Qatar</a></li>
+                                <li><a class="dropdown-item" href="oman.html">Oman</a></li>
+                                <li><a class="dropdown-item" href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <!-- Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="India.html">India</a></li>
+                                <li><a class="dropdown-item" href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <!-- South East Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">South East Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="singapore.html">Singapore</a></li>
+                                <li><a class="dropdown-item" href="thailand.html">Thailand</a></li>
+                                <li><a class="dropdown-item" href="malaysia.html">Malaysia</a></li>
+                                <li><a class="dropdown-item" href="australia.html">Australia</a></li>
+                                <li><a class="dropdown-item" href="indonesia.html">Indonesia</a></li>
+                                <li><a class="dropdown-item" href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <!-- Africa -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Africa</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kenya.html">Kenya</a></li>
+                                <li><a class="dropdown-item" href="egypt.html">Egypt</a></li>
+                                <li><a class="dropdown-item" href="ghana.html">Ghana</a></li>
+                                <li><a class="dropdown-item" href="botswana.html">Botswana</a></li>
+                            </ul>
+                        </li>
+                        <!-- Americas & Oceania -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">America</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="canada.html">Canada</a></li>
+                                <li><a class="dropdown-item" href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="oecd.html">OECD</a></li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="display: flex; gap: 15px; align-items: center;" class="d-none d-md-flex">
+            <a href="login.html" class="btn-main py-2 px-4 fs-6" style="background: transparent; color: var(--text-main); border: 2px solid var(--accent);">Login</a>
+            <a href="contact.html" class="btn-main py-2 px-4 fs-6">Get Started</a>
+        </div>
+    </header>
+
+    <section class="article-hero">
+        <h1>Form 48 Replaces Form 3CEB: What Indian Entities Need to Know</h1>
+        <p>Understanding the Transition from Form 3CEB to India's New Form 48 Transfer Pricing Requirements</p>
+        <div class="article-meta">
+            <span>📅 June 10, 2026</span>
+            <span>⏱️ 8 min read</span>
+            <span>📚 Transfer Pricing</span>
+        </div>
+    </section>
+
+    <div class="article-container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <img src="form-48.jpeg" alt="India Form 48" style="max-width: 100%; height: auto; max-height: 500px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+        </div>
+        <span class="article-badge">Transfer Pricing</span>
+
+        <div class="article-content">
+            <div style="margin: 40px 0; padding: 20px; background: rgba(245, 196, 0, 0.05); border-radius: 12px; text-align: center;">
+                <p style="margin-bottom: 15px; font-size: 16px;"><strong>📱 Join the Conversation:</strong></p>
+                <p style="margin-bottom: 20px; font-size: 15px; color: var(--text-slate);">Read our latest insights on Form 48 on LinkedIn and share your thoughts on India's new transfer pricing requirements.</p>
+                <a href="https://www.linkedin.com/posts/hexatp_transferpricing-form48-indiatax-activity-7461030328510537728-E-xU?utm_source=share&utm_medium=member_ios&rcm=ACoAAAau2XEBf6zxehqX1GWZW-Z1LznC-mkkx-I" target="_blank" style="background: #0A66C2; color: white; padding: 12px 30px; border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s;">View on LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section style="display: flex; justify-content: center; padding: 80px 5%; background: #ffffff;">
+        <div class="cta-section" style="max-width: 800px; width: 100%; margin: 0; padding: 60px 40px !important;">
+            <h3>Need Expert Guidance on Form 48 Compliance?</h3>
+            <p>Our transfer pricing specialists can help you navigate India's Form 48 requirements and ensure full compliance. Get in touch today for a consultation.</p>
+            <a href="contact.html" class="cta-btn">Request a Consultation</a>
+        </div>
+    </section>
+
+    <footer style="background-color: #0f172a; color: #e2e8f0; padding: 60px 0 20px 0; border-top: 1px solid rgba(255,255,255,0.1); font-family: 'Poppins', sans-serif;">
+    <div class="container">
+        <div class="row g-5">
+            
+            <!-- Brand Column -->
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
+                    <img src="hexatpwhitelogo.png" alt="HexaTP Logo" class="logo-img" style="max-width: 200px; object-fit: contain;">
+                </a>
+                <p style="color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                    HexaTP is your trusted Transfer Pricing Intelligence Platform, providing expert global solutions, benchmarking studies, and audit defense strategies.
+                </p>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div class="col-lg-4 col-md-6 text-center text-md-start">
+                <h5 style="color: #ffffff; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;">Quick Links</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 12px;"><a href="index.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">Home</a></li>
+                    <li style="margin-bottom: 12px;"><a href="aboutus.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">About Us</a></li>
+                    <li style="margin-bottom: 12px;"><a href="insights.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">TP Insights</a></li>
+                    <li style="margin-bottom: 12px;"><a href="oecd.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">OECD</a></li>
+                    <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div class="col-lg-4 col-md-6 text-center text-md-start">
+                <h5 style="color: #ffffff; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;">Contact</h5>
+                <div style="margin-bottom: 15px;">
+                    <a href="mailto:connect@hexatp.com" style="color: #94a3b8; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="bi bi-envelope" style="color: #f5c400;"></i> connect@hexatp.com
+                    </a>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <a href="tel:+919971544055" style="color: #94a3b8; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="bi bi-telephone" style="color: #f5c400;"></i> +91 99715 44055
+                    </a>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; justify-content: md-start; margin-top: 20px;">
+                    <a href="https://share.google/LOCWZr4eHpDmZAFIv" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/hexatp/" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/hexatp/" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="color: #64748b; font-size: 13px; margin-bottom: 10px; width: 100%; text-align: center; justify-content: md-start;">
+                &copy; 2026 HexaTP &ndash; Transfer Pricing Intelligence Platform
+            </div>
+            <div style="font-size: 13px; margin-bottom: 10px; width: 100%; text-align: center;">
+                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#64748b'">Privacy Policy</a>
+                <span style="color: #334155; margin: 0 10px;">|</span>
+                <a href="terms-of-use.html" style="color: #64748b; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#64748b'">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.getElementById('mobileOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+<!-- Floating Action Button & Popup -->
+<style>
+.floating-widget-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #1a2a4a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+.floating-widget-btn:hover {
+    transform: scale(1.05);
+}
+.floating-widget-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 320px;
+    background-color: #1a2a4a;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 9998;
+    color: #fff;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-align: center;
+}
+.floating-widget-popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.floating-widget-popup h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+.floating-widget-popup p {
+    font-size: 13px;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.floating-widget-popup a.btn-consult {
+    background-color: #f5c400;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.floating-widget-popup a.btn-consult:hover {
+    background-color: #e5b600;
+}
+.floating-widget-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 18px;
+}
+.floating-widget-close:hover {
+    color: #fff;
+}
+</style>
+<div class="floating-widget-btn" onclick="toggleFloatingWidget()">
+    <i class="bi bi-chat-dots-fill"></i>
+</div>
+<div class="floating-widget-popup" id="floatingWidgetPopup">
+    <span class="floating-widget-close" onclick="toggleFloatingWidget()">✕</span>
+    <h4>Need Expert Guidance on OECD Chapter VII Changes?</h4>
+    <p>Our transfer pricing specialists can help you understand and implement these changes. Get in touch today for a consultation.</p>
+    <a href="contact.html" class="btn-consult">Request a Consultation</a>
+</div>
+<script>
+function toggleFloatingWidget() {
+    const popup = document.getElementById('floatingWidgetPopup');
+    if (popup.classList.contains('show')) {
+        popup.classList.remove('show');
+        setTimeout(() => popup.style.display = 'none', 300);
+    } else {
+        popup.style.display = 'block';
+        setTimeout(() => popup.classList.add('show'), 10);
+    }
+}
+</script>
+<!-- End Floating Widget -->
+
+<script>
+function toggleSubmenu(submenuId, toggleElement) {
+    const submenu = document.getElementById(submenuId);
+    if (submenu) {
+        submenu.classList.toggle('active');
+        toggleElement.classList.toggle('active');
+    }
+}
+</script>
+
+    <script src="scripts/hexagon-bg.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+

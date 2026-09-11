@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HexaTP |Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+        :root {
+            --bg-light: #ffffff;
+            --bg-subtle: #f9fafb;
+            --accent: #f5c400;
+            --accent-glow: rgba(245, 196, 0, 0.2);
+            --card-bg: #ffffff;
+            --glass-border: rgba(0, 0, 0, 0.08);
+              --text-main: #0f172a;
+            --text-slate: #64748b; 
+}
+body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+/* --- SLEEK NAV --- */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+.logo { font-weight: 800; font-size: 20px; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+.logo-img { height: 60px !important; padding: 4px 0; width:  auto !important; display: block; object-fit: contain; }
+/* Professional Text Logo */
+        .logo-text-wrapper {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+        }
+.logo-hexa {
+            color: var(--text-main);
+        }
+.logo-tp {
+            color: var(--accent);
+            margin-left: 2px;
+        }
+nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #444; font-size: 14px; font-weight: 500; transition: 0.3s; font-family: 'Poppins', sans-serif; }
+        nav a:hover { color: var(--accent); }
+        .nav-link.dropdown-toggle { font-family: 'Poppins', sans-serif !important; font-weight: 600 !important; font-size: 14px !important; color: #444 !important; }
+/* Dropdown Styles */
+        .dropdown-menu { border: 1px solid var(--glass-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 8px 0; background: #ffffff !important; min-width: 200px; z-index: 9999; }
+        .dropdown-item { padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--text-main); border-radius: 0; transition: 0.2s; font-family: 'Poppins', sans-serif; }
+        .dropdown-item:hover { background-color: rgba(245, 196, 0, 0.15); color: var(--text-main) !important; }
+        .dropdown-item.dropdown-toggle { color: var(--accent); font-weight: 600; }
+        .dropdown-item.dropdown-toggle:hover { background-color: rgba(245, 196, 0, 0.2); color: var(--accent) !important; }
+        .dropdown-toggle::after { vertical-align: middle; margin-left: 5px; opacity: 0.7; }
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu .dropdown-menu { position: absolute; top: 0; left: 100%; display: none; margin-top: -5px; background: #ffffff; border: 1px solid var(--glass-border); border-radius: 8px; padding: 8px 0; }
+        .dropdown-submenu:hover > .dropdown-menu { display: block; }
+.btn-main {
+            background: var(--accent);
+            color: #000;
+            padding: 16px 35px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 20px var(--accent-glow);
+            transition: 0.3s;
+            display: inline-block;
+        }
+.btn-main:hover { transform: translateY(-3px); background: #fff; }
+/* --- Combined Hero & Story Section --- */
+        .hero-story-wrapper {
+            position: relative;
+            padding: 140px 0 100px;
+            /* Background image: Using a professional architectural/data center dark image */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.95)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-bottom: 1px solid var(--border-glass);
+        }
+.hero-badge {
+            background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            color:  #f5c400;
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+.hero-story-wrapper h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    background: var(--bg-deep);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 40px;
+}
+/* --- Glass Cards --- */
+        .glass-card {
+            background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.02);;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+.glass-card:hover {
+            border-color:  #f5c400;
+            background: rgba(245, 158, 11, 0.05);
+            transform: translateY(-8px);
+            box-shadow:0 10px 20px var(--accent-glow);
+        }
+.accent-text { color:  #f5c400; }
+        .slate-text { color: var(--text-slate); }
+.icon-hex {
+            width: 56px;
+            height: 56px;
+            background:rgba(245, 158, 11, 0.05);
+            border: 1px solid  #f5c400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            color: var #f5c400;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+/* --- STATS STRIP --- */
+        .stats-strip {
+            background: var(--accent);
+            padding: 30px 0;
+            color: #000;
+            position: relative;
+            z-index: 1;
+        }
+        .stats-strip::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('contactsectionbgfinal.jpeg') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+.stat-item h2 { font-weight: 800; font-size: 40px; margin: 0; }
+        .stat-item p { font-weight: 600; font-size: 12px; text-transform: uppercase; opacity: 0.8; }
+.filter-buttons{
+    text-align:center;
+    margin-bottom:40px;
+}
+.filter-btn{
+    padding:10px 20px;
+    margin:8px;
+    border:2px solid var(--accent);
+    background: var(--accent);
+    color:#000;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+.filter-btn.active,
+.filter-btn:hover{
+    background:white;
+    color:#000;
+}
+/* GRID*/
+.country-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:30px;
+}
+/* CARD 
+.country-card{
+    background:rgba(255, 255, 255, 0.03);
+    height:160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+}*/
+.country-card img{
+    max-width:120px;
+    max-height:80px;
+}
+.country-card:hover{
+    transform:translateY(-5px);
+}
+.country-card{
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+    background:rgba(255, 255, 255, 0.03);
+    padding: 20px 15px;
+    border: 1px solid var(--glass-border);
+}
+.country-card:hover {
+    transform:translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(245, 196, 0, 0.15);
+}
+.country-card img {
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.country-card p{
+    margin-top:10px;
+    color: var(--text-main);
+    font-size:15px;
+    font-weight:500;
+}
+/* HIDE CLASS */
+.hide{
+    display:none;
+}
+/* Section Container */
+        .tp-docs-section {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+}
+.section-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            max-width: 1300px;
+            width: 100%;
+        }
+/* Left: Content Side */
+        .tp-text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+.tp-text-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+.tp-text-content h2 span {
+            color: var(--accent);
+            display: block;
+        }
+.tp-text-content p {
+            color: var(--text-slate);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 550px;
+        }
+.tp-btn {
+            display: inline-flex;
+            width: fit-content;
+            background: var(--accent);
+            color: #000;
+            padding: 16px 36px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+.tp-btn:hover {
+            box-shadow: 0 0 25px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+/* Right: Card Side */
+        .tp-cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+.tp-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            gap: 20px;
+            align-items: center;
+            transition: border 0.3s ease, background 0.3s ease;
+        }
+.tp-card:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+.tp-card-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+.tp-card-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+.tp-card-info p {
+            font-size: 0.95rem;
+            color: var(--text-slate);
+            margin: 0;
+        }
+/* Responsive */
+        @media (max-width: 1024px) {
+            .section-wrapper {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+            .tp-text-content {
+                align-items: center;
+            }
+            .tp-card {
+                text-align: left;
+            }
+        }
+        /*adv*/
+        .advisory-section {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 100px 8%;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+.advisory-container {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+/* Text Side */
+        .advisory-content {
+            display: flex;
+            flex-direction: column;
+        }
+.advisory-content h2 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            color: var(--text-main);
+        }
+.advisory-content h2 span {
+            color: var(--accent);
+            display: block;
+        }
+.advisory-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-slate);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent-glow);
+        }
+/* Image Side */
+        .advisory-visual {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--glass-border);
+        }
+.advisory-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(30%) brightness(80%);
+            transition: all 0.5s ease;
+        }
+.advisory-visual:hover img {
+            filter: grayscale(0%) brightness(100%);
+            transform: scale(1.03);
+        }
+/* Decorative Glow */
+        .advisory-visual::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--accent-glow), transparent);
+            pointer-events: none;
+        }
+@media (max-width: 992px) {
+            .advisory-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .advisory-content p {
+                border-left: none;
+                padding-left: 0;
+            }
+            .advisory-visual {
+                order: -1; /* Image moves to top on mobile */
+            }
+        }
+        /*Highlight Section */
+        .db-section {
+            background: linear-gradient(45deg, rgba(245, 196, 0, 0.05) 0%, transparent 100%);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            border: 1px solid var(--glass-border);
+        }
+ .contact-footer {
+            padding: 100px 5%;
+            text-align: center;
+            background: none;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-footer::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('contactsectionbgfinal.jpeg') center/cover no-repeat;
+            opacity: 0.15; /* Reduced opacity */
+            z-index: -1;
+        }
+@media (max-width: 992px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+         footer { padding: 20px; text-align: center; color: var(--text-slate); font-size: 14px; }
+
+            /* ========== HEADER STYLES ========== */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            background: #ffffff;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-img { height: 60px !important; padding: 4px 0; width: auto !important; display: block; object-fit: contain; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+        /* Dropdown Styles */
+        .dropdown-menu { border: 1px solid var(--glass-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 10px; background: #ffffff !important; min-width: 200px; z-index: 9999; }
+        .dropdown-item { padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--text-main); border-radius: 8px; transition: 0.2s; }
+        .dropdown-item:hover { background-color: var(--accent); color: #000 !important; }
+        .dropdown-toggle::after { vertical-align: middle; margin-left: 5px; opacity: 0.7; }
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu .dropdown-menu { position: absolute; top: 0; left: 100%; display: none; margin-top: -5px; background: #ffffff; }
+        .dropdown-submenu:hover > .dropdown-menu { display: block; }
+        /* Mobile Nav */
+        .mobile-nav-toggle { display: none; position: fixed; right: 15px; top: 15px; background: #f5c400; border: none; color: #000; font-size: 24px; cursor: pointer; z-index: 1001; padding: 10px 12px; line-height: 1; width: auto; height: auto; min-width: auto; min-height: auto; border-radius: 6px; }
+        
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-left: 1px solid rgba(0,0,0,0.1); padding: 80px 20px 20px; transition: right 0.3s ease; z-index: 10001; overflow-y: auto; box-shadow: -5px 0 20px rgba(0,0,0,0.5); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu ul li { margin-bottom: 15px; }
+        .mobile-menu ul li a { color: var(--text-main); text-decoration: none; font-size: 18px; display: block; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; }
+        .mobile-menu ul li a:hover { background: rgba(245,196,0,0.1); color: #f5c400; transform: translateX(5px); }
+        .mobile-submenu { padding-left: 20px; margin-top: 10px; display: none; border-left: 2px solid rgba(245,196,0,0.3); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .mobile-submenu.active { display: block; max-height: 2000px; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .mobile-submenu li a { font-size: 16px; padding: 10px 15px; }
+        .mobile-dropdown-toggle { color: var(--text-main); font-size: 18px; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; transition: all 0.3s ease; user-select: none; }
+        .mobile-dropdown-toggle:hover { background: rgba(245,196,0,0.1); color: #f5c400; }
+        .mobile-dropdown-toggle::after { content: '\25BC'; font-size: 12px; transition: transform 0.3s ease; }
+        .mobile-dropdown-toggle.active { color: #f5c400; }
+        .mobile-dropdown-toggle.active::after { transform: rotate(180deg); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; backdrop-filter: blur(2px); }
+        .mobile-overlay.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .close-menu { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #f5c400; font-size: 32px; cursor: pointer; padding: 5px; line-height: 1; transition: transform 0.3s ease; }
+        .close-menu:hover { transform: rotate(90deg); }
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: block; }
+            header nav.d-none.d-md-block { display: none !important; }
+            .logo-img { height: 55px; width: auto; }
+            header { width: 100% !important; padding: 12px 15px !important; top: 0 !important; left: 0 !important; transform: none !important; border-radius: 0 !important; justify-content: space-between !important; align-items: center !important; max-width: 100% !important; }
+            header > a.btn-main { display: none !important; }
+            header > a { order: 1; margin: 0 !important; }
+            .mobile-nav-toggle { order: 2; position: static !important; right: auto !important; top: auto !important; }
+        }
+        @media (min-width: 769px) { .mobile-menu, .mobile-overlay, .mobile-nav-toggle { display: none !important; } }
+        .mobile-menu::-webkit-scrollbar { width: 6px; }
+        .mobile-menu::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .mobile-menu::-webkit-scrollbar-thumb { background: rgba(245,196,0,0.3); border-radius: 3px; }
+        .mobile-menu::-webkit-scrollbar-thumb:hover { background: rgba(245,196,0,0.5); }
+        /* ========== END HEADER STYLES ========== */
+        /* Mobile Hero Section */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 140px 20px 60px !important;
+            }
+.hero-section h1 {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 15px !important;
+            }
+.hero-section p {
+                font-size: 14px !important;
+                margin-bottom: 25px !important;
+            }
+.hero-tag {
+                font-size: 10px !important;
+                padding: 5px 12px !important;
+                margin-bottom: 15px !important;
+            }
+.d-flex {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 12px !important;
+            }
+.d-flex .btn-main {
+                width: 100% !important;
+                max-width: 280px !important;
+                padding: 14px 24px !important;
+                font-size: 14px !important;
+            }
+        }
+        </style>
+<style>
+</style>
+<style>
+/* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
+/* Base Responsive Typography */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+h1 {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+    }
+h2 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+    }
+h3 {
+        font-size: 24px !important;
+        line-height: 1.4 !important;
+    }
+h4 {
+        font-size: 20px !important;
+    }
+p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+/* Hero Section */
+    .hero-section,
+    .hero,
+    .hero-split {
+        padding: 120px 20px 60px !important;
+        text-align: center !important;
+    }
+.hero-section h1,
+    .hero h1 {
+        font-size: 36px !important;
+        margin-bottom: 20px !important;
+    }
+.hero-section p,
+    .hero p {
+        font-size: 16px !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+/* Header/Navigation */
+    header {
+        width: 95% !important;
+        padding: 8px 12px !important;
+        top: 10px !important;
+    }
+.logo {
+        font-size: 18px !important;
+    }
+/* Buttons */
+    .btn-main,
+    .btn-accent,
+    .btn-glow,
+    .cta-btn {
+        padding: 12px 24px !important;
+        font-size: 14px !important;
+        width: auto !important;
+        display: inline-block !important;
+    }
+/* Cards & Grid Layouts */
+    .card,
+    .service-card,
+    .feature-card,
+    .country-card,
+    .hexa-card {
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+    }
+.grid,
+    .bento-grid,
+    .advisory-container,
+    .section-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+/* Containers */
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+section {
+        padding: 60px 20px !important;
+    }
+/* Images */ img:not(.logo-img) { max-width: 100% !important; height: auto !important; }
+/* Tables */
+    table {
+        display: block !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+/* Forms */
+    input,
+    textarea,
+    select {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 12px !important;
+    }
+/* Modals */
+    .modal-dialog {
+        margin: 10px !important;
+        max-width: calc(100% - 20px) !important;
+    }
+.modal-content {
+        border-radius: 12px !important;
+    }
+/* Stats/Numbers */
+    .stat-number,
+    .stats-card {
+        font-size: 32px !important;
+    }
+/* Columns */
+    .row > [class*='col-'] {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+/* Hide desktop-only elements */
+    .d-none.d-md-block:not(nav) {
+        display: none !important;
+    }
+/* Show mobile-only elements */
+    .d-block.d-md-none {
+        display: block !important;
+    }
+/* Spacing */
+    .mb-5 {
+        margin-bottom: 30px !important;
+    }
+.mt-5 {
+        margin-top: 30px !important;
+    }
+.py-5 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+/* Footer */
+    footer {
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+footer .row {
+        flex-direction: column !important;
+    }
+footer .col-md-3,
+    footer .col-md-4,
+    .d-flex { flex-direction: column !important; align-items: center !important; } .d-flex .btn-main { width: 100% !important; max-width: 280px !important; margin-bottom: 12px !important; } footer .col-md-6 {
+        margin-bottom: 30px !important;
+        text-align: center !important;
+    }
+}
+/* Tablet Responsive (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 720px !important;
+    }
+h1 {
+        font-size: 42px !important;
+    }
+h2 {
+        font-size: 36px !important;
+    }
+.grid,
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+/* Small Mobile (< 400px) */
+@media (max-width: 400px) {
+    body {
+        font-size: 14px;
+    }
+h1 {
+        font-size: 28px !important;
+    }
+h2 {
+        font-size: 24px !important;
+    }
+.btn-main,
+    .btn-accent {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+    }
+header {
+        padding: 8px 15px !important;
+    }
+.logo {
+        font-size: 16px !important;
+    }
+}
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section,
+    .hero {
+        padding: 80px 20px 40px !important;
+    }
+.hero-section h1,
+    .hero h1 {
+        font-size: 32px !important;
+    }
+}
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Touch devices */
+    a,
+    button,
+    .btn,
+    .card {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+input,
+    textarea,
+    select {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+}
+/* Prevent horizontal scroll */
+body {
+    overflow-x: hidden !important;
+}
+* {
+    max-width: 100%;
+}
+/* Ensure images don't overflow */
+img:not(.logo-img), video, iframe { max-width: 100% !important; height: auto !important; }
+</style>
+
+    <link rel="icon" type="image/png" href="favicon.png?v=3">
+
+<style>.contact-footer h2, .contact-footer p, .contact-footer span { color: #0f172a !important; }</style>
+</head>
+<body>
+<header>
+        <!-- Mobile Navigation -->
+        <button class="mobile-nav-toggle" onclick="openMobileMenu()" aria-label="Open menu"><i class="bi bi-list"></i></button>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+<ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li>
+                    <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('countriesMenu', this)">
+                        <span>Countries</span>
+                    </div>
+                    <ul class="mobile-submenu" id="countriesMenu">
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('gulfMenu', this)">
+                                <span>Gulf Region</span>
+                            </div>
+                            <ul class="mobile-submenu" id="gulfMenu">
+                                <li><a href="unitedarabemirates.html">UAE</a></li>
+                                <li><a href="KingdomofSaudiArabia.html">Kingdom of Saudi Arabia</a></li>
+                                <li><a href="Qatar.html">Qatar</a></li>
+                                <li><a href="oman.html">Oman</a></li>
+                                <li><a href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('asiaMenu', this)">
+                                <span>Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="asiaMenu">
+                                <li><a href="India.html">India</a></li>
+                                <li><a href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('seaMenu', this)">
+                                <span>South East Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="seaMenu">
+                                <li><a href="singapore.html">Singapore</a></li>
+                                <li><a href="thailand.html">Thailand</a></li>
+                                <li><a href="malaysia.html">Malaysia</a></li>
+                                <li><a href="australia.html">Australia</a></li>
+                                <li><a href="indonesia.html">Indonesia</a></li>
+                                <li><a href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('africaMenu', this)">
+                                <span>Africa</span>
+                            </div>
+                            <ul class="mobile-submenu" id="africaMenu">
+                                <li><a href="kenya.html">Kenya</a></li>
+                                <li><a href="ghana.html">Ghana</a></li>
+                                <li><a href="botswana.html">Botswana</a></li>
+                                <li><a href="egypt.html">Egypt</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('americaMenu', this)">
+                                <span>America</span>
+                            </div>
+                            <ul class="mobile-submenu" id="americaMenu">
+                                <li><a href="canada.html">Canada</a></li>
+                                <li><a href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="oecd.html">OECD</a></li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px; margin-bottom: 30px;">
+                <a href="contact.html" class="btn-main" style="display: block; width: 100%; text-align: center; padding: 12px 16px !important; font-size: 14px !important;">Get Started</a>
+                <a href="login.html" class="btn-main" style="display: block; width: 100%; text-align: center; padding: 12px 16px !important; font-size: 14px !important; background: transparent; border: 2px solid var(--accent); color: var(--text-main);">Login</a>
+            </div>
+            </div>
+        <a href="index.html">
+            <img src="final-header-logo1.jpeg" alt="HexaTP - Transfer Pricing Simplified" class="logo-img" />
+        </a>
+        <nav class="d-none d-md-block">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Countries</a>
+                    <ul class="dropdown-menu">
+                        <!-- Gulf Region -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Gulf Region</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="unitedarabemirates.html">UAE</a></li>
+                                <li><a class="dropdown-item" href="KingdomofSaudiArabia.html">Kingdom of Saudi Arabia</a></li>
+                                <li><a class="dropdown-item" href="Qatar.html">Qatar</a></li>
+                                <li><a class="dropdown-item" href="oman.html">Oman</a></li>
+                                <li><a class="dropdown-item" href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <!-- Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="India.html">India</a></li>
+                                <li><a class="dropdown-item" href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <!-- South East Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">South East Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="singapore.html">Singapore</a></li>
+                                <li><a class="dropdown-item" href="thailand.html">Thailand</a></li>
+                                <li><a class="dropdown-item" href="malaysia.html">Malaysia</a></li>
+                                <li><a class="dropdown-item" href="australia.html">Australia</a></li>
+                                <li><a class="dropdown-item" href="indonesia.html">Indonesia</a></li>
+                                <li><a class="dropdown-item" href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <!-- Africa -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Africa</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kenya.html">Kenya</a></li>
+                                <li><a class="dropdown-item" href="egypt.html">Egypt</a></li>
+                                <li><a class="dropdown-item" href="ghana.html">Ghana</a></li>
+                                <li><a class="dropdown-item" href="botswana.html">Botswana</a></li>
+                            </ul>
+                        </li>
+                        <!-- Americas & Oceania -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">America</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="canada.html">Canada</a></li>
+                                <li><a class="dropdown-item" href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="oecd.html">OECD</a></li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="display: flex; gap: 15px; align-items: center;" class="d-none d-md-flex">
+            <a href="login.html" class="btn-main py-2 px-4 fs-6" style="background: transparent; color: var(--text-main); border: 2px solid var(--accent);">Login</a>
+            <a href="contact.html" class="btn-main py-2 px-4 fs-6">Get Started</a>
+        </div>
+    </header>
+    <!--hero-->
+     <section class="hero-story-wrapper">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="hero-badge">Solutions</div>
+                <h1>Our Solutions</h1>
+            </div>
+<div class="row g-5 align-items-stretch">
+                <div class="col-lg-7"> 
+<h2 class="section-title mb-4">WHY TP SO <span style="color:var(--accent)">IMPORTANT ?</span></h2>
+                        <p class="slate-text mb-4" style="font-size: 1.1rem; line-height: 1.8;">
+                           Increased number of intercompany transactions has made transfer pricing a leading risk management issue for global businesses. To curb manipulation and abuse of transfer pricing, various countries have introduced transfer pricing guidelines and law.
+                        </p>
+                        <p class="slate-text mb-0" style="font-size: 1.1rem; line-height: 1.8;">
+                           We help you comply with Transfer Pricing requirements by delivering meticulously prepared Documentation and Benchmarking analysis as per local requirements in conjunction with global standards.
+                        </p>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </section>
+<div class="stats-strip">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 stat-item"><h2>5+</h2><p>Continents</p></div>
+                <div class="col-md-4 stat-item"><h2>50+</h2><p>Countries</p></div>
+                <div class="col-md-4 stat-item"><h2>50+</h2><p>Diverse Industries</p></div>
+                <div class="col-md-4 stat-item"><h2>100+</h2><p>Years Experience</p></div>
+                <div class="col-md-4 stat-item"><h2>3000+</h2><p>Global TP Reports</p></div>
+                <div class="col-md-4 stat-item"><h2>6000+</h2><p>TP Analysis</p></div>
+            </div>
+        </div>
+    </div>
+<!-- FILTER BUTTONS -->
+<section class="filter-buttons">
+    <button class="filter-btn active" onclick="filterCountry('all')">All</button>
+    <button class="filter-btn" onclick="filterCountry('gulf')">Gulf Region</button>
+    <button class="filter-btn" onclick="filterCountry('asia')">Asia</button>
+    <button class="filter-btn" onclick="filterCountry('south')">South East Asia</button>
+    <button class="filter-btn" onclick="filterCountry('africa')">Africa</button>
+    <button class="filter-btn" onclick="filterCountry('america')">America</button>
+</section>
+<!--GRID -->
+<div class="country-container">
+<!-- gulf -->
+    <a href="unitedarabemirates.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card gulf">
+            <img src="https://flagcdn.com/w320/ae.png" alt="UAE Flag">
+            <p>UAE</p>
+        </div>
+    </a>
+    <a href="bahrain.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card gulf">
+            <img src="https://flagcdn.com/w320/bh.png" alt="Bahrain Flag">
+            <p>Bahrain</p>
+        </div>
+    </a>
+    <a href="Qatar.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card gulf">
+            <img src="https://flagcdn.com/w320/qa.png" alt="Qatar Flag">
+            <p>Qatar</p>
+        </div>
+    </a>
+    <a href="KingdomofSaudiArabia.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card gulf">
+            <img src="https://flagcdn.com/w320/sa.png" alt="Kingdom of Saudi Arabia Flag">
+            <p>Kingdom of Saudi Arabia</p>
+        </div>
+    </a>
+    <a href="oman.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card gulf">
+            <img src="https://flagcdn.com/w320/om.png" alt="Oman Flag">
+            <p>Oman</p>
+        </div>
+    </a>
+<!-- Asia -->
+    <a href="bangladesh.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card asia">
+            <img src="https://flagcdn.com/w320/bd.png" alt="Bangladesh Flag">
+            <p>Bangladesh</p>
+        </div>
+    </a>
+    <a href="India.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card asia">
+            <img src="https://flagcdn.com/w320/in.png" alt="India Flag">
+            <p>India</p>
+        </div>
+    </a>
+<!-- south -->
+    <a href="malaysia.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/my.png" alt="Malaysia Flag">
+            <p>Malaysia</p>
+        </div>
+    </a>
+    <a href="thailand.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/th.png" alt="Thailand Flag">
+            <p>Thailand</p>
+        </div>
+    </a>
+    <a href="indonesia.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/id.png" alt="Indonesia Flag">
+            <p>Indonesia</p>
+        </div>
+    </a>
+    <a href="vietnam.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/vn.png" alt="Vietnam Flag">
+            <p>Vietnam</p>
+        </div>
+    </a>
+    <a href="singapore.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/sg.png" alt="Singapore Flag">
+            <p>Singapore</p>
+        </div>
+    </a>
+    <a href="australia.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card south">
+            <img src="https://flagcdn.com/w320/au.png" alt="Australia Flag">
+            <p>Australia</p>
+        </div>
+    </a>
+<!-- africa -->
+    <a href="kenya.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card africa">
+            <img src="https://flagcdn.com/w320/ke.png" alt="Kenya Flag">
+            <p>Kenya</p>
+        </div>
+    </a>
+    <a href="ghana.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card africa">
+            <img src="https://flagcdn.com/w320/gh.png" alt="Ghana Flag">
+            <p>Ghana</p>
+        </div>
+    </a>
+    <a href="botswana.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card africa">
+            <img src="https://flagcdn.com/w320/bw.png" alt="Botswana Flag">
+            <p>Botswana</p>
+        </div>
+    </a>
+    <a href="egypt.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card africa">
+            <img src="https://flagcdn.com/w320/eg.png" alt="Egypt Flag">
+            <p>Egypt</p>
+        </div>
+    </a>
+<!-- america -->
+    <a href="canada.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card america">
+            <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag">
+            <p>Canada</p>
+        </div>
+    </a>
+    <a href="unitedstates.html" style="text-decoration: none; color: inherit;">
+        <div class="country-card america">
+            <img src="https://flagcdn.com/w320/us.png" alt="United States Flag">
+            <p>United States</p>
+        </div>
+    </a>
+</div>
+</div>
+<script>
+function filterCountry(category){
+let cards = document.querySelectorAll(".country-card");
+    let buttons = document.querySelectorAll(".filter-btn");
+// remove active class
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+cards.forEach(card => {
+        if(category === "all"){
+            card.classList.remove("hide");
+        } else {
+            if(card.classList.contains(category)){
+                card.classList.remove("hide");
+            } else {
+                card.classList.add("hide");
+            }
+        }
+    });
+}
+</script>
+</section>
+<!--trans-->
+<section class="tp-docs-section">
+    <div class="section-wrapper">
+<div class="tp-text-content">
+            <h2>Transfer Pricing <span>Documentations</span></h2>
+            <p>We are passionate about building trustworthy, long-lasting business relationships. We deliver adaptable cross-border services that meet your business needs today.</p>
+            <p>Our methodically prepared documentation and customized benchmarking help you reduce risk and demonstrate real value to the business.</p>
+            <a href="#" class="tp-btn">Get Started Now</a>
+        </div>
+<div class="tp-cards-grid">
+            <div class="tp-card">
+                <div class="tp-card-icon">📜</div>
+                <div class="tp-card-info">
+                    <h4>Local TP Report</h4>
+                    <p>In-depth entity analysis for local compliance.</p>
+                </div>
+            </div>
+<div class="tp-card">
+                <div class="tp-card-icon">📂</div>
+                <div class="tp-card-info">
+                    <h4>Master Files</h4>
+                    <p>Global organizational overview and strategy.</p>
+                </div>
+            </div>
+<div class="tp-card">
+                <div class="tp-card-icon">📊</div>
+                <div class="tp-card-info">
+                    <h4>Country Reports</h4>
+                    <p>Standardized reporting across jurisdictions.</p>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+<!--adv-->
+<section class="advisory-section">
+    <div class="advisory-container">
+<div class="advisory-content">
+            <h2>Transfer Pricing <span>Advisory & Litigation Support</span></h2>
+<p>Trained in industry best practices, our team of Transfer Pricing professionals render a clear, logical approach to help companies design, implement, and manage an optimum business structure.</p>
+<p>Our Advisory and Planning services encompass the formulation and implementation of domestic and global transfer pricing policies, including the determination of pricing methodology and mark-ups.</p>
+<p>We assist companies in mitigating transfer pricing risks and provide need-based Litigation support services to ensure robust regulatory compliance.</p>
+        </div>
+<div class="advisory-visual">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" alt="Professional Advisory Team">
+        </div>
+</div>
+</section>
+<section class="container">
+        <div class="db-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Proprietary Database: <span class="text-accent" style="color:var(--accent)">Hexanomy</span></h2>
+                    <p class="textunmuted">Our Search Engine Platform, developed by our Centre of TP Excellence, ensures a hassle-free and robust search process.</p>
+                    <div class="d-flex gap-4 mt-4">
+                        <div>
+                            <h3 class="stat-number mb-0">100k+</h3>
+                            <small class="text-unmuted">Company Financials</small>
+                        </div>
+                        <div style="border-left: 1px solid var(--glass-border); padding-left: 20px;">
+                            <h3 class="stat-number mb-0">20k+</h3>
+                            <small class="text-unmuted">Royalty Agreements</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 mt-5 mt-lg-0">
+                    <div class="glass-card p-4">
+                        <h5>Advisory & Litigation</h5>
+                        <p class="small text-unmuted">We assist companies to design, implement and manage optimum business structures and mitigate transfer pricing risks.</p>
+                        <button class="btn btn-outline-light btn-sm">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--footer-->
+    <section class="contact-footer">
+        <span class="text-warning text-uppercase fw-bold letter-spacing-2">Secure Your Future</span>
+        <h2 class="mt-3">Ready for a Professional Consultation?</h2>
+        <a href="contact.html" class="btn-main px-5 py-3 fs-5 mt-4">connect@hexatp.com</a>
+        <p class="mt-4 text-muted">Contact our Managing Director for a confidential consultation on your Transfer Pricing needs.</p>
+    </section>
+     <footer style="background-color: #0f172a; color: #e2e8f0; padding: 60px 0 20px 0; border-top: 1px solid rgba(255,255,255,0.1); font-family: 'Poppins', sans-serif;">
+    <div class="container">
+        <div class="row g-5">
+            
+            <!-- Brand Column -->
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
+                    <img src="hexatpwhitelogo.png" alt="HexaTP Logo" class="logo-img" style="max-width: 200px; object-fit: contain;">
+                </a>
+                <p style="color: #94a3b8; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+                    HexaTP is your trusted Transfer Pricing Intelligence Platform, providing expert global solutions, benchmarking studies, and audit defense strategies.
+                </p>
+            </div>
+            
+            <!-- Quick Links Column -->
+            <div class="col-lg-4 col-md-6 text-center text-md-start">
+                <h5 style="color: #ffffff; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;">Quick Links</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 12px;"><a href="index.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">Home</a></li>
+                    <li style="margin-bottom: 12px;"><a href="aboutus.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">About Us</a></li>
+                    <li style="margin-bottom: 12px;"><a href="insights.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">TP Insights</a></li>
+                    <li style="margin-bottom: 12px;"><a href="oecd.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">OECD</a></li>
+                    <li style="margin-bottom: 12px;"><a href="contact.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div class="col-lg-4 col-md-6 text-center text-md-start">
+                <h5 style="color: #ffffff; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;">Contact</h5>
+                <div style="margin-bottom: 15px;">
+                    <a href="mailto:connect@hexatp.com" style="color: #94a3b8; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="bi bi-envelope" style="color: #f5c400;"></i> connect@hexatp.com
+                    </a>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <a href="tel:+919971544055" style="color: #94a3b8; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="bi bi-telephone" style="color: #f5c400;"></i> +91 99715 44055
+                    </a>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; justify-content: md-start; margin-top: 20px;">
+                    <a href="https://share.google/LOCWZr4eHpDmZAFIv" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/hexatp/" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/hexatp/" target="_blank" style="color: #f5c400; font-size: 20px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="color: #64748b; font-size: 13px; margin-bottom: 10px; width: 100%; text-align: center; justify-content: md-start;">
+                &copy; 2026 HexaTP &ndash; Transfer Pricing Intelligence Platform
+            </div>
+            <div style="font-size: 13px; margin-bottom: 10px; width: 100%; text-align: center;">
+                <a href="privacy-policy.html" style="color: #64748b; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#64748b'">Privacy Policy</a>
+                <span style="color: #334155; margin: 0 10px;">|</span>
+                <a href="terms-of-use.html" style="color: #64748b; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#f5c400'" onmouseout="this.style.color='#64748b'">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        function openMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function toggleSubmenu(submenuId, toggleElement) {
+            const submenu = document.getElementById(submenuId);
+            if (submenu) {
+                submenu.classList.toggle('active');
+                toggleElement.classList.toggle('active');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() { closeMobileMenu(); });
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeMobileMenu(); }
+        });
+    </script>
+
+<!-- Floating Action Button & Popup -->
+<style>
+.floating-widget-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #1a2a4a;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+.floating-widget-btn:hover {
+    transform: scale(1.05);
+}
+.floating-widget-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 320px;
+    background-color: #1a2a4a;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 9998;
+    color: #fff;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    text-align: center;
+}
+.floating-widget-popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.floating-widget-popup h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+.floating-widget-popup p {
+    font-size: 13px;
+    color: #e2e8f0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.floating-widget-popup a.btn-consult {
+    background-color: #f5c400;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.floating-widget-popup a.btn-consult:hover {
+    background-color: #e5b600;
+}
+.floating-widget-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 18px;
+}
+.floating-widget-close:hover {
+    color: #fff;
+}
+</style>
+<div class="floating-widget-btn" onclick="toggleFloatingWidget()">
+    <i class="bi bi-chat-dots-fill"></i>
+</div>
+<div class="floating-widget-popup" id="floatingWidgetPopup">
+    <span class="floating-widget-close" onclick="toggleFloatingWidget()">✕</span>
+    <h4>Need Expert Guidance on OECD Chapter VII Changes?</h4>
+    <p>Our transfer pricing specialists can help you understand and implement these changes. Get in touch today for a consultation.</p>
+    <a href="contact.html" class="btn-consult">Request a Consultation</a>
+</div>
+<script>
+function toggleFloatingWidget() {
+    const popup = document.getElementById('floatingWidgetPopup');
+    if (popup.classList.contains('show')) {
+        popup.classList.remove('show');
+        setTimeout(() => popup.style.display = 'none', 300);
+    } else {
+        popup.style.display = 'block';
+        setTimeout(() => popup.classList.add('show'), 10);
+    }
+}
+</script>
+<!-- End Floating Widget -->
+    <script src="scripts/hexagon-bg.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

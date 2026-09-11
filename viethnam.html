@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HexaTP | Vietnam Transfer Pricing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --bg-subtle: #f9fafb;
+            
+            --accent: #f5c400;
+            --accent-glow: rgba(245, 196, 0, 0.2);
+            --card-bg: #ffffff;
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-slate: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-weight: 800; font-size: 20px; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+
+        .logo-img { height: 38px !important; padding: 4px 0; width:  auto !important; display: block; object-fit: contain; }
+
+        /* Professional Text Logo */
+        .logo-text-wrapper {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+        }
+
+        .logo-hexa {
+            color: var(--text-main);
+        }
+
+        .logo-tp {
+            color: var(--accent);
+            margin-left: 2px;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #444; font-size: 14px; font-weight: 500; transition: 0.3s; font-family: 'Poppins', sans-serif; }
+        nav a:hover { color: var(--accent); }
+        .nav-link.dropdown-toggle { font-family: 'Poppins', sans-serif !important; font-weight: 600 !important; font-size: 14px !important; color: #444 !important; }
+
+        .btn-main {
+            background: var(--accent);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 20px var(--accent-glow);
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-main:hover { transform: translateY(-3px); background: #fff; color: #000; }
+
+       .hero {
+            padding: 160px 0 100px;
+            /* Added background image with overlay */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), 
+                        url('https://media.istockphoto.com/id/2166041064/photo/aerial-view-of-hoi-an-ancient-town-at-twilight-vietnam.jpg?s=612x612&w=0&k=20&c=HBlS9UovTAPJGAg6mkiW1y3rZYmvW5Gp7X3x-NC7HNw=');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+        }
+
+        .hero h1 { font-weight: 700; font-size: 48px; }
+        .hero p { color: var(--text-slate); max-width: 600px; }
+
+        .btn-accent {
+            background: var(--accent);
+            color: black;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-accent:hover { box-shadow: 0 0 20px var(--accent-glow); }
+
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .glass-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+
+        .section-title { font-weight: 700; font-size: 34px; margin-bottom: 40px; }
+
+        .reg-box {
+            padding: 25px;
+            border-left: 3px solid var(--accent);
+            background: var(--card-bg);
+            margin-bottom: 20px;
+            height: 100%;
+        }
+
+        .container h5 { color: var(--accent); margin-bottom: 15px; }
+
+        .arrow { font-size: 18px; color: var(--accent); display: block; margin-bottom: 10px; transition: 0.3s; }
+        .rotate { transform: rotate(90deg); }
+
+        .content { display: none; margin-top: 15px; line-height: 1.7; color: var(--text-slate); font-size: 0.95rem; }
+
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--bg-subtle);
+        }
+
+        .contact-footer {
+            padding: 100px 5%;
+            text-align: center;
+            background: linear-gradient(0deg, #fff9e6 0%, var(--bg-light) 100%);
+        }
+/* --- Team Section Styles --- */
+.team-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.team-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.team-img-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Gold frame effect from the image */
+.team-img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 5px;
+    right: -5px;
+    bottom: 5px;
+   
+    z-index: 0;
+}
+
+.team-img-wrapper img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--glass-border);
+}
+
+.team-card h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.team-card .role {
+    color: var(--text-slate);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.learn-more-btn {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 15px;
+}
+
+.learn-more-btn:hover {
+    color: var(--accent);
+}
+        footer { padding: 20px; text-align: center; color: var(--text-slate); font-size: 14px; }
+    /* --- Dropdown Styles --- */
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu .dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            background: var(--accent);
+        }
+        .dropdown-submenu:hover > .dropdown-menu { display: block; }
+        .dropdown-item:hover { background-color: var(--accent); color: #000 !important; }
+            /* ========== HEADER STYLES ========== */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-img { height: 38px !important; padding: 4px 0; width: auto !important; display: block; object-fit: contain; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+        /* Dropdown Styles */
+        .dropdown-menu { border: 1px solid var(--glass-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 8px 0; background: #ffffff !important; min-width: 200px; z-index: 9999; }
+        .dropdown-item { padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--text-main); border-radius: 0; transition: 0.2s; font-family: 'Poppins', sans-serif; }
+        .dropdown-item:hover { background-color: rgba(245, 196, 0, 0.15); color: var(--text-main) !important; }
+        .dropdown-item.dropdown-toggle { color: var(--accent); font-weight: 600; }
+        .dropdown-item.dropdown-toggle:hover { background-color: rgba(245, 196, 0, 0.2); color: var(--accent) !important; }
+        .dropdown-toggle::after { vertical-align: middle; margin-left: 5px; opacity: 0.7; }
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu .dropdown-menu { position: absolute; top: 0; left: 100%; display: none; margin-top: -5px; background: #ffffff; border: 1px solid var(--glass-border); border-radius: 8px; padding: 8px 0; }
+        .dropdown-submenu:hover > .dropdown-menu { display: block; }
+        /* Mobile Nav */
+        .mobile-nav-toggle { display: none; position: absolute; right: 5%; top: 20px; background: none; border: none; color: #f5c400; font-size: 28px; cursor: pointer; z-index: 1001; padding: 10px; line-height: 1; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-left: 1px solid rgba(0,0,0,0.1); padding: 80px 20px 20px; transition: right 0.3s ease; z-index: 1000; overflow-y: auto; box-shadow: -5px 0 20px rgba(0,0,0,0.5); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
+        .mobile-menu ul li { margin-bottom: 15px; }
+        .mobile-menu ul li a { color: var(--text-main); text-decoration: none; font-size: 18px; display: block; padding: 12px 15px; border-radius: 8px; transition: all 0.3s ease; }
+        .mobile-menu ul li a:hover { background: rgba(245,196,0,0.1); color: #f5c400; transform: translateX(5px); }
+        .mobile-submenu { padding-left: 20px; margin-top: 10px; display: none; border-left: 2px solid rgba(245,196,0,0.3); }
+        .mobile-submenu.active { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .mobile-submenu li a { font-size: 16px; padding: 10px 15px; }
+        .mobile-dropdown-toggle { color: var(--text-main); font-size: 18px; padding: 12px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 8px; transition: all 0.3s ease; user-select: none; }
+        .mobile-dropdown-toggle:hover { background: rgba(245,196,0,0.1); color: #f5c400; }
+        .mobile-dropdown-toggle::after { content: '\25BC'; font-size: 12px; transition: transform 0.3s ease; }
+        .mobile-dropdown-toggle.active { color: #f5c400; }
+        .mobile-dropdown-toggle.active::after { transform: rotate(180deg); }
+        .mobile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; backdrop-filter: blur(2px); }
+        .mobile-overlay.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .close-menu { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #f5c400; font-size: 32px; cursor: pointer; padding: 5px; line-height: 1; transition: transform 0.3s ease; }
+        .close-menu:hover { transform: rotate(90deg); }
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: block; }
+            header nav.d-none.d-md-block { display: none !important; }
+            .logo-img { height: 35px; width: auto; }
+            header { width: 95% !important; padding: 10px 20px !important; top: 10px !important; }
+        }
+        @media (min-width: 769px) { .mobile-menu, .mobile-overlay, .mobile-nav-toggle { display: none !important; } }
+        .mobile-menu::-webkit-scrollbar { width: 6px; }
+        .mobile-menu::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .mobile-menu::-webkit-scrollbar-thumb { background: rgba(245,196,0,0.3); border-radius: 3px; }
+        .mobile-menu::-webkit-scrollbar-thumb:hover { background: rgba(245,196,0,0.5); }
+        /* ========== END HEADER STYLES ========== */
+        </style>
+
+<style>
+</style>
+
+
+<style>
+/* ========== COMPREHENSIVE MOBILE RESPONSIVE STYLES ========== */
+
+/* Base Responsive Typography */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 32px !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+    }
+    
+    h3 {
+        font-size: 24px !important;
+        line-height: 1.4 !important;
+    }
+    
+    h4 {
+        font-size: 20px !important;
+    }
+    
+    p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* Hero Section */
+    .hero-section,
+    .hero,
+    .hero-split {
+        padding: 120px 20px 60px !important;
+        text-align: center !important;
+    }
+    
+    .hero-section h1,
+    .hero h1 {
+        font-size: 36px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .hero-section p,
+    .hero p {
+        font-size: 16px !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+    
+    /* Header/Navigation */
+    header {
+        width: 95% !important;
+        padding: 10px 20px !important;
+        top: 10px !important;
+    }
+    
+    .logo {
+        font-size: 18px !important;
+    }
+    
+    /* Buttons */
+    .btn-main,
+    .btn-accent,
+    .btn-glow,
+    .cta-btn {
+        padding: 12px 24px !important;
+        font-size: 14px !important;
+        width: auto !important;
+        display: inline-block !important;
+    }
+    
+    /* Cards & Grid Layouts */
+    .card,
+    .service-card,
+    .feature-card,
+    .country-card,
+    .hexa-card {
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+    }
+    
+    .grid,
+    .bento-grid,
+    .advisory-container,
+    .section-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    /* Containers */
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    section {
+        padding: 60px 20px !important;
+    }
+    
+    /* Images */ img:not(.logo-img) { max-width: 100% !important; height: auto !important; }
+    
+    /* Tables */
+    table {
+        display: block !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Forms */
+    input,
+    textarea,
+    select {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 12px !important;
+    }
+    
+    /* Modals */
+    .modal-dialog {
+        margin: 10px !important;
+        max-width: calc(100% - 20px) !important;
+    }
+    
+    .modal-content {
+        border-radius: 12px !important;
+    }
+    
+    /* Stats/Numbers */
+    .stat-number,
+    .stats-card {
+        font-size: 32px !important;
+    }
+    
+    /* Columns */
+    .row > [class*='col-'] {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Hide desktop-only elements */
+    .d-none.d-md-block:not(nav) {
+        display: none !important;
+    }
+    
+    /* Show mobile-only elements */
+    .d-block.d-md-none {
+        display: block !important;
+    }
+    
+    /* Spacing */
+    .mb-5 {
+        margin-bottom: 30px !important;
+    }
+    
+    .mt-5 {
+        margin-top: 30px !important;
+    }
+    
+    .py-5 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 40px 20px !important;
+        text-align: center !important;
+    }
+    
+    footer .row {
+        flex-direction: column !important;
+    }
+    
+    footer .col-md-3,
+    footer .col-md-4,
+    footer .col-md-6 {
+        margin-bottom: 30px !important;
+        text-align: center !important;
+    }
+}
+
+/* Tablet Responsive (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 720px !important;
+    }
+    
+    h1 {
+        font-size: 42px !important;
+    }
+    
+    h2 {
+        font-size: 36px !important;
+    }
+    
+    .grid,
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Small Mobile (< 400px) */
+@media (max-width: 400px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 28px !important;
+    }
+    
+    h2 {
+        font-size: 24px !important;
+    }
+    
+    .btn-main,
+    .btn-accent {
+        padding: 10px 20px !important;
+        font-size: 13px !important;
+    }
+    
+    header {
+        padding: 8px 15px !important;
+    }
+    
+    .logo {
+        font-size: 16px !important;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section,
+    .hero {
+        padding: 80px 20px 40px !important;
+    }
+    
+    .hero-section h1,
+    .hero h1 {
+        font-size: 32px !important;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Touch devices */
+    a,
+    button,
+    .btn,
+    .card {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+    
+    input,
+    textarea,
+    select {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+}
+
+/* Prevent horizontal scroll */
+body {
+    overflow-x: hidden !important;
+}
+
+* {
+    max-width: 100%;
+}
+
+/* Ensure images don't overflow */
+img:not(.logo-img), video, iframe { max-width: 100% !important; height: auto !important; }
+</style>
+
+</head>
+
+<body>
+        <header>
+        <!-- Mobile Navigation -->
+        <button class="mobile-nav-toggle" onclick="openMobileMenu()" aria-label="Open menu">&#9776;</button>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="closeMobileMenu()" aria-label="Close menu">&#x2715;</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li>
+                    <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('countriesMenu', this)">
+                        <span>Countries</span>
+                    </div>
+                    <ul class="mobile-submenu" id="countriesMenu">
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('gulfMenu', this)">
+                                <span>Gulf Region</span>
+                            </div>
+                            <ul class="mobile-submenu" id="gulfMenu">
+                                <li><a href="unitedarab.html">UAE</a></li>
+                                <li><a href="Saudiarabia.html">Saudi Arabia</a></li>
+                                <li><a href="Qatar.html">Qatar</a></li>
+                                <li><a href="oman.html">Oman</a></li>
+                                <li><a href="bahrain.html">Bahrain</a></li>
+                                <li><a href="egypt.html">Egypt</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('asiaMenu', this)">
+                                <span>Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="asiaMenu">
+                                <li><a href="India.html">India</a></li>
+                                <li><a href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('seaMenu', this)">
+                                <span>South East Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="seaMenu">
+                                <li><a href="singapore.html">Singapore</a></li>
+                                <li><a href="thailand.html">Thailand</a></li>
+                                <li><a href="malaysia.html">Malaysia</a></li>
+                                <li><a href="australia.html">Australia</a></li>
+                                <li><a href="indonesia.html">Indonesia</a></li>
+                                <li><a href="viethnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('africaMenu', this)">
+                                <span>Africa</span>
+                            </div>
+                            <ul class="mobile-submenu" id="africaMenu">
+                                <li><a href="botswana.html">Botswana</a></li>
+                                <li><a href="ghana.html">Ghana</a></li>
+                                <li><a href="kenya.html">Kenya</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('americaMenu', this)">
+                                <span>America</span>
+                            </div>
+                            <ul class="mobile-submenu" id="americaMenu">
+                                <li><a href="canada.html">Canada</a></li>
+                                <li><a href="us.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('africaMenu', this)">
+                                <span>Africa</span>
+                            </div>
+                            <ul class="mobile-submenu" id="africaMenu">
+                                <li><a href="kenya.html">Kenya</a></li>
+                                <li><a href="ghana.html">Ghana</a></li>
+                                <li><a href="botswana.html">Botswana</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('americaMenu', this)">
+                                <span>America</span>
+                            </div>
+                            <ul class="mobile-submenu" id="americaMenu">
+                                <li><a href="canada.html">Canada</a></li>
+                                <li><a href="us.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <a href="index.html">
+            <img src="logo-hexatp.jpeg" alt="HexaTP - Transfer Pricing Simplified" class="logo-img" />
+        </a>
+        <nav class="d-none d-md-block">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Countries</a>
+                    <ul class="dropdown-menu">
+                        <!-- Gulf Region -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Gulf Region</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="unitedarab.html">UAE</a></li>
+                                <li><a class="dropdown-item" href="Saudiarabia.html">Saudi Arabia</a></li>
+                                <li><a class="dropdown-item" href="Qatar.html">Qatar</a></li>
+                                <li><a class="dropdown-item" href="oman.html">Oman</a></li>
+                                <li><a class="dropdown-item" href="bahrain.html">Bahrain</a></li>
+                                <li><a class="dropdown-item" href="egypt.html">Egypt</a></li>
+                            </ul>
+                        </li>
+                        <!-- Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="India.html">India</a></li>
+                                <li><a class="dropdown-item" href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <!-- South East Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">South East Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="singapore.html">Singapore</a></li>
+                                <li><a class="dropdown-item" href="thailand.html">Thailand</a></li>
+                                <li><a class="dropdown-item" href="malaysia.html">Malaysia</a></li>
+                                <li><a class="dropdown-item" href="australia.html">Australia</a></li>
+                                <li><a class="dropdown-item" href="indonesia.html">Indonesia</a></li>
+                                <li><a class="dropdown-item" href="viethnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <!-- Africa -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Africa</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kenya.html">Kenya</a></li>
+                                <li><a class="dropdown-item" href="ghana.html">Ghana</a></li>
+                                <li><a class="dropdown-item" href="botswana.html">Botswana</a></li>
+                            </ul>
+                        </li>
+                        <!-- America -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">America</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="canada.html">Canada</a></li>
+                                <li><a class="dropdown-item" href="us.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="mailto:md@hexatp.com" class="btn-main py-2 px-4 fs-6">Get Started</a>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Transfer Pricing<br>Vietnam</h1>
+                    <p>Navigate Decree 132/2020/ND-CP with precision. Ensure your 30% EBITDA interest cap compliance and secure your Three-Tier documentation for Vietnamese Tax Authorities.</p>
+                    <a href="javascript:void(0)" 
+                   class="btn btn-accent mt-3" 
+                   onclick="openModal('General Consultation')">
+                   Book Free Consultation
+                </a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="Flag_of_Vietnam.jpeg" alt="Flag" class="img-fluid rounded shadow-lg" style="width: 100%; max-width: 450px; height: 280px; object-fit: cover; border-radius: 12px; border: 1px solid var(--glass-border);">
+                </div>
+            </div>
+        </div>
+    </section>
+<!--form-->
+<div class="modal fade" id="learnMoreModal" tabindex="-1" aria-labelledby="learnMoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background: var(--bg-light); border: 1px solid var(--accent); border-radius: 20px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title" id="learnMoreModalLabel" style="font-weight: 700;">Inquiry for <span id="teamMemberName" style="color: var(--accent);">Expert</span></h5>
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="inquiryForm">
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text-slate); font-size: 0.9rem;">Your Full Name</label>
+                        <input type="text" class="form-control bg-transparent text-dark" style="border: 1px solid var(--glass-border); border-radius: 10px;" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text-slate); font-size: 0.9rem;">Work Email</label>
+                        <input type="email" class="form-control bg-transparent text-dark" style="border: 1px solid var(--glass-border); border-radius: 10px;" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text-slate); font-size: 0.9rem;">Message (Optional)</label>
+                        <textarea class="form-control bg-transparent text-dark" rows="3" style="border: 1px solid var(--glass-border); border-radius: 10px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-main w-100 border-0 mt-2 py-3">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function openModal(memberName) {
+    // Set the name in the modal title
+    document.getElementById('teamMemberName').innerText = memberName;
+    
+    // Show the modal using Bootstrap's API
+    var myModal = new bootstrap.Modal(document.getElementById('learnMoreModal'));
+    myModal.show();
+}
+
+// Optional: Handle form submission
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you! Your inquiry has been sent to our team.');
+    bootstrap.Modal.getInstance(document.getElementById('learnMoreModal')).hide();
+});
+</script>
+<style>
+    .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent);
+    color: var(--text-main);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+. {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+</style>
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Vietnam TP Regulatory Landscape</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p style="color:var(--text-slate);">
+                        Transfer pricing in Vietnam is one of the most strictly audited tax areas, governed by **Decree 132/2020/ND-CP**. The General Department of Taxation (GDT) focuses heavily on anti-tax avoidance, with a specific emphasis on companies reporting persistent losses while expanding operations.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <p style="color:var(--text-slate);">
+                        Compliance is mandatory for all taxpayers with related-party transactions. Key risks include the rejection of benchmarking studies by tax officers and the stringent limitation of net interest expense deductions to 30% of EBITDA.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Core Pillars of Decree 132</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="reg-box">
+                        <h5>30% EBITDA Cap</h5>
+                        <p style="color:var(--text-slate)">Total deductible net interest expense is capped at 30% of EBITDA. Excess interest can be carried forward for up to 5 consecutive years.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="reg-box">
+                        <h5>Mandatory Forms</h5>
+                        <p style="color:var(--text-slate)">Submission of Forms 01, 02, 03, and 04 is required annually alongside the Corporate Income Tax (CIT) return.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="reg-box">
+                        <h5>Documentation Deadlines</h5>
+                        <p style="color:var(--text-slate)">Three-tier documentation must be prepared before the CIT return filing date and submitted within 30 days upon request.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Compliance Thresholds</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="glass-card" onclick="toggleContent('content1', 'arrow1')">
+                        <span class="arrow" id="arrow1">VND 50 Billion Revenue</span>
+                        <p style="color:var(--text-slate)">The primary threshold for mandatory TP Documentation.</p>
+                        <div class="content" id="content1">
+                            <p>Taxpayers are exempt from preparing the Local File and Master File if:
+                                <br> Annual revenue < <strong>VND 50 Billion</strong> AND
+                                <br> Related party transactions < <strong>VND 30 Billion</strong>.
+                            </p>
+                            <p>However, the <strong>Form 01 Disclosure</strong> is still required for all related party dealings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="glass-card" onclick="toggleContent('content2', 'arrow2')">
+                        <span class="arrow" id="arrow2">Simplified Safe Harbors</span>
+                        <p style="color:var(--text-slate)">Exemptions for low-risk business profiles.</p>
+                        <div class="content" id="content2">
+                            <p>Entities with revenue < <strong>VND 1,000 Billion</strong> and EBIT/Revenue margins of:
+                                <br> Distribution: > <strong>5%</strong>
+                                <br> Manufacturing: > <strong>10%</strong>
+                                <br> Processing: > <strong>15%</strong>
+                            </p>
+                            <p>may be exempt from benchmarking requirements, provided they do not have intangible property transactions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="glass-card" onclick="toggleContent('content3', 'arrow3')">
+                        <span class="arrow" id="arrow3">CbC Reporting</span>
+                        <p style="color:var(--text-slate)">Threshold for groups over VND 18,000 Billion.</p>
+                        <div class="content" id="content3">
+                            <p>Vietnamese ultimate parent companies with global consolidated revenue = <strong>VND 18,000 Billion</strong> must file. </p>
+                            <p>For foreign-parented MNEs, Vietnamese subsidiaries must provide the CbCR if the tax authority cannot obtain it via automatic exchange of information (AEOI).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Vietnam TP Services</h2>
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <div class="glass-card text-center">
+                        <h5>Annual Disclosure Forms</h5>
+                        <p style="color:var(--text-slate)">Preparation of mandatory Forms 01 through 04 for CIT filing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="glass-card text-center">
+                        <h5>EBITDA Cap Planning</h5>
+                        <p style="color:var(--text-slate)">Strategic advisory on interest deduction optimization under Decree 132.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="glass-card text-center">
+                        <h5>Audit Representation</h5>
+                        <p style="color:var(--text-slate)">Managing GDT inspections and defending benchmarking methodologies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="glass-card text-center">
+                        <h5>Local Benchmarking</h5>
+                        <p style="color:var(--text-slate)">Utilizing local and regional databases to satisfy Vietnamese tax officer scrutiny.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="consult">
+        <div class="container">
+            <h2>Secure Your Vietnam Tax Position</h2>
+            <p style="color:var(--text-slate)">The GDT's "substance over form" approach requires robust defense. Ensure your Vietnam TP documentation is audit-ready.</p>
+            <a class="btn btn-accent mt-3">Contact Ho Chi Minh Team</a>
+        </div>
+    </section>
+<section class="py-5">
+    <div class="container">
+        <p class="text-center mb-4" style="color: var(--text-slate);">For further information on transfer pricing in Vietnam, please contact:</p>
+        <div class="row g-4 justify-content-center">
+            
+    
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="Gyan Prakash Srivastava new.jpg" alt="Gyan Prakash Srivastava">
+                    </div>
+                    <h5>Gyan Prakash Srivastava [MBA, LL.B.]</h5>
+                    <p class="role">Leader - South Asia Practice</p>
+                    <a href="javascript:void(0)" class="learn-more-btn" data-bs-toggle="modal" data-bs-target="#modalGyanVN">
+                        Learn More <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="Udit Gupta.jpg" alt="Udit Gupta">
+                    </div>
+                    <h5>Udit Gupta [MIA, CA]</h5>
+                    <p class="role">Principal - North America Practice</p>
+                    <a href="javascript:void(0)" class="learn-more-btn" data-bs-toggle="modal" data-bs-target="#modalUditVN">
+                        Learn More <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+</section>
+<!--popup-->
+<div class="modal fade" id="modalGyanVN" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: var(--bg-light); border: 1px solid var(--accent); border-radius: 20px; overflow: hidden;">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <div class="col-md-4 text-center p-4" style="background: #f8fafc; border-right: 1px solid var(--glass-border);">
+                        <img src="Gyan Prakash Srivastava new.jpg" class="img-fluid rounded mb-3" style="border: 2px solid var(--accent); width: 180px;">
+                        <h4 class="text-dark fw-bold mb-1" style="font-size: 1.1rem;">Gyan Prakash Srivastava</h4>
+                        <p style="color: var(--text-slate); font-size: 0.85rem; font-weight: 600;">Leader - South Asia Practice</p>
+                        <hr style="border-color: var(--glass-border);">
+                        <a href="mailto:md@hexatp.com" class="btn-main w-100">Consult Expert</a>
+                    </div>
+                    <div class="col-md-8 p-4 p-md-5">
+                        <h5 class="text-dark fw-bold mb-3"><i class="bi bi-shield-check text-warning me-2"></i>Professional Profile</h5>
+                        <p style="color: var(--text-slate); font-size: 0.95rem; line-height: 1.8;">
+                            Gyan Prakash Srivastava leads the South Asia practice and has extensive expertise in global TP policy implementation. He provides strategic risk management and compliance advisory to multinational enterprises in Vietnam in accordance with Decree 132 and local tax circulars.
+                        </p>
+                        <h6 class="text-dark mt-4 fw-bold">Key Areas:</h6>
+                        <ul class="row list-unstyled mt-3" style="color: var(--text-slate); font-size: 0.85rem;">
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Decree 132 Compliance</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Global TP Alignment</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Risk Mitigation</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>GDT Audit Defense</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalUditVN" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content" style="background: var(--bg-light); border: 1px solid var(--accent); border-radius: 20px; overflow: hidden;">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <div class="col-md-4 text-center p-4" style="background: #f8fafc; border-right: 1px solid var(--glass-border);">
+                        <img src="Udit Gupta.jpg" class="img-fluid rounded mb-3" style="border: 2px solid var(--accent); width: 180px;">
+                        <h4 class="text-dark fw-bold mb-1" style="font-size: 1.1rem;">Udit Gupta</h4>
+                        <p style="color: var(--text-slate); font-size: 0.85rem; font-weight: 600;">Principal - North America Practice</p>
+                        <hr style="border-color: var(--glass-border);">
+                        <a href="mailto:md@hexatp.com" class="btn-main w-100">Contact Principal</a>
+                    </div>
+                    <div class="col-md-8 p-4 p-md-5">
+                        <h5 class="text-dark fw-bold mb-3"><i class="bi bi-graph-up text-warning me-2"></i>Professional Profile</h5>
+                        <p style="color: var(--text-slate); font-size: 0.95rem; line-height: 1.8;">
+                            Udit Gupta is a Chartered Accountant who leads the North America practice. His expertise in economic analysis and complex benchmarking is essential for Vietnam's mandatory Master File and Local File documentation requirements.
+                        </p>
+                        <h6 class="text-dark mt-4 fw-bold">Expertise:</h6>
+                        <ul class="row list-unstyled mt-3" style="color: var(--text-slate); font-size: 0.85rem;">
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Economic Benchmarking</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Master File Preparation</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>MIA Frameworks</li>
+                            <li class="col-6 mb-2"><i class="bi bi-check2 text-warning me-2"></i>Three-Tier Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+        /* Modal Refinements */
+.modal-lg { max-width: 850px; }
+
+.modal-content {
+    box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 15px var(--accent-glow);
+}
+
+.modal-body {
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for the modal bio */
+.modal-body::-webkit-scrollbar { width: 5px; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    </style>
+    <section class="contact-footer">
+        <span class="text-warning text-uppercase fw-bold">Compliance Excellence</span>
+        <h2 class="mt-3">Consult with our Regional Experts</h2>
+        <a href="mailto:md@hexatp.com" class="btn-main px-5 py-3 fs-5 mt-4">md@hexatp.com</a>
+        <p class="mt-4 text-muted">Expert advisory for the complex Vietnamese regulatory environment.</p>
+    </section>
+
+    <footer>
+         
+        <img src="logo-hexatp.jpeg" alt="HexaTP Logo" class="logo-img" style="height: 35px !important; max-height: 35px !important; width: auto !important; display: block; margin: 0 auto 8px auto; opacity: 0.9;"><br>
+        2026 HexaTP  Transfer Pricing Intelligence Platform
+    </footer>
+
+    <script>
+        function toggleContent(contentId, arrowId) {
+            let content = document.getElementById(contentId);
+            let arrow = document.getElementById(arrowId);
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                arrow.classList.remove("rotate");
+            } else {
+                content.style.display = "block";
+                arrow.classList.add("rotate");
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+    <script>
+        function openMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function toggleSubmenu(submenuId, toggleElement) {
+            const submenu = document.getElementById(submenuId);
+            if (submenu) {
+                submenu.classList.toggle('active');
+                toggleElement.classList.toggle('active');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() { closeMobileMenu(); });
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') { closeMobileMenu(); }
+        });
+    </script>
+</body>
+</html>

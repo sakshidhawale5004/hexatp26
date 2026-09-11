@@ -1,0 +1,144 @@
+﻿                                <li><a href="unitedarabemirates.html">UAE</a></li>
+                                <li><a href="Saudiarabia.html">Saudi Arabia</a></li>
+                                <li><a href="Qatar.html">Qatar</a></li>
+                                <li><a href="oman.html">Oman</a></li>
+                                <li><a href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('asiaMenu', this)">
+                                <span>Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="asiaMenu">
+                                <li><a href="India.html">India</a></li>
+                                <li><a href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('seaMenu', this)">
+                                <span>South East Asia</span>
+                            </div>
+                            <ul class="mobile-submenu" id="seaMenu">
+                                <li><a href="singapore.html">Singapore</a></li>
+                                <li><a href="thailand.html">Thailand</a></li>
+                                <li><a href="malaysia.html">Malaysia</a></li>
+                                <li><a href="australia.html">Australia</a></li>
+                                <li><a href="indonesia.html">Indonesia</a></li>
+                                <li><a href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('africaMenu', this)">
+                                <span>Africa</span>
+                            </div>
+                            <ul class="mobile-submenu" id="africaMenu">
+                                <li><a href="kenya.html">Kenya</a></li>
+                                <li><a href="ghana.html">Ghana</a></li>
+                                <li><a href="botswana.html">Botswana</a></li>
+                                <li><a href="egypt.html">Egypt</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="mobile-dropdown-toggle" onclick="toggleSubmenu('americaMenu', this)">
+                                <span>America</span>
+                            </div>
+                            <ul class="mobile-submenu" id="americaMenu">
+                                <li><a href="canada.html">Canada</a></li>
+                                <li><a href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <a href="index.html">
+            <img src="logo-hexatp.jpeg" alt="HexaTP - Transfer Pricing Simplified" class="logo-img" />
+        </a>
+        <nav class="d-none d-md-block">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Countries</a>
+                    <ul class="dropdown-menu">
+                        <!-- Gulf Region -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Gulf Region</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="unitedarabemirates.html">UAE</a></li>
+                                <li><a class="dropdown-item" href="Saudiarabia.html">Saudi Arabia</a></li>
+                                <li><a class="dropdown-item" href="Qatar.html">Qatar</a></li>
+                                <li><a class="dropdown-item" href="oman.html">Oman</a></li>
+                                <li><a class="dropdown-item" href="bahrain.html">Bahrain</a></li>
+</ul>
+                        </li>
+                        <!-- Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="India.html">India</a></li>
+                                <li><a class="dropdown-item" href="bangladesh.html">Bangladesh</a></li>
+                            </ul>
+                        </li>
+                        <!-- South East Asia -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">South East Asia</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="singapore.html">Singapore</a></li>
+                                <li><a class="dropdown-item" href="thailand.html">Thailand</a></li>
+                                <li><a class="dropdown-item" href="malaysia.html">Malaysia</a></li>
+                                <li><a class="dropdown-item" href="australia.html">Australia</a></li>
+                                <li><a class="dropdown-item" href="indonesia.html">Indonesia</a></li>
+                                <li><a class="dropdown-item" href="vietnam.html">Vietnam</a></li>
+                            </ul>
+                        </li>
+                        <!-- Africa -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Africa</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="kenya.html">Kenya</a></li>
+                                <li><a class="dropdown-item" href="egypt.html">Egypt</a></li>
+                                <li><a class="dropdown-item" href="ghana.html">Ghana</a></li>
+                                <li><a class="dropdown-item" href="botswana.html">Botswana</a></li>
+                            </ul>
+                        </li>
+                        <!-- America -->
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">America</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="canada.html">Canada</a></li>
+                                <li><a class="dropdown-item" href="unitedstates.html">United States</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="insights.html">TP Insights</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="mailto:connect@hexatp.com?subject=Transfer%20Pricing%20Consultation%20Request&body=Hello%20HexaTP%20Team,%0A%0AI%20am%20interested%20in%20discussing%20transfer%20pricing%20solutions.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you" class="btn-main py-2 px-4 fs-6">Get Started</a>
+    </header>
+    <!--hero-->
+     <section class="hero-story-wrapper">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="hero-badge">Solutions</div>
+                <h1>Our Solutions</h1>
+            </div>
+<div class="row g-5 align-items-stretch">
+                <div class="col-lg-7"> 
+<h2 class="section-title mb-4">WHY TP SO <span style="color:var(--accent)">IMPORTANT ?</span></h2>
+                        <p class="slate-text mb-4" style="font-size: 1.1rem; line-height: 1.8;">
+                           Increased number of intercompany transactions has made transfer pricing a leading risk management issue for global businesses. To curb manipulation and abuse of transfer pricing, various countries have introduced transfer pricing guidelines and law.
+                        </p>
+                        <p class="slate-text mb-0" style="font-size: 1.1rem; line-height: 1.8;">
+                           We help you comply with Transfer Pricing requirements by delivering meticulously prepared Documentation and Benchmarking analysis as per local requirements in conjunction with global standards.
+                        </p>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </section>
