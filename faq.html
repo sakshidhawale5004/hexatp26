@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -549,7 +549,7 @@
             white-space: nowrap;
         }
         .ticker-item::after {
-            content: "•";
+            content: "â€¢";
             color: rgba(255,255,255,0.15);
             margin-left: 15px;
             display: inline-block;
@@ -669,16 +669,16 @@
         // Deadline data: { flag, label, deadline (YYYY, MM-1, DD), desc }
         (function buildTicker() {
             var deadlines = [
-                { flag: '🇵🇹', label: 'PORTUGAL',      date: new Date(2026,  8, 20), desc: 'Local File deadline' },
-                { flag: '🇦🇪', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'CT/income tax return (incl. TP)' },
-                { flag: '🇭🇰', label: 'HONG KONG SAR', date: new Date(2026, 11,  6), desc: 'Local File deadline' },
-                { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  0,  6), desc: 'Local File deadline' },
-                { flag: '🇮🇳', label: 'INDIA',          date: new Date(2027,  0,  6), desc: 'TP disclosure / annual filing' },
-                { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  2,  6), desc: 'TP disclosure / annual filing' },
-                { flag: '🇧🇪', label: 'BELGIUM',        date: new Date(2027,  3,  7), desc: 'TP disclosure / annual filing' },
-                { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  3,  7), desc: 'Master File deadline' },
-                { flag: '🇭🇺', label: 'HUNGARY',        date: new Date(2027,  3,  7), desc: 'Master File deadline' },
-                { flag: '🇰🇷', label: 'SOUTH KOREA',    date: new Date(2027,  3,  7), desc: 'Local File deadline' }
+                { flag: 'ðŸ‡µðŸ‡¹', label: 'PORTUGAL',      date: new Date(2026,  8, 20), desc: 'Local File deadline' },
+                { flag: 'ðŸ‡¦ðŸ‡ª', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'CT/income tax return (incl. TP)' },
+                { flag: 'ðŸ‡­ðŸ‡°', label: 'HONG KONG SAR', date: new Date(2026, 11,  6), desc: 'Local File deadline' },
+                { flag: 'ðŸ‡µðŸ‡±', label: 'POLAND',         date: new Date(2027,  0,  6), desc: 'Local File deadline' },
+                { flag: 'ðŸ‡®ðŸ‡³', label: 'INDIA',          date: new Date(2027,  0,  6), desc: 'TP disclosure / annual filing' },
+                { flag: 'ðŸ‡µðŸ‡±', label: 'POLAND',         date: new Date(2027,  2,  6), desc: 'TP disclosure / annual filing' },
+                { flag: 'ðŸ‡§ðŸ‡ª', label: 'BELGIUM',        date: new Date(2027,  3,  7), desc: 'TP disclosure / annual filing' },
+                { flag: 'ðŸ‡µðŸ‡±', label: 'POLAND',         date: new Date(2027,  3,  7), desc: 'Master File deadline' },
+                { flag: 'ðŸ‡­ðŸ‡º', label: 'HUNGARY',        date: new Date(2027,  3,  7), desc: 'Master File deadline' },
+                { flag: 'ðŸ‡°ðŸ‡·', label: 'SOUTH KOREA',    date: new Date(2027,  3,  7), desc: 'Local File deadline' }
             ];
 
             var today = new Date();
@@ -695,7 +695,7 @@
 
             // If nothing upcoming, show placeholder
             if (items.length === 0) {
-                items = [{ flag: '📋', label: 'HEXATP', days: '—', desc: 'No upcoming deadlines at this time' }];
+                items = [{ flag: 'ðŸ“‹', label: 'HEXATP', days: 'â€”', desc: 'No upcoming deadlines at this time' }];
             }
 
             function buildHTML(list) {
@@ -790,7 +790,6 @@
                 </li>
                 <li><a href="oecd.html">OECD</a></li>
                 <li><a href="insights.html">TP Insights</a></li>
-                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 30px;">
@@ -858,7 +857,6 @@
                 </li>
                 <li><a href="oecd.html">OECD</a></li>
                 <li><a href="insights.html">TP Insights</a></li>
-                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
