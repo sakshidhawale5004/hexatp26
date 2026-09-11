@@ -1348,34 +1348,73 @@ h1, h2, h3, h4, h5, h6 {
                 { flag: '🇰🇷', label: 'SOUTH KOREA',    date: new Date(2027,  3,  7), desc: 'Local File deadline' }
             ];
 
-            var today = new Date();
-            today.setHours(0, 0, 0, 0);
+            function calculateCountdown() {
+                var now = new Date();
+                
+                var items = deadlines
+                    .map(function(d) {
+                        var timeDiff = d.date - now;
+                        var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                        
+                        return { 
+                            flag: d.flag, 
+                            label: d.label, 
+                            days: days,
+                            hours: hours,
+                            minutes: minutes,
+                            seconds: seconds,
+                            totalMs: timeDiff,
+                            desc: d.desc 
+                        };
+                    })
+                    .filter(function(d) { return d.totalMs > 0; })
+                    .sort(function(a, b) { return a.totalMs - b.totalMs; });
 
-            var items = deadlines
-                .map(function(d) {
-                    var diff = Math.ceil((d.date - today) / 86400000);
-                    return { flag: d.flag, label: d.label, days: diff, desc: d.desc };
-                })
-                .filter(function(d) { return d.days > 0; })
-                .sort(function(a, b) { return a.days - b.days; });
+                if (items.length === 0) {
+                    items = [{ 
+                        flag: '📋', 
+                        label: 'HEXATP', 
+                        days: 0,
+                        hours: 0,
+                        minutes: 0,
+                        seconds: 0,
+                        desc: 'No upcoming deadlines' 
+                    }];
+                }
 
-            if (items.length === 0) {
-                items = [{ flag: '📋', label: 'HEXATP', days: '—', desc: 'No upcoming deadlines at this time' }];
+                return items;
             }
 
             function buildHTML(list) {
                 return list.map(function(item) {
+                    var timeStr = item.days + 'd ' + 
+                                 String(item.hours).padStart(2, '0') + 'h ' + 
+                                 String(item.minutes).padStart(2, '0') + 'm ' + 
+                                 String(item.seconds).padStart(2, '0') + 's';
+                    
                     return '<div class="ticker-item">' +
                         '<span class="country">' + item.flag + ' ' + item.label + '</span> ' +
-                        '<span class="days">' + item.days + ' days</span> ' +
+                        '<span class="days">' + timeStr + '</span> ' +
                         '<span class="desc">' + item.desc + '</span>' +
                         '</div>';
                 }).join('');
             }
 
-            var html = buildHTML(items);
-            document.getElementById('tickerContent1').innerHTML = html;
-            document.getElementById('tickerContent2').innerHTML = html;
+            function updateTicker() {
+                var items = calculateCountdown();
+                var html = buildHTML(items);
+                document.getElementById('tickerContent1').innerHTML = html;
+                document.getElementById('tickerContent2').innerHTML = html;
+            }
+
+            // Initial update
+            updateTicker();
+
+            // Update every second
+            setInterval(updateTicker, 1000);
         })();
     </script>
 <header>
