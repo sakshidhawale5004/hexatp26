@@ -3,7 +3,7 @@
     var deadlines = [
         { flag: '🇵🇹', label: 'PORTUGAL',      date: new Date(2026,  8, 20), desc: 'Local File deadline' },
         { flag: '🇮🇳', label: 'INDIA',          date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing' },
-        { flag: '🇦🇪', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'CT/income tax return (incl. TP)' },
+        { flag: '🇦🇪', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'TP disclosure / annual filing' },
         { flag: '🇭🇰', label: 'HONG KONG SAR', date: new Date(2026, 11,  6), desc: 'Local File deadline' },
         { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  0,  6), desc: 'Local File deadline' },
         { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  2,  6), desc: 'TP disclosure / annual filing' },
