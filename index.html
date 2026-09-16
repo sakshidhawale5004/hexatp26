@@ -1338,7 +1338,9 @@ h1, h2, h3, h4, h5, h6 {
                 { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File deadline' },
                 { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File deadline' },
                 { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing due' },
+                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026, 10, 30), desc: 'TP disclosure / annual filing due' },
                 { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP disclosure / annual filing due' },
+                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026, 11, 31), desc: 'Master File deadline' },
                 { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File deadline' },
                 { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File deadline' },
                 { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File deadline' }
@@ -1381,6 +1383,10 @@ h1, h2, h3, h4, h5, h6 {
                             '<span class="desc">' + item.desc + '</span>' +
                             '</div>';
                     }).join('');
+
+                    // Duplicate the list several times so it is guaranteed to be wider than ANY ultra-wide monitor. 
+                    // This prevents the marquee from "popping" at the end of the loop when the content is narrower than the screen.
+                    html = html + html + html;
 
                     document.getElementById('tickerContent1').innerHTML = html;
                     document.getElementById('tickerContent2').innerHTML = html;
