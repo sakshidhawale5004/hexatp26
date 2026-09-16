@@ -1224,20 +1224,23 @@ h1, h2, h3, h4, h5, h6 {
             flex: 1;
             overflow: hidden;
             height: 100%;
-            display: flex; /* Allow content blocks to sit side-by-side */
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker-marquee 60s linear infinite;
         }
 
         .ticker-content {
             display: flex;
             align-items: center;
             flex-shrink: 0;
-            min-width: max-content; /* Ensure it takes full width of its items */
             padding-left: 20px;
-            animation: ticker-marquee 60s linear infinite;
         }
 
         /* Pause both blocks on hover */
-        .ticker-viewport:hover .ticker-content {
+        .ticker-viewport:hover .ticker-track {
             animation-play-state: paused;
         }
 
@@ -1281,6 +1284,7 @@ h1, h2, h3, h4, h5, h6 {
             font-size: 11px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            font-variant-numeric: tabular-nums; /* Prevent jitter when numbers change */
         }
 
         .ticker-item .desc {
@@ -1292,7 +1296,7 @@ h1, h2, h3, h4, h5, h6 {
 
         @keyframes ticker-marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); } /* Flawless loop by moving entire block by its own exact width */
+            100% { transform: translateX(-50%); } /* Track contains 2 identical contents, moving 50% shifts exactly 1 content width */
         }
 
         /* Adjust header to account for ticker */
@@ -1323,8 +1327,10 @@ h1, h2, h3, h4, h5, h6 {
             <div class="ticker-label">TP DEADLINES</div>
         </div>
         <div class="ticker-viewport">
-            <div class="ticker-content" id="tickerContent1"></div>
-            <div class="ticker-content" id="tickerContent2"></div>
+            <div class="ticker-track">
+                <div class="ticker-content" id="tickerContent1"></div>
+                <div class="ticker-content" id="tickerContent2"></div>
+            </div>
         </div>
     </div>
 
