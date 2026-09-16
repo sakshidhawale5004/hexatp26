@@ -1236,6 +1236,7 @@ h1, h2, h3, h4, h5, h6 {
             display: flex;
             align-items: center;
             flex-shrink: 0;
+            min-width: max-content;
             padding-left: 20px;
         }
 
@@ -1249,6 +1250,7 @@ h1, h2, h3, h4, h5, h6 {
             vertical-align: middle;
             margin-right: 15px;
             white-space: nowrap; /* Forcibly prevent wrapping */
+            flex-shrink: 0;
         }
 
         .ticker-item::after {
