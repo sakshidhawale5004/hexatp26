@@ -6,9 +6,7 @@
         { flag: '🇦🇪', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'TP disclosure / annual filing' },
         { flag: '🇭🇰', label: 'HONG KONG SAR', date: new Date(2026, 11,  6), desc: 'Local File deadline' },
         { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  0,  6), desc: 'Local File deadline' },
-        { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  2,  6), desc: 'TP disclosure / annual filing' },
         { flag: '🇧🇪', label: 'BELGIUM',        date: new Date(2027,  3,  7), desc: 'TP disclosure / annual filing' },
-        { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  3,  7), desc: 'Master File deadline' },
         { flag: '🇭🇺', label: 'HUNGARY',        date: new Date(2027,  3,  7), desc: 'Master File deadline' },
         { flag: '🇰🇷', label: 'SOUTH KOREA',    date: new Date(2027,  3,  7), desc: 'Local File deadline' }
     ];
