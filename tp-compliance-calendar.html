@@ -585,12 +585,13 @@
         wrap.innerHTML = `<div class="tpc-upcoming-empty">No upcoming entries match the current filters.</div>`;
         return;
       }
-      wrap.innerHTML = upcoming.map(e=>`
+      const itemsHtml = upcoming.map(e=>`
         <div class="tpc-chip ${cssClass}">
           <div class="days" data-target="${e.ndMs}" data-diff="${e.diff}">${e.diff===0?'Today':''}</div>
           <div class="label">${e.title}</div>
           <div class="country">${countryMeta(e.country).flag} ${countryMeta(e.country).name}</div>
         </div>`).join('');
+      wrap.innerHTML = itemsHtml + itemsHtml;
     }
 
     buildRow('tpcUpcomingTP', 'tp-deadline', 'tp');
