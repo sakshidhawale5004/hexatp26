@@ -1,16 +1,14 @@
 // Live Countdown Timer - Updates Daily
 (function buildTicker() {
-    var deadlines = [
-        { flag: '🇵🇹', label: 'PORTUGAL',      date: new Date(2026,  8, 20), desc: 'Local File deadline' },
-        { flag: '🇮🇳', label: 'INDIA',          date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing' },
-        { flag: '🇦🇪', label: 'UAE',            date: new Date(2026, 11,  6), desc: 'TP disclosure / annual filing' },
-        { flag: '🇭🇰', label: 'HONG KONG SAR', date: new Date(2026, 11,  6), desc: 'Local File deadline' },
-        { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  0,  6), desc: 'Local File deadline' },
-        { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  2,  6), desc: 'TP disclosure / annual filing' },
-        { flag: '🇧🇪', label: 'BELGIUM',        date: new Date(2027,  3,  7), desc: 'TP disclosure / annual filing' },
-        { flag: '🇵🇱', label: 'POLAND',         date: new Date(2027,  3,  7), desc: 'Master File deadline' },
-        { flag: '🇭🇺', label: 'HUNGARY',        date: new Date(2027,  3,  7), desc: 'Master File deadline' },
-        { flag: '🇰🇷', label: 'SOUTH KOREA',    date: new Date(2027,  3,  7), desc: 'Local File deadline' }
+        var deadlines = [
+        { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  8, 30), desc: 'CT/income tax return due' },
+        { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File deadline' },
+        { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File deadline' },
+        { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing due' },
+        { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP disclosure / annual filing due' },
+        { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File deadline' },
+        { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File deadline' },
+        { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File deadline' }
     ];
 
     function calculateCountdown() {

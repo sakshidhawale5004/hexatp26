@@ -579,7 +579,7 @@
         .map(e=>{ const nd = nextOccurrence(e); return {...e, ndMs: nd.getTime(), diff: Math.ceil((nd-now)/86400000)}; })
         .filter(e=>e.diff>=0)
         .sort((a,b)=>a.diff-b.diff)
-        .slice(0,10);
+        ;
 
       if(upcoming.length===0){
         wrap.innerHTML = `<div class="tpc-upcoming-empty">No upcoming entries match the current filters.</div>`;
@@ -591,7 +591,7 @@
           <div class="label">${e.title}</div>
           <div class="country">${countryMeta(e.country).flag} ${countryMeta(e.country).name}</div>
         </div>`).join('');
-      wrap.innerHTML = itemsHtml + itemsHtml;
+      wrap.innerHTML = itemsHtml;
     }
 
     buildRow('tpcUpcomingTP', 'tp-deadline', 'tp');

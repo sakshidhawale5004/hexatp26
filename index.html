@@ -1229,7 +1229,7 @@ h1, h2, h3, h4, h5, h6 {
         .ticker-track {
             display: flex;
             width: max-content;
-            animation: ticker-marquee 30s linear infinite;
+            animation: ticker-marquee 15s linear infinite;
         }
 
         .ticker-content {
@@ -1383,8 +1383,9 @@ h1, h2, h3, h4, h5, h6 {
                     }).join('');
 
                     // Duplicate the content a few times to ensure it covers the screen width, but do it within each tickerContent div
-                    document.getElementById('tickerContent1').innerHTML = html + html;
-                    document.getElementById('tickerContent2').innerHTML = html + html;
+                    html = html + html + html;
+                    document.getElementById('tickerContent1').innerHTML = html;
+                    document.getElementById('tickerContent2').innerHTML = html;
                     tickerInitialized = true;
                 }
 
