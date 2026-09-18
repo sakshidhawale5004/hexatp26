@@ -1356,11 +1356,10 @@ h1, h2, h3, h4, h5, h6 {
                 
                 if (!tickerInitialized) {
                     var items = deadlines;
-                    var htmlItems = items.map(function(item, index) {
+                    var htmlItems = items.map(function(item) {
                         var dt = new Date(item.date);
                         dt.setHours(0, 0, 0, 0);
-                        var extraStyle = (index === items.length - 1) ? 'margin-right: 50vw;' : '';
-                        return '<div class="ticker-item" style="' + extraStyle + '">' +
+                        return '<div class="ticker-item">' +
                             '<span class="country">' + item.flag + ' ' + item.label + '</span> ' +
                             '<span class="days" data-target="' + dt.getTime() + '"></span> ' +
                             '<span class="desc">' + item.desc + '</span>' +
@@ -1368,7 +1367,7 @@ h1, h2, h3, h4, h5, h6 {
                     }).join('');
 
                     var repeatedHtml = '';
-                    for (var i = 0; i < 2; i++) {
+                    for (var i = 0; i < 4; i++) {
                         repeatedHtml += htmlItems;
                     }
                     
