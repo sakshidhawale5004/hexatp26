@@ -1227,16 +1227,16 @@ h1, h2, h3, h4, h5, h6 {
         }
 
                 .ticker-track {
-            display: inline-block;
-            white-space: nowrap;
+            display: flex;
+            width: max-content;
             animation: ticker-marquee 15s linear infinite;
-            font-size: 0;
         }
 
         .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            font-size: 16px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            min-width: max-content;
         }
 
         /* Pause both blocks on hover */
