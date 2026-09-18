@@ -1334,29 +1334,27 @@ h1, h2, h3, h4, h5, h6 {
     <script>
         (function buildTicker() {
             var deadlines = [
-                { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  8, 30), desc: 'CT return & TP disclosure' },
-                { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File' },
-                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File' },
+                { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  9, 15), desc: 'CT return & TP disclosure' },
+                { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  9, 20), desc: 'Local File' },
                 { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP filing due' },
-                { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP filing due' },
+                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026, 10, 15), desc: 'Local File' },
+                { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 10, 30), desc: 'TP documentation' },
+                { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 15), desc: 'TP filing due' },
                 { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File' },
-                { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File' },
-                { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File' }
+                { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File' }
             ];
-
-            function pad2(num) {
-                return num.toString().padStart(2, '0');
-            }
 
             var tickerInitialized = false;
 
             function updateTicker() {
                 var now = new Date();
+                now.setHours(0, 0, 0, 0);
                 
                 if (!tickerInitialized) {
                     var items = deadlines;
                     var htmlItems = items.map(function(item) {
                         var dt = new Date(item.date);
+                        dt.setHours(0, 0, 0, 0);
                         return '<div class="ticker-item">' +
                             '<span class="country">' + item.flag + ' ' + item.label + '</span> ' +
                             '<span class="days" data-target="' + dt.getTime() + '"></span> ' +
@@ -1387,18 +1385,15 @@ h1, h2, h3, h4, h5, h6 {
                     if (diff <= 0) {
                         el.textContent = 'TODAY';
                     } else {
-                        var d = Math.floor(diff / 86400000);
-                        var h = pad2(Math.floor((diff / 3600000) % 24));
-                        var m = pad2(Math.floor((diff / 60000) % 60));
-                        var s = pad2(Math.floor((diff / 1000) % 60));
-                        el.textContent = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+                        var days = Math.ceil(diff / 86400000);
+                        el.textContent = days + ' days';
                     }
                 }
             }
 
             // Initial update
             updateTicker();
-            setInterval(updateTicker, 1000); // 1 second
+            setInterval(updateTicker, 60000); // Update every minute
         })();
     </script>
 <header>

@@ -1,24 +1,24 @@
 // Live Countdown Timer - Updates Daily
 (function buildTicker() {
-        var deadlines = [
-        { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  8, 30), desc: 'CT/income tax return due' },
-        { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File deadline' },
-        { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File deadline' },
+    var deadlines = [
+        { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  9, 15), desc: 'CT/income tax return due' },
+        { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  9, 20), desc: 'Local File deadline' },
         { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing due' },
-        { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP disclosure / annual filing due' },
+        { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026, 10, 15), desc: 'Local File deadline' },
+        { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 10, 30), desc: 'TP documentation deadline' },
+        { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 15), desc: 'TP disclosure / annual filing due' },
         { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File deadline' },
-        { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File deadline' },
-        { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File deadline' }
+        { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File deadline' }
     ];
 
     function calculateCountdown() {
         var now = new Date();
-        now.setHours(0, 0, 0, 0); // Reset time to start of day for accurate day count
+        now.setHours(0, 0, 0, 0);
         
         var items = deadlines
             .map(function(d) {
                 var deadlineDate = new Date(d.date);
-                deadlineDate.setHours(0, 0, 0, 0); // Reset time to start of day
+                deadlineDate.setHours(0, 0, 0, 0);
                 var timeDiff = deadlineDate - now;
                 var days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
                 
@@ -69,9 +69,6 @@
     // Initial update
     updateTicker();
 
-    // Update once per day at midnight
-    setInterval(updateTicker, 86400000); // 24 hours in milliseconds
-    
-    // Also update every minute to catch day changes
-    setInterval(updateTicker, 60000); // 1 minute
+    // Update every minute to catch day changes
+    setInterval(updateTicker, 60000);
 })();
