@@ -1229,7 +1229,7 @@ h1, h2, h3, h4, h5, h6 {
         .ticker-track {
             display: flex;
             width: max-content;
-            animation: ticker-marquee 60s linear infinite;
+            animation: ticker-marquee 30s linear infinite;
         }
 
         .ticker-content {
@@ -1382,12 +1382,9 @@ h1, h2, h3, h4, h5, h6 {
                             '</div>';
                     }).join('');
 
-                    // Duplicate the list several times so it is guaranteed to be wider than ANY ultra-wide monitor. 
-                    // This prevents the marquee from "popping" at the end of the loop when the content is narrower than the screen.
-                    html = html + html + html;
-
-                    document.getElementById('tickerContent1').innerHTML = html;
-                    document.getElementById('tickerContent2').innerHTML = html;
+                    // Duplicate the content a few times to ensure it covers the screen width, but do it within each tickerContent div
+                    document.getElementById('tickerContent1').innerHTML = html + html;
+                    document.getElementById('tickerContent2').innerHTML = html + html;
                     tickerInitialized = true;
                 }
 
@@ -1408,7 +1405,7 @@ h1, h2, h3, h4, h5, h6 {
                         var h = pad2(Math.floor((diff / 3600000) % 24));
                         var m = pad2(Math.floor((diff / 60000) % 60));
                         var s = pad2(Math.floor((diff / 1000) % 60));
-                        el.textContent = d + 'D ' + h + ':' + m + ':' + s;
+                        el.textContent = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
                     }
                 }
             }
