@@ -1229,7 +1229,7 @@ h1, h2, h3, h4, h5, h6 {
                 .ticker-track {
             display: flex;
             width: max-content;
-            animation: ticker-marquee 35s linear infinite;
+            animation: ticker-marquee 25s linear infinite;
         }
 
         .ticker-content {
@@ -1334,14 +1334,14 @@ h1, h2, h3, h4, h5, h6 {
     <script>
         (function buildTicker() {
             var deadlines = [
-                { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  8, 30), desc: 'CT/income tax return due (incl. TP disclosure)' },
-                { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File deadline' },
-                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File deadline' },
-                { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP disclosure / annual filing due' },
-                { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP disclosure / annual filing due' },
-                { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File deadline' },
-                { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File deadline' },
-                { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File deadline' }
+                { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  8, 30), desc: 'CT return & TP disclosure' },
+                { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  8, 30), desc: 'Local File' },
+                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026,  9, 31), desc: 'Local File' },
+                { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP filing due' },
+                { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 31), desc: 'TP filing due' },
+                { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File' },
+                { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File' },
+                { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 11, 31), desc: 'Local File' }
             ];
 
             function pad2(num) {
