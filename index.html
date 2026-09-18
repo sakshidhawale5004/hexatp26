@@ -1344,10 +1344,6 @@ h1, h2, h3, h4, h5, h6 {
                 { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File' }
             ];
 
-            function pad2(num) {
-                return num.toString().padStart(2, '0');
-            }
-
             var tickerInitialized = false;
 
             function updateTicker() {
@@ -1389,11 +1385,8 @@ h1, h2, h3, h4, h5, h6 {
                     if (diff <= 0) {
                         el.textContent = 'TODAY';
                     } else {
-                        var d = Math.floor(diff / 86400000);
-                        var h = pad2(Math.floor((diff / 3600000) % 24));
-                        var m = pad2(Math.floor((diff / 60000) % 60));
-                        var s = pad2(Math.floor((diff / 1000) % 60));
-                        el.textContent = d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+                        var days = Math.ceil(diff / 86400000);
+                        el.textContent = days + ' DAYS';
                     }
                 }
             }
