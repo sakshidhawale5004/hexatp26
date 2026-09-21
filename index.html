@@ -1222,14 +1222,17 @@ h1, h2, h3, h4, h5, h6 {
 
         .ticker-viewport {
             flex: 1;
+            min-width: 0;
             overflow: hidden;
             height: 100%;
         }
 
-                .ticker-track {
+        .ticker-track {
             display: flex;
             width: max-content;
-            animation: ticker-marquee 25s linear infinite;
+            max-width: none; /* the global "* { max-width: 100% }" rule was squeezing the track to the screen width */
+            animation: ticker-marquee 120s linear infinite; /* real duration is set by the script from the pixel width */
+            will-change: transform;
         }
 
         .ticker-content {
@@ -1237,6 +1240,7 @@ h1, h2, h3, h4, h5, h6 {
             align-items: center;
             flex-shrink: 0;
             min-width: max-content;
+            max-width: none;
         }
 
         /* Pause both blocks on hover */
@@ -1250,6 +1254,7 @@ h1, h2, h3, h4, h5, h6 {
             margin-right: 15px;
             white-space: nowrap; /* Forcibly prevent wrapping */
             flex-shrink: 0;
+            max-width: none;
         }
 
         .ticker-item::after {
@@ -1291,9 +1296,16 @@ h1, h2, h3, h4, h5, h6 {
             font-size: 12.5px;
         }
 
+        /* --ticker-shift = pixel width of ONE copy of the list (set by the script); the track holds two identical copies, so shifting by one copy loops seamlessly */
         @keyframes ticker-marquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Track contains 2 identical contents, moving 50% shifts exactly 1 content width */
+            100% { transform: translateX(calc(-1 * var(--ticker-shift, 50%))); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none !important; }
+            .ticker-content + .ticker-content { display: none; }
+            .ticker-viewport { overflow-x: auto; scrollbar-width: none; }
         }
 
         /* Adjust header to account for ticker */
@@ -1318,82 +1330,128 @@ h1, h2, h3, h4, h5, h6 {
 </head>
 <body>
     <!-- Compliance Deadline Ticker (Dynamic) -->
-    <div class="compliance-ticker-wrap">
+    <div class="compliance-ticker-wrap" role="region" aria-label="Upcoming transfer pricing deadlines">
         <div class="ticker-label-container">
             <div class="pulse-dot"></div>
             <div class="ticker-label">TP DEADLINES</div>
         </div>
         <div class="ticker-viewport">
-            <div class="ticker-track">
+            <div class="ticker-track" id="tickerTrack">
                 <div class="ticker-content" id="tickerContent1"></div>
-                <div class="ticker-content" id="tickerContent2"></div>
+                <div class="ticker-content" id="tickerContent2" aria-hidden="true"></div>
             </div>
         </div>
     </div>
 
     <script>
         (function buildTicker() {
-            var deadlines = [
-                { flag: '🇦🇪', label: 'UAE',             date: new Date(2026,  9, 15), desc: 'CT return & TP disclosure' },
-                { flag: '🇭🇰', label: 'HONG KONG SAR',   date: new Date(2026,  9, 20), desc: 'Local File' },
-                { flag: '🇮🇳', label: 'INDIA',           date: new Date(2026,  9, 31), desc: 'TP filing due' },
-                { flag: '🇵🇱', label: 'POLAND',          date: new Date(2026, 10, 15), desc: 'Local File' },
-                { flag: '🇿🇦', label: 'SOUTH AFRICA',    date: new Date(2026, 10, 30), desc: 'TP documentation' },
-                { flag: '🇧🇪', label: 'BELGIUM',         date: new Date(2026, 11, 15), desc: 'TP filing due' },
-                { flag: '🇭🇺', label: 'HUNGARY',         date: new Date(2026, 11, 31), desc: 'Master File' },
-                { flag: '🇰🇷', label: 'SOUTH KOREA',     date: new Date(2026, 11, 31), desc: 'Local File' }
+            // ---- Settings -------------------------------------------------
+            var SPEED_PX_PER_SEC = 90;   // scroll speed: raise for faster, lower for slower
+
+            // 25 countries. Dates are MM-DD and repeat every year (same data as tp-compliance-calendar.html).
+            // If a country has several dates, the nearest upcoming one is shown.
+            var DEADLINES = [
+                { flag: '🇦🇪', label: 'UAE', dl: [['09-30', 'CT return & TP disclosure']] },
+                { flag: '🇸🇦', label: 'SAUDI ARABIA', dl: [['04-30', 'CT return & TP disclosure']] },
+                { flag: '🇶🇦', label: 'QATAR', dl: [['04-30', 'CT return & TP disclosure']] },
+                { flag: '🇴🇲', label: 'OMAN', dl: [['04-30', 'CT return due']] },
+                { flag: '🇰🇼', label: 'KUWAIT', dl: [['04-15', 'CT return & TP disclosure']] },
+                { flag: '🇮🇳', label: 'INDIA', dl: [['10-31', 'TP filing due']] },
+                { flag: '🇸🇬', label: 'SINGAPORE', dl: [['11-30', 'CT return due']] },
+                { flag: '🇹🇭', label: 'THAILAND', dl: [['05-30', 'CT return & TP disclosure']] },
+                { flag: '🇲🇾', label: 'MALAYSIA', dl: [['07-31', 'CT return due']] },
+                { flag: '🇮🇩', label: 'INDONESIA', dl: [['04-30', 'CT return & TP disclosure']] },
+                { flag: '🇻🇳', label: 'VIETNAM', dl: [['03-31', 'CT return due']] },
+                { flag: '🇦🇺', label: 'AUSTRALIA', dl: [['05-15', 'CT return due']] },
+                { flag: '🇭🇰', label: 'HONG KONG SAR', dl: [['09-30', 'Local File']] },
+                { flag: '🇰🇷', label: 'SOUTH KOREA', dl: [['12-31', 'Local File']] },
+                { flag: '🇨🇳', label: 'CHINA', dl: [['05-31', 'CT return & TP disclosure'], ['06-30', 'Local File']] },
+                { flag: '🇵🇭', label: 'PHILIPPINES', dl: [['04-15', 'CT return & TP disclosure']] },
+                { flag: '🇰🇪', label: 'KENYA', dl: [['06-30', 'CT return due']] },
+                { flag: '🇬🇭', label: 'GHANA', dl: [['04-30', 'CT return due']] },
+                { flag: '🇪🇬', label: 'EGYPT', dl: [['06-30', 'Local File']] },
+                { flag: '🇿🇦', label: 'SOUTH AFRICA', dl: [['12-31', 'Local File']] },
+                { flag: '🇳🇬', label: 'NIGERIA', dl: [['06-30', 'CT return due']] },
+                { flag: '🇵🇱', label: 'POLAND', dl: [['11-30', 'TP filing due'], ['10-31', 'Local File'], ['12-31', 'Master File']] },
+                { flag: '🇧🇪', label: 'BELGIUM', dl: [['12-31', 'TP filing due']] },
+                { flag: '🇭🇺', label: 'HUNGARY', dl: [['12-31', 'Master File']] },
+                { flag: '🇨🇦', label: 'CANADA', dl: [['06-30', 'CT return due']] }
             ];
+            // ---------------------------------------------------------------
 
-            var tickerInitialized = false;
+            var track = document.getElementById('tickerTrack');
+            var c1 = document.getElementById('tickerContent1');
+            var c2 = document.getElementById('tickerContent2');
+            var builtOn = '';
 
-            function updateTicker() {
-                var now = new Date();
-                now.setHours(0, 0, 0, 0);
-                
-                if (!tickerInitialized) {
-                    var items = deadlines;
-                    var htmlItems = items.map(function(item) {
-                        var dt = new Date(item.date);
-                        dt.setHours(0, 0, 0, 0);
-                        return '<div class="ticker-item">' +
-                            '<span class="country">' + item.flag + ' ' + item.label + '</span> ' +
-                            '<span class="days" data-target="' + dt.getTime() + '"></span> ' +
-                            '<span class="desc">' + item.desc + '</span>' +
-                            '</div>';
-                    }).join('');
-
-                    var repeatedHtml = '';
-                    for (var i = 0; i < 4; i++) {
-                        repeatedHtml += htmlItems;
-                    }
-                    
-                    document.getElementById('tickerContent1').innerHTML = repeatedHtml;
-                    document.getElementById('tickerContent2').innerHTML = repeatedHtml;
-                    tickerInitialized = true;
-                }
-
-                var nowMs = Date.now();
-                var daysEls = document.querySelectorAll('.compliance-ticker-wrap .days[data-target]');
-                for(var i=0; i<daysEls.length; i++) {
-                    var el = daysEls[i];
-                    var target = parseInt(el.getAttribute('data-target'), 10);
-                    if (target === -1) {
-                        el.textContent = '—';
-                        continue;
-                    }
-                    var diff = target - nowMs;
-                    if (diff <= 0) {
-                        el.textContent = 'TODAY';
-                    } else {
-                        var days = Math.ceil(diff / 86400000);
-                        el.textContent = days + ' DAYS';
-                    }
-                }
+            function startOfToday() {
+                var d = new Date();
+                d.setHours(0, 0, 0, 0);
+                return d;
             }
 
-            // Initial update
-            updateTicker();
-            setInterval(updateTicker, 1000); // Update every second
+            // Next time this MM-DD occurs (today counts; otherwise rolls to next year)
+            function nextOccurrence(mmdd, today) {
+                var m = parseInt(mmdd.slice(0, 2), 10) - 1;
+                var d = parseInt(mmdd.slice(3), 10);
+                var t = new Date(today.getFullYear(), m, d);
+                if (t < today) { t = new Date(today.getFullYear() + 1, m, d); }
+                return t;
+            }
+
+            function daysLabel(n) {
+                if (n <= 0) { return 'TODAY'; }
+                return n === 1 ? '1 DAY' : n + ' DAYS';
+            }
+
+            function render() {
+                var today = startOfToday();
+                builtOn = today.toDateString();
+
+                var items = DEADLINES.map(function (c) {
+                    var best = null;
+                    c.dl.forEach(function (x) {
+                        var dt = nextOccurrence(x[0], today);
+                        if (!best || dt < best.date) { best = { date: dt, desc: x[1] }; }
+                    });
+                    return { flag: c.flag, label: c.label, date: best.date, desc: best.desc };
+                }).sort(function (a, b) { return a.date - b.date; });   // soonest first
+
+                var html = items.map(function (it) {
+                    var days = Math.round((it.date - today) / 86400000);
+                    return '<div class="ticker-item">' +
+                        '<span class="country">' + it.flag + ' ' + it.label + '</span> ' +
+                        '<span class="days">' + daysLabel(days) + '</span> ' +
+                        '<span class="desc">' + it.desc + '</span>' +
+                        '</div>';
+                }).join('');
+
+                c1.innerHTML = html;
+                c2.innerHTML = html;   // identical copy = seamless loop
+                measure(true);
+            }
+
+            // Scroll distance = width of one copy; duration = distance / speed, so speed stays constant
+            var lastWidth = 0;
+            function measure(force) {
+                var w = c1.getBoundingClientRect().width;
+                if (!w || (!force && Math.abs(w - lastWidth) < 1)) { return; }
+                lastWidth = w;
+                track.style.setProperty('--ticker-shift', w + 'px');
+                track.style.animationDuration = (w / SPEED_PX_PER_SEC) + 's';
+            }
+
+            render();
+
+            // Web fonts / window resizes change the text width, so re-measure
+            if (window.ResizeObserver) { new ResizeObserver(function () { measure(false); }).observe(c1); }
+            window.addEventListener('load', function () { measure(false); });
+            if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { measure(false); }); }
+
+            // Recalculate the day counts once the date changes (checked every minute)
+            setInterval(function () {
+                if (startOfToday().toDateString() !== builtOn) { render(); }
+            }, 60000);
         })();
     </script>
 <header>
@@ -2061,12 +2119,3 @@ function toggleFloatingWidget() {
     <script src="scripts/hexagon-bg.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
