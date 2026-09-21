@@ -275,9 +275,32 @@
     .tpc-upcoming{padding-left:14px;padding-right:14px;}
     .tpc-country-panel{width:280px;}
   }
+
+  .tpc-ticker {
+    background: var(--gold);
+    color: var(--navy-deep);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .tpc-ticker marquee {
+    width: 100%;
+  }
+
 </style>
 
 <div class="tpc-root" id="tpcRoot">
+
+  <div class="tpc-ticker">
+    <marquee behavior="scroll" direction="left">
+      🚀 Upcoming: Transfer Pricing documentation deadlines for Q3 approaching! | 🌍 Ensure local files are updated for all 82 jurisdictions. | 📢 Note: New tax regulations taking effect in Latin America and Europe.
+    </marquee>
+  </div>
+
   <div class="tpc-hero">
   <div class="tpc-header">
     <div class="tpc-brand">
@@ -372,7 +395,7 @@
 
 <script>
 (function(){
-  const COUNTRIES = [{"code": "BH", "name": "Bahrain", "flag": "🇧🇭", "region": "GCC"}, {"code": "KW", "name": "Kuwait", "flag": "🇰🇼", "region": "GCC"}, {"code": "OM", "name": "Oman", "flag": "🇴🇲", "region": "GCC"}, {"code": "QA", "name": "Qatar", "flag": "🇶🇦", "region": "GCC"}, {"code": "SA", "name": "Saudi Arabia", "flag": "🇸🇦", "region": "GCC"}, {"code": "AE", "name": "UAE", "flag": "🇦🇪", "region": "GCC"}, {"code": "BE", "name": "Belgium", "flag": "🇧🇪", "region": "Europe"}, {"code": "BG", "name": "Bulgaria", "flag": "🇧🇬", "region": "Europe"}, {"code": "CY", "name": "Cyprus", "flag": "🇨🇾", "region": "Europe"}, {"code": "CZ", "name": "Czech Republic", "flag": "🇨🇿", "region": "Europe"}, {"code": "DK", "name": "Denmark", "flag": "🇩🇰", "region": "Europe"}, {"code": "FR", "name": "France", "flag": "🇫🇷", "region": "Europe"}, {"code": "DE", "name": "Germany", "flag": "🇩🇪", "region": "Europe"}, {"code": "GR", "name": "Greece", "flag": "🇬🇷", "region": "Europe"}, {"code": "HU", "name": "Hungary", "flag": "🇭🇺", "region": "Europe"}, {"code": "IE", "name": "Ireland", "flag": "🇮🇪", "region": "Europe"}, {"code": "IT", "name": "Italy", "flag": "🇮🇹", "region": "Europe"}, {"code": "LU", "name": "Luxembourg", "flag": "🇱🇺", "region": "Europe"}, {"code": "MT", "name": "Malta", "flag": "🇲🇹", "region": "Europe"}, {"code": "NL", "name": "Netherlands", "flag": "🇳🇱", "region": "Europe"}, {"code": "PL", "name": "Poland", "flag": "🇵🇱", "region": "Europe"}, {"code": "PT", "name": "Portugal", "flag": "🇵🇹", "region": "Europe"}, {"code": "RO", "name": "Romania", "flag": "🇷🇴", "region": "Europe"}, {"code": "ES", "name": "Spain", "flag": "🇪🇸", "region": "Europe"}, {"code": "SE", "name": "Sweden", "flag": "🇸🇪", "region": "Europe"}, {"code": "CH", "name": "Switzerland", "flag": "🇨🇭", "region": "Europe"}, {"code": "GB", "name": "United Kingdom", "flag": "🇬🇧", "region": "Europe"}, {"code": "TR", "name": "Turkey", "flag": "🇹🇷", "region": "Europe/APAC"}, {"code": "CA", "name": "Canada", "flag": "🇨🇦", "region": "North America"}, {"code": "AU", "name": "Australia", "flag": "🇦🇺", "region": "APAC"}, {"code": "CN", "name": "China", "flag": "🇨🇳", "region": "APAC"}, {"code": "HK", "name": "Hong Kong SAR", "flag": "🇭🇰", "region": "APAC"}, {"code": "IN", "name": "India", "flag": "🇮🇳", "region": "APAC"}, {"code": "ID", "name": "Indonesia", "flag": "🇮🇩", "region": "APAC"}, {"code": "JP", "name": "Japan", "flag": "🇯🇵", "region": "APAC"}, {"code": "MY", "name": "Malaysia", "flag": "🇲🇾", "region": "APAC"}, {"code": "NZ", "name": "New Zealand", "flag": "🇳🇿", "region": "APAC"}, {"code": "PH", "name": "Philippines", "flag": "🇵🇭", "region": "APAC"}, {"code": "SG", "name": "Singapore", "flag": "🇸🇬", "region": "APAC"}, {"code": "KR", "name": "South Korea", "flag": "🇰🇷", "region": "APAC"}, {"code": "TW", "name": "Taiwan", "flag": "🇹🇼", "region": "APAC"}, {"code": "TH", "name": "Thailand", "flag": "🇹🇭", "region": "APAC"}, {"code": "VN", "name": "Vietnam", "flag": "🇻🇳", "region": "APAC"}, {"code": "DZ", "name": "Algeria", "flag": "🇩🇿", "region": "Africa"}, {"code": "CI", "name": "Côte d'Ivoire", "flag": "🇨🇮", "region": "Africa"}, {"code": "EG", "name": "Egypt", "flag": "🇪🇬", "region": "Africa"}, {"code": "GH", "name": "Ghana", "flag": "🇬🇭", "region": "Africa"}, {"code": "KE", "name": "Kenya", "flag": "🇰🇪", "region": "Africa"}, {"code": "MU", "name": "Mauritius", "flag": "🇲🇺", "region": "Africa"}, {"code": "MA", "name": "Morocco", "flag": "🇲🇦", "region": "Africa"}, {"code": "NG", "name": "Nigeria", "flag": "🇳🇬", "region": "Africa"}, {"code": "SN", "name": "Senegal", "flag": "🇸🇳", "region": "Africa"}, {"code": "ZA", "name": "South Africa", "flag": "🇿🇦", "region": "Africa"}, {"code": "TZ", "name": "Tanzania", "flag": "🇹🇿", "region": "Africa"}, {"code": "TN", "name": "Tunisia", "flag": "🇹🇳", "region": "Africa"}, {"code": "UG", "name": "Uganda", "flag": "🇺🇬", "region": "Africa"}, {"code": "ZM", "name": "Zambia", "flag": "🇿🇲", "region": "Africa"}];
+  const COUNTRIES = [{"code": "BH", "name": "Bahrain", "flag": "🇧🇭", "region": "GCC"}, {"code": "KW", "name": "Kuwait", "flag": "🇰🇼", "region": "GCC"}, {"code": "OM", "name": "Oman", "flag": "🇴🇲", "region": "GCC"}, {"code": "QA", "name": "Qatar", "flag": "🇶🇦", "region": "GCC"}, {"code": "SA", "name": "Saudi Arabia", "flag": "🇸🇦", "region": "GCC"}, {"code": "AE", "name": "UAE", "flag": "🇦🇪", "region": "GCC"}, {"code": "BE", "name": "Belgium", "flag": "🇧🇪", "region": "Europe"}, {"code": "BG", "name": "Bulgaria", "flag": "🇧🇬", "region": "Europe"}, {"code": "CY", "name": "Cyprus", "flag": "🇨🇾", "region": "Europe"}, {"code": "CZ", "name": "Czech Republic", "flag": "🇨🇿", "region": "Europe"}, {"code": "DK", "name": "Denmark", "flag": "🇩🇰", "region": "Europe"}, {"code": "FR", "name": "France", "flag": "🇫🇷", "region": "Europe"}, {"code": "DE", "name": "Germany", "flag": "🇩🇪", "region": "Europe"}, {"code": "GR", "name": "Greece", "flag": "🇬🇷", "region": "Europe"}, {"code": "HU", "name": "Hungary", "flag": "🇭🇺", "region": "Europe"}, {"code": "IE", "name": "Ireland", "flag": "🇮🇪", "region": "Europe"}, {"code": "IT", "name": "Italy", "flag": "🇮🇹", "region": "Europe"}, {"code": "LU", "name": "Luxembourg", "flag": "🇱🇺", "region": "Europe"}, {"code": "MT", "name": "Malta", "flag": "🇲🇹", "region": "Europe"}, {"code": "NL", "name": "Netherlands", "flag": "🇳🇱", "region": "Europe"}, {"code": "PL", "name": "Poland", "flag": "🇵🇱", "region": "Europe"}, {"code": "PT", "name": "Portugal", "flag": "🇵🇹", "region": "Europe"}, {"code": "RO", "name": "Romania", "flag": "🇷🇴", "region": "Europe"}, {"code": "ES", "name": "Spain", "flag": "🇪🇸", "region": "Europe"}, {"code": "SE", "name": "Sweden", "flag": "🇸🇪", "region": "Europe"}, {"code": "CH", "name": "Switzerland", "flag": "🇨🇭", "region": "Europe"}, {"code": "GB", "name": "United Kingdom", "flag": "🇬🇧", "region": "Europe"}, {"code": "TR", "name": "Turkey", "flag": "🇹🇷", "region": "Europe/APAC"}, {"code": "CA", "name": "Canada", "flag": "🇨🇦", "region": "North America"}, {"code": "AU", "name": "Australia", "flag": "🇦🇺", "region": "APAC"}, {"code": "CN", "name": "China", "flag": "🇨🇳", "region": "APAC"}, {"code": "HK", "name": "Hong Kong SAR", "flag": "🇭🇰", "region": "APAC"}, {"code": "IN", "name": "India", "flag": "🇮🇳", "region": "APAC"}, {"code": "ID", "name": "Indonesia", "flag": "🇮🇩", "region": "APAC"}, {"code": "JP", "name": "Japan", "flag": "🇯🇵", "region": "APAC"}, {"code": "MY", "name": "Malaysia", "flag": "🇲🇾", "region": "APAC"}, {"code": "NZ", "name": "New Zealand", "flag": "🇳🇿", "region": "APAC"}, {"code": "PH", "name": "Philippines", "flag": "🇵🇭", "region": "APAC"}, {"code": "SG", "name": "Singapore", "flag": "🇸🇬", "region": "APAC"}, {"code": "KR", "name": "South Korea", "flag": "🇰🇷", "region": "APAC"}, {"code": "TW", "name": "Taiwan", "flag": "🇹🇼", "region": "APAC"}, {"code": "TH", "name": "Thailand", "flag": "🇹🇭", "region": "APAC"}, {"code": "VN", "name": "Vietnam", "flag": "🇻🇳", "region": "APAC"}, {"code": "DZ", "name": "Algeria", "flag": "🇩🇿", "region": "Africa"}, {"code": "CI", "name": "Côte d'Ivoire", "flag": "🇨🇮", "region": "Africa"}, {"code": "EG", "name": "Egypt", "flag": "🇪🇬", "region": "Africa"}, {"code": "GH", "name": "Ghana", "flag": "🇬🇭", "region": "Africa"}, {"code": "KE", "name": "Kenya", "flag": "🇰🇪", "region": "Africa"}, {"code": "MU", "name": "Mauritius", "flag": "🇲🇺", "region": "Africa"}, {"code": "MA", "name": "Morocco", "flag": "🇲🇦", "region": "Africa"}, {"code": "NG", "name": "Nigeria", "flag": "🇳🇬", "region": "Africa"}, {"code": "SN", "name": "Senegal", "flag": "🇸🇳", "region": "Africa"}, {"code": "ZA", "name": "South Africa", "flag": "🇿🇦", "region": "Africa"}, {"code": "TZ", "name": "Tanzania", "flag": "🇹🇿", "region": "Africa"}, {"code": "TN", "name": "Tunisia", "flag": "🇹🇳", "region": "Africa"}, {"code": "UG", "name": "Uganda", "flag": "🇺🇬", "region": "Africa"}, {"code": "ZM", "name": "Zambia", "flag": "🇿🇲", "region": "Africa"}, {"code": "US", "name": "United States", "flag": "🇺🇸", "region": "North America"}, {"code": "MX", "name": "Mexico", "flag": "🇲🇽", "region": "North America"}, {"code": "BR", "name": "Brazil", "flag": "🇧🇷", "region": "South America"}, {"code": "AR", "name": "Argentina", "flag": "🇦🇷", "region": "South America"}, {"code": "CL", "name": "Chile", "flag": "🇨🇱", "region": "South America"}, {"code": "CO", "name": "Colombia", "flag": "🇨🇴", "region": "South America"}, {"code": "PE", "name": "Peru", "flag": "🇵🇪", "region": "South America"}, {"code": "UY", "name": "Uruguay", "flag": "🇺🇾", "region": "South America"}, {"code": "VE", "name": "Venezuela", "flag": "🇻🇪", "region": "South America"}, {"code": "EC", "name": "Ecuador", "flag": "🇪🇨", "region": "South America"}, {"code": "NO", "name": "Norway", "flag": "🇳🇴", "region": "Europe"}, {"code": "FI", "name": "Finland", "flag": "🇫🇮", "region": "Europe"}, {"code": "AT", "name": "Austria", "flag": "🇦🇹", "region": "Europe"}, {"code": "RU", "name": "Russia", "flag": "🇷🇺", "region": "Europe/APAC"}, {"code": "PK", "name": "Pakistan", "flag": "🇵🇰", "region": "APAC"}, {"code": "BD", "name": "Bangladesh", "flag": "🇧🇩", "region": "APAC"}, {"code": "LK", "name": "Sri Lanka", "flag": "🇱🇰", "region": "APAC"}, {"code": "NP", "name": "Nepal", "flag": "🇳🇵", "region": "APAC"}, {"code": "IR", "name": "Iran", "flag": "🇮🇷", "region": "Middle East"}, {"code": "IQ", "name": "Iraq", "flag": "🇮🇶", "region": "Middle East"}, {"code": "IL", "name": "Israel", "flag": "🇮🇱", "region": "Middle East"}, {"code": "JO", "name": "Jordan", "flag": "🇯🇴", "region": "Middle East"}, {"code": "LB", "name": "Lebanon", "flag": "🇱🇧", "region": "Middle East"}, {"code": "CR", "name": "Costa Rica", "flag": "🇨🇷", "region": "North America"}, {"code": "PA", "name": "Panama", "flag": "🇵🇦", "region": "North America"}];
   const REGION_ORDER = ['GCC','Europe','Europe/APAC','North America','APAC','Africa'];
   const TYPES = [
     {key:'tp-deadline', label:'TP deadline', color:'var(--c-tp)'},
@@ -557,10 +580,7 @@
     });
   }
 
-  let tickerInterval;
   function renderUpcoming(){
-    if(tickerInterval) clearInterval(tickerInterval);
-
     const now = new Date(todayStr+'T00:00:00');
     const thisYear = now.getFullYear();
 
@@ -576,50 +596,25 @@
       const wrap = document.getElementById(elId);
       const upcoming = filteredEvents()
         .filter(e => e.type===typeKey)
-        .map(e=>{ const nd = nextOccurrence(e); return {...e, ndMs: nd.getTime(), diff: Math.ceil((nd-now)/86400000)}; })
+        .map(e=>{ const nd = nextOccurrence(e); return {...e, diff: Math.ceil((nd-now)/86400000)}; })
         .filter(e=>e.diff>=0)
         .sort((a,b)=>a.diff-b.diff)
-        ;
+        .slice(0,10);
 
       if(upcoming.length===0){
         wrap.innerHTML = `<div class="tpc-upcoming-empty">No upcoming entries match the current filters.</div>`;
         return;
       }
-      const itemsHtml = upcoming.map(e=>`
+      wrap.innerHTML = upcoming.map(e=>`
         <div class="tpc-chip ${cssClass}">
-          <div class="days" data-target="${e.ndMs}" data-diff="${e.diff}">${e.diff===0?'Today':''}</div>
+          <div class="days">${e.diff===0?'Today':e.diff+' days'}</div>
           <div class="label">${e.title}</div>
           <div class="country">${countryMeta(e.country).flag} ${countryMeta(e.country).name}</div>
         </div>`).join('');
-      wrap.innerHTML = itemsHtml;
     }
 
     buildRow('tpcUpcomingTP', 'tp-deadline', 'tp');
     buildRow('tpcUpcomingCT', 'tax-deadline', 'ct');
-
-    function updateTicker() {
-      const nowMs = Date.now();
-      document.querySelectorAll('.tpc-upcoming-track .days[data-target]').forEach(el => {
-        const diffDaysOrig = parseInt(el.dataset.diff, 10);
-        if (diffDaysOrig === 0) {
-          el.textContent = 'Today';
-        } else {
-          const target = parseInt(el.dataset.target, 10);
-          const diff = target - nowMs;
-          if (diff <= 0) {
-            el.textContent = 'Today';
-          } else {
-            const d = Math.floor(diff / 86400000);
-            const h = Math.floor((diff / 3600000) % 24).toString().padStart(2, '0');
-            const m = Math.floor((diff / 60000) % 60).toString().padStart(2, '0');
-            const s = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
-            el.textContent = d + 'd ' + h + ':' + m + ':' + s;
-          }
-        }
-      });
-    }
-    updateTicker();
-    tickerInterval = setInterval(updateTicker, 1000);
   }
 
   function renderCalendar(){
